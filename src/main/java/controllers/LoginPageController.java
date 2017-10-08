@@ -52,7 +52,7 @@ public class LoginPageController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainPage.fxml"));
         Parent root = loader.load();
 //        MainPageController mainController = loader.getController();
-        stage.setTitle("Main");
+        stage.setTitle("trueSA");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
         stage.show();

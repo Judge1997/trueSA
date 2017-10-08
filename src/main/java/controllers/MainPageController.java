@@ -17,17 +17,23 @@ public class MainPageController {
     public void logoutBth(ActionEvent event) throws IOException {
         Button loginBtn = (Button) event.getSource();
         Stage loginStage = (Stage) loginBtn.getScene().getWindow();
-        this.mainPageToLoginPage(loginStage);
+        this.goToPage(loginStage,"/LoginPage.fxml",400,600);
     }
 
-    public void mainPageToLoginPage(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginPage.fxml"));
+    public void goToPage(Stage stage,String namePage,int height,int width) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(namePage));
         Parent root = loader.load();
 //        LoginPageController loginPageController = loader.getController();
-        stage.setTitle("Login");
-        stage.setScene(new Scene(root, 600, 400));
+        stage.setTitle("trueSA");
+        stage.setScene(new Scene(root, width, height));
         stage.setResizable(false);
         stage.show();
+    }
+
+    @FXML
+    public void addBtn(ActionEvent event) throws IOException {
+        Stage addStage = new Stage();
+        this.goToPage(addStage,"/AddRecordPage.fxml",720,1280);
     }
 
 }
