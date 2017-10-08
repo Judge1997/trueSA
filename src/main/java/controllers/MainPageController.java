@@ -16,8 +16,8 @@ public class MainPageController {
     @FXML
     public void logoutBth(ActionEvent event) throws IOException {
         Button loginBtn = (Button) event.getSource();
-        Stage loginStage = (Stage) loginBtn.getScene().getWindow();
-        this.goToPage(loginStage,"/LoginPage.fxml",400,600);
+        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        this.goToPage(stage,"/LoginPage.fxml",400,600);
     }
 
     public void goToPage(Stage stage,String namePage,int height,int width) throws IOException {
@@ -40,6 +40,13 @@ public class MainPageController {
     public void editBtn(ActionEvent event) throws IOException {
         Stage addStage = new Stage();
         this.goToPage(addStage,"/EditPAge.fxml",720,1280);
+    }
+
+    @FXML
+    public void searchBtn(ActionEvent event) throws IOException {
+        Button searchBtn = (Button) event.getSource();
+        Stage stage = (Stage) searchBtn.getScene().getWindow();
+        this.goToPage(stage,"/SearchPage.fxml",400,600);
     }
 
 }
