@@ -39,7 +39,7 @@ public class MainPageController {
     @FXML
     public void editBtn(ActionEvent event) throws IOException {
         Stage addStage = new Stage();
-        this.goToPage(addStage,"/EditPAge.fxml",720,1280);
+        this.goToPage(addStage,"/EditRecordPage.fxml",720,1280);
     }
 
     @FXML

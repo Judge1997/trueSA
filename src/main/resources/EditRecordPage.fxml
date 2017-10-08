@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="720" maxWidth="1280" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditPageController">
+<GridPane maxHeight="720" maxWidth="1280" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditRecordPageController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -203,7 +203,7 @@
         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <children>
                 <Button layoutX="239.0" layoutY="20.0" mnemonicParsing="false" text="Save Edit" />
-                <Button layoutX="323.0" layoutY="20.0" mnemonicParsing="false" text="Cancel Edit" />
+                <Button layoutX="323.0" layoutY="20.0" mnemonicParsing="false" onAction="#cancelBtn" text="Cancel Edit" />
             <Label layoutX="7.0" layoutY="24.0" text="Subscribes Number : " />
             <Label layoutX="127.0" layoutY="20.0" text="xxxxxxxxx">
                <font>
