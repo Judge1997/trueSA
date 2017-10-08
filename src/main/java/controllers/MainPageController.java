@@ -36,4 +36,10 @@ public class MainPageController {
         this.goToPage(addStage,"/AddRecordPage.fxml",720,1280);
     }
 
+    @FXML
+    public void editBtn(ActionEvent event) throws IOException {
+        Stage addStage = new Stage();
+        this.goToPage(addStage,"/EditPAge.fxml",720,1280);
+    }
+
 }
