@@ -22,7 +22,6 @@
                 <TableColumn prefWidth="75.0" text="C7" />
             </columns>
         </TableView>
-        <Button fx:id="logoutSearchPage" layoutX="504.0" layoutY="26.0" mnemonicParsing="false" text="LOGOUT" />
         <Button fx:id="backToMainPageBtn" layoutX="38.0" layoutY="352.0" mnemonicParsing="false" onAction="#backBtn" text="BACK" />
         <ComboBox fx:id="searchComboBox" layoutX="38.0" layoutY="26.0" prefWidth="150.0" promptText="Click here!" />
         <TextField layoutX="252.0" layoutY="26.0" prefHeight="25.0" prefWidth="158.0" promptText="Search here!" />

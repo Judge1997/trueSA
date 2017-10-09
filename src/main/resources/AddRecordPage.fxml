@@ -61,13 +61,13 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <TextField layoutX="37.0" layoutY="42.0" prefHeight="25.0" prefWidth="357.0" />
             <TextField layoutX="37.0" layoutY="87.0" prefHeight="25.0" prefWidth="357.0" />
             <TextField layoutX="37.0" layoutY="132.0" prefHeight="25.0" prefWidth="357.0" />
             <TextField layoutX="37.0" layoutY="177.0" prefHeight="25.0" prefWidth="357.0" />
             <TextField layoutX="35.0" layoutY="222.0" prefHeight="25.0" prefWidth="357.0" />
             <TextField layoutX="37.0" layoutY="267.0" prefHeight="25.0" prefWidth="357.0" />
             <TextField layoutX="37.0" layoutY="312.0" prefHeight="25.0" prefWidth="357.0" />
-            <TextField layoutX="37.0" layoutY="42.0" prefHeight="25.0" prefWidth="357.0" />
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>

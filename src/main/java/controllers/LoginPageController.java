@@ -27,12 +27,14 @@ public class LoginPageController {
         loginBtn.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
-                    Button loginBtn = (Button) keyEvent.getSource();
-                    Stage mainStage = (Stage) loginBtn.getScene().getWindow();
-                    try {
-                        loginPageToMainPage(mainStage);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (id.getText().equals("admin") && password.getText().equals("admin")){
+                        Button loginBtn = (Button) keyEvent.getSource();
+                        Stage mainStage = (Stage) loginBtn.getScene().getWindow();
+                        try {
+                            loginPageToMainPage(mainStage);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
