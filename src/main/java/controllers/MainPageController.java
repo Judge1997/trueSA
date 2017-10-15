@@ -22,7 +22,7 @@ import java.util.Observer;
 public class MainPageController implements Observer {
 
     private CustomerDB customerDB = CustomerDB.getSelf();
-    AddRecordPageController addRecordPageController;
+//    AddRecordPageController addRecordPageController;
 
     @FXML
     private TableView<Customer> tableView;
@@ -72,11 +72,19 @@ public class MainPageController implements Observer {
         this.goToPage(stage,loader,720,1280);
     }
 
+//    @FXML
+//    public void searchBtn(ActionEvent event) throws IOException {
+//        Button searchBtn = (Button) event.getSource();
+//        Stage stage = (Stage) searchBtn.getScene().getWindow();
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SearchPage.fxml"));
+//        this.goToPage(stage,loader,400,600);
+//    }
+
     @FXML
-    public void searchBtn(ActionEvent event) throws IOException {
-        Button searchBtn = (Button) event.getSource();
-        Stage stage = (Stage) searchBtn.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SearchPage.fxml"));
+    public void reportBtn(ActionEvent event) throws IOException {
+        Button loginBtn = (Button) event.getSource();
+        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReportAvarageTotalPage.fxml"));
         this.goToPage(stage,loader,400,600);
     }
 
