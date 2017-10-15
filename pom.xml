@@ -39,6 +39,11 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.20.0</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
 </project>
