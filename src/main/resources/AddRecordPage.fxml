@@ -53,7 +53,7 @@
             <TextField fx:id="regionField" layoutX="113.0" layoutY="111.0" prefHeight="25.0" prefWidth="139.0" />
             <ScrollPane layoutX="26.0" layoutY="170.0" prefHeight="126.0" prefWidth="375.0">
                <content>
-                  <TextArea fx:id="locationField" prefHeight="124.0" prefWidth="372.0" />
+                  <TextArea fx:id="locationArea" prefHeight="124.0" prefWidth="372.0" />
                </content>
             </ScrollPane>
          </children></AnchorPane>
