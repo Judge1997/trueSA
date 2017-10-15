@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="640" maxWidth="1280" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddRecordPageController">
+<GridPane maxHeight="640" maxWidth="1280" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddRecordPageController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -48,19 +48,19 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="112.0" layoutY="45.0" prefHeight="25.0" prefWidth="283.0" />
-            <TextField layoutX="112.0" layoutY="78.0" prefHeight="25.0" prefWidth="186.0" />
-            <TextField layoutX="113.0" layoutY="111.0" prefHeight="25.0" prefWidth="139.0" />
+            <TextField fx:id="nameField" layoutX="112.0" layoutY="45.0" prefHeight="25.0" prefWidth="283.0" />
+            <TextField fx:id="aeNameField" layoutX="112.0" layoutY="78.0" prefHeight="25.0" prefWidth="186.0" />
+            <TextField fx:id="regionField" layoutX="113.0" layoutY="111.0" prefHeight="25.0" prefWidth="139.0" />
             <ScrollPane layoutX="26.0" layoutY="170.0" prefHeight="126.0" prefWidth="375.0">
                <content>
-                  <TextArea prefHeight="124.0" prefWidth="372.0" />
+                  <TextArea fx:id="locationField" prefHeight="124.0" prefWidth="372.0" />
                </content>
             </ScrollPane>
          </children></AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5e6f4" height="530.0" layoutX="8.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="410.0" />
-            <TextField layoutX="166.0" layoutY="43.0" prefHeight="25.0" prefWidth="139.0" />
+            <TextField fx:id="businessIDField" layoutX="166.0" layoutY="43.0" prefHeight="25.0" prefWidth="139.0" />
             <TextField layoutX="166.0" layoutY="78.0" prefHeight="25.0" prefWidth="139.0" />
             <Label layoutX="27.0" layoutY="45.0" text="1. Business ID :">
                <font>
@@ -184,7 +184,7 @@
          </font></Label>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <Button layoutX="135.0" layoutY="20.0" mnemonicParsing="false" text="Submit">
+            <Button layoutX="135.0" layoutY="20.0" mnemonicParsing="false" onAction="#submitBtn" text="Submit">
                <font>
                   <Font size="17.0" />
                </font></Button>
