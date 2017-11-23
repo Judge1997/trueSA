@@ -1,17 +1,13 @@
 package controllers;
 
 import database.CustomerDB;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import models.Customer;
-
 import java.sql.SQLException;
 import java.util.Observable;
 
@@ -20,7 +16,7 @@ public class AddRecordPageController extends Observable {
     private CustomerDB customerDB = CustomerDB.getSelf();
 
     @FXML
-    private TextField nameField, aeNameField, regionField, businessIDField, capitalField, provinceField, khetField, khwangField, employeeField, contaceTelNumField, contactFaxField, contactField, contactNameField, averageField, voiceField, internetField, dataField, mobilesField, tvsField;
+    private TextField nameField, aeNameField, regionField, businessIDField, capitalField, provinceField, khetField, khwangField, employeeField, contaceTelNumField, contactFaxField, contactField, contactNameField, averageField;
     @FXML
     private TextArea locationInstallArea;
 
@@ -44,12 +40,7 @@ public class AddRecordPageController extends Observable {
         boolean isContactFaxFieldCorrect = true;
         boolean isContactFieldCorrect = true;
         boolean isContactNameFieldCorrect = true;
-        boolean isAverageFieldCorrect = true;
-        boolean isVoiceFieldCorrect = true;
-        boolean isInternetFieldCorrect = true;
-        boolean isDataFieldCorrect = true;
-        boolean isMobilesFieldCorrect = true;
-        boolean isTvsFieldCorrect = true;
+        boolean isPacketCostFieldCorrect = true;
 
         String name = this.nameField.getText();
         String aeName = this.aeNameField.getText();
@@ -65,12 +56,7 @@ public class AddRecordPageController extends Observable {
         String contactFax = this.contactFaxField.getText();
         String contact = this.contactField.getText();
         String contactName = this.contactNameField.getText();
-        double average;
-        int voice;
-        int internet;
-        int data;
-        int mobiles;
-        int tvs;
+        double packetCost;
 
         isAllCharacter(nameField, isNameFieldCorrect);
         isAllCharacter(aeNameField, isAeNameFieldCorrect);
@@ -85,50 +71,18 @@ public class AddRecordPageController extends Observable {
         isAllNumber(contactFaxField, isContactFaxFieldCorrect);
         isAllNumber(contactField, isContactFieldCorrect);
         isAllCharacter(contactNameField, isContactNameFieldCorrect);
-        isAllNumber(averageField, isAverageFieldCorrect);
-        isAllNumber(voiceField, isVoiceFieldCorrect);
-        isAllNumber(internetField, isInternetFieldCorrect);
-        isAllNumber(dataField, isDataFieldCorrect);
-        isAllNumber(mobilesField, isMobilesFieldCorrect);
-        isAllNumber(tvsField, isTvsFieldCorrect);
-
+        isAllNumber(averageField, isPacketCostFieldCorrect);
 
         if (this.averageField.getText().equals("")) {
-            average = 0;
+            packetCost = 0;
         } else {
-            average = Double.parseDouble(this.averageField.getText());
-        }
-        if (this.voiceField.getText().equals("")) {
-            voice = 0;
-        } else {
-            voice = Integer.parseInt(this.voiceField.getText());
-        }
-        if (this.internetField.getText().equals("")) {
-            internet = 0;
-        } else {
-            internet = Integer.parseInt(this.internetField.getText());
-        }
-        if (this.dataField.getText().equals("")) {
-            data = 0;
-        } else {
-            data = Integer.parseInt(this.dataField.getText());
-        }
-        if (this.mobilesField.getText().equals("")) {
-            mobiles = 0;
-        } else {
-            mobiles = Integer.parseInt(this.mobilesField.getText());
-        }
-        if (this.tvsField.getText().equals("")) {
-            tvs = 0;
-        } else {
-            tvs = Integer.parseInt(this.tvsField.getText());
+            packetCost = Double.parseDouble(this.averageField.getText());
         }
 
         if (isAllCorrect(isNameFieldCorrect,isAeNameFieldCorrect,isRegionFieldCorrect,isBussinessIDFieldCorrect,isCapitalFieldCorrect,isProvinceFieldCorrect,isKhetFieldCorrect,isKhwangFieldCorrect,isEmployeeFieldCorrect,
-                isContactTelNumFieldCorrect,isContactFaxFieldCorrect,isContactFieldCorrect,isContactNameFieldCorrect,isAverageFieldCorrect,isVoiceFieldCorrect,isInternetFieldCorrect,isDataFieldCorrect,isMobilesFieldCorrect
-                ,isTvsFieldCorrect)){
+                isContactTelNumFieldCorrect,isContactFaxFieldCorrect,isContactFieldCorrect,isContactNameFieldCorrect,isPacketCostFieldCorrect)){
             Customer customer = new Customer(0, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
-                    average, voice, internet, data, mobiles, tvs);
+                    packetCost);
             this.customerDB.writeCustonerDB(customer);
             this.closeThisWindow(event);
         }
@@ -187,9 +141,9 @@ public class AddRecordPageController extends Observable {
 
     //19
     private boolean isAllCorrect(boolean correct1, boolean correct2, boolean correct3, boolean correct4, boolean correct5, boolean correct6, boolean correct7, boolean correct8, boolean correct9
-            , boolean correct10, boolean correct11, boolean correct12, boolean correct13, boolean correct14, boolean correct15, boolean correct16, boolean correct17, boolean correct18, boolean correct19) {
+            , boolean correct10, boolean correct11, boolean correct12, boolean correct13, boolean correct14) {
         boolean allCorrect=false;
-        if (correct1 && correct2 && correct3 && correct4 && correct5 && correct6 && correct7 && correct8 && correct9 && correct10 && correct11 && correct12 && correct13 && correct14 && correct15 && correct16 && correct17 && correct18 && correct19) {
+        if (correct1 && correct2 && correct3 && correct4 && correct5 && correct6 && correct7 && correct8 && correct9 && correct10 && correct11 && correct12 && correct13 && correct14) {
             allCorrect = true;
         } else {
             allCorrect = false;

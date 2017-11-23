@@ -46,15 +46,10 @@ public class CustomerDB {
                 String contactFax = resultSet.getString(13);
                 String contact = resultSet.getString(14);
                 String contactName = resultSet.getString(15);
-                double average = resultSet.getDouble(16);
-                int voice = resultSet.getInt(17);
-                int internet = resultSet.getInt(18);
-                int data = resultSet.getInt(19);
-                int mobiles = resultSet.getInt(20);
-                int tvs = resultSet.getInt(21);
+                double packetCost = resultSet.getDouble(16);
 
                 customers.add(new Customer(id,name,aeName,region,locationInstall,businessID,capital,province,khet,khwang,employee,contaceTelNum,contactFax,contact,contactName,
-                        average,voice,internet,data,mobiles,tvs));
+                        packetCost));
             }
             System.out.println("Closed to customerDB.db");
         } else {
@@ -72,7 +67,7 @@ public class CustomerDB {
             String query = "INSERT INTO customer (name, aeName, region, locationInstall, businessId, capital, province, khet, khwang, employee, contactTelNum, contactFax, contact, contactName, average, voice, internet, data, mobiles, tvs) "+"VALUES ( " +
                     "'"+customer.getName()+"','"+customer.getAeName()+"','"+customer.getRegion()+"','"+customer.getLocationInstall()+"','"+customer.getBusinessId()+"','"+customer.getCapital()+"','"+customer.getProvince()+
                     "','"+customer.getKhet()+"','"+customer.getKhwang()+"','"+customer.getEmployee()+"','"+customer.getContactTelNum()+"','"+customer.getContactFax()+"','"+customer.getContact()+"','"+customer.getContactName()+
-                    "',"+customer.getAverage()+","+customer.getVoice()+","+customer.getInternet()+","+customer.getData()+","+customer.getMobiles()+","+customer.getTvs()+");";
+                    "',"+customer.getPacketCost()+");";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();

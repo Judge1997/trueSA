@@ -30,15 +30,15 @@ public class ReportAvarageTotalPageController {
     public void initialize() throws SQLException, ClassNotFoundException {
         List<Customer> listFromCustomerDB = customerDB.loadCustonerDB();
         ObservableList<Customer> customers = FXCollections.observableArrayList();
-        double totalAvarage = 0;
+        double totalCost = 0;
         for (Customer c : listFromCustomerDB){
-            if (c.getAverage() > 0){
-                totalAvarage += c.getAverage();
+            if (c.getPacketCost() > 0){
+                totalCost += c.getPacketCost();
                 customers.add(c);
             }
         }
         tableView.setItems(customers);
-        totalReport.setText(String.format("%.2f",totalAvarage));
+        totalReport.setText(String.format("%.2f",totalCost));
     }
 
     @FXML

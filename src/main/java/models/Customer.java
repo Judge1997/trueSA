@@ -3,11 +3,11 @@ package models;
 public class Customer {
 
     private String name,aeName,region,locationInstall,businessId,capital,province,khet,khwang,employee,contactTelNum,contactFax,contact,contactName;
-    private double average;
-    private int id,voice,internet,data,mobiles,tvs;
+    private double packetCost;
+    private int id;
 
     public Customer(int id,String name, String aeName, String region, String locationInstall, String businessId, String capital, String province, String khet, String khwang, String employee, String contactTelnum, String contactFax,
-                    String contact, String contactName, double average, int voice, int internet, int data, int mobiles, int tvs){
+                    String contact, String contactName, double packetCost){
         this.id = id;
         this.name = name;
         this.aeName = aeName;
@@ -23,12 +23,7 @@ public class Customer {
         this.contactFax = contactFax;
         this.contact = contact;
         this.contactName = contactName;
-        this.average = average;
-        this.voice = voice;
-        this.internet = internet;
-        this.data = data;
-        this.mobiles = mobiles;
-        this.tvs = tvs;
+        this.packetCost = packetCost;
 
     }
 
@@ -96,28 +91,8 @@ public class Customer {
         this.contactName = contactName;
     }
 
-    public void setAverage(double average) {
-        this.average = average;
-    }
-
-    public void setVoice(int voice) {
-        this.voice = voice;
-    }
-
-    public void setInternet(int internet) {
-        this.internet = internet;
-    }
-
-    public void setData(int data) {
-        this.data = data;
-    }
-
-    public void setMobiles(int mobiles) {
-        this.mobiles = mobiles;
-    }
-
-    public void setTvs(int tvs) {
-        this.tvs = tvs;
+    public void setPacketCost(double packetCost) {
+        this.packetCost = packetCost;
     }
 
     public String getName() {
@@ -176,32 +151,8 @@ public class Customer {
         return contactName;
     }
 
-    public double getAverage() {
-        return average;
-    }
-
-    public int getVoice() {
-        return voice;
-    }
-
-    public int getInternet() {
-        return internet;
-    }
-
-    public int getData() {
-        return data;
-    }
-
-    public int getMobiles() {
-        return mobiles;
-    }
-
-    public int getTvs() {
-        return tvs;
-    }
-
-    public String getAverageTwoPoint(){
-        return String.format("%.2f",this.average);
+    public double getPacketCost() {
+        return packetCost;
     }
 
 }
