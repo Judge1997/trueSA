@@ -21,7 +21,7 @@ public class DBConnector {
         return customerDB;
     }
 
-    public List<Customer> loadCustonerDB() throws SQLException, ClassNotFoundException, SQLException {
+    public List<Customer> loadCustonerDB() throws ClassNotFoundException, SQLException {
         List<Customer> customers = new Vector<Customer>();
 
         Class.forName("org.sqlite.JDBC");
@@ -95,6 +95,36 @@ public class DBConnector {
         }
     }
 
+    public List<Packet> loadPacketDB() throws ClassNotFoundException, SQLException {
+        List<Packet> packets = new Vector<Packet>();
+
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if(connection != null){
+            System.out.println("Connected to customerDB.db");
+            String query = "Select * from packet";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                double price = resultSet.getDouble(3);
+                String net = resultSet.getString(4);
+                String voice = resultSet.getString(5);
+                String data = resultSet.getString(6);
+                String mobile = resultSet.getString(7);
+                String tvs = resultSet.getString(8);
+
+                packets.add(new Packet(id, name, price, net, voice, data, mobile, tvs));
+            }
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+        return packets;
+    }
+
     public void writePacketDB(Packet packet) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
@@ -126,6 +156,34 @@ public class DBConnector {
         } else {
             System.out.println("Error to open customerDB.db");
         }
+    }
+
+    public List<Requirement> loadRequirementDB() throws ClassNotFoundException, SQLException {
+        List<Requirement> requirements = new Vector<Requirement>();
+
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if(connection != null){
+            System.out.println("Connected to customerDB.db");
+            String query = "Select * from packet";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String net = resultSet.getString(4);
+                String voice = resultSet.getString(5);
+                String data = resultSet.getString(6);
+                String mobile = resultSet.getString(7);
+                String tvs = resultSet.getString(8);
+
+                requirements.add(new Requirement(id, net, voice, data, mobile, tvs));
+            }
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+        return requirements;
     }
 
     public void writeRequirementDB(Requirement requirement) throws ClassNotFoundException, SQLException {

@@ -3,7 +3,7 @@ package models;
 public class Packet {
 
     private int id;
-    private int price;
+    private double price;
     private String name;
     private String net;
     private String voice;
@@ -11,7 +11,7 @@ public class Packet {
     private String mobile;
     private String tvs;
 
-    public Packet(int id, String name, int price, String net, String voice, String data, String mobile, String tvs){
+    public Packet(int id, String name, double price, String net, String voice, String data, String mobile, String tvs){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -38,7 +38,7 @@ public class Packet {
         this.id = id;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
