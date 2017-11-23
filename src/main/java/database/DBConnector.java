@@ -79,6 +79,26 @@ public class DBConnector {
         }
     }
 
+    public void editCustomerDB(Customer customer) throws ClassNotFoundException, SQLException{
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "UPDATE customer SET name = '"+customer.getName()+"' , aeName = '"+customer.getAeName()+"' , region ='"+customer.getRegion()+"' , locationInstall ='"+customer.getLocationInstall()
+                    +"' , businessId ='"+customer.getBusinessId()+"' , capital ='"+customer.getCapital()+"' , province ='"+customer.getProvince()+"' , khet ='"+customer.getKhet()
+                    +"' , khwang ='"+customer.getKhwang()+"' , employee ='"+customer.getEmployee()+"' , contactTelNum ='"+customer.getContactTelNum()+"' , contactFax ='"+customer.getContactFax()
+                    +"' , contact ='"+customer.getContact()+"' , contactName ='"+customer.getContactName()+"' , packetCost ='"+customer.getPacketCost()
+                    +"' WHERE id = "+customer.getId();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+    }
+
     public void deleteCustomerDB(int id) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
