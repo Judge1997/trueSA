@@ -109,6 +109,7 @@ public class AddRecordPageController extends Observable {
                 if ((field.getText().charAt(i) + "").matches("[0-9]")) {
                 } else {
                     isCorrect = false;
+                    field.setStyle("-fx-border-color: red");
                     return isCorrect;
                 }
             }
@@ -123,6 +124,7 @@ public class AddRecordPageController extends Observable {
                 if ((field.getText().charAt(i) + "").matches("[a-zA-Z]")) {
                 } else {
                     isCorrect = false;
+                    field.setStyle("-fx-border-color: red");
                     return isCorrect;
                 }
             }
@@ -130,13 +132,14 @@ public class AddRecordPageController extends Observable {
         return isCorrect;
     }
 
-    private boolean isAllCharacter(TextArea Area) {
+    private boolean isAllCharacter(TextArea area) {
         boolean isCorrect = true;
-        for (int i = 0; i < Area.getText().length(); i++) {
+        for (int i = 0; i < area.getText().length(); i++) {
             if (isCorrect) {
-                if ((Area.getText().charAt(i) + "").matches("[a-zA-Z]")) {
+                if ((area.getText().charAt(i) + "").matches("[a-zA-Z]")) {
                 } else {
                     isCorrect = false;
+                    area.setStyle("-fx-border-color: red");
                     return isCorrect;
                 }
             }
