@@ -1,6 +1,6 @@
 package controllers;
 
-import database.CustomerDB;
+import database.DBConnector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ReportAvarageTotalPageController {
 
-    private CustomerDB customerDB = CustomerDB.getSelf();
+    private DBConnector customerDB = DBConnector.getSelf();
 
     @FXML
     private TableView<Customer> tableView;

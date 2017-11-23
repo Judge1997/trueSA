@@ -1,20 +1,22 @@
 package database;
 
 import models.Customer;
+import models.Packet;
+import models.Requirement;
 
 import java.sql.*;
 import java.util.List;
 import java.util.Vector;
 
-public class CustomerDB {
+public class DBConnector {
 
-    private static CustomerDB customerDB = null;
+    private static DBConnector customerDB = null;
 
-    private CustomerDB(){};
+    private DBConnector(){};
 
-    public static CustomerDB getSelf(){
+    public static DBConnector getSelf(){
         if (customerDB == null){
-            return new CustomerDB();
+            return new DBConnector();
         }
         return customerDB;
     }
@@ -58,7 +60,7 @@ public class CustomerDB {
         return customers;
     }
 
-    public void writeCustonerDB(Customer customer) throws ClassNotFoundException, SQLException {
+    public void writeCustomerDB(Customer customer) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
@@ -77,7 +79,7 @@ public class CustomerDB {
         }
     }
 
-    public void deleteCustonerDB(int id) throws ClassNotFoundException, SQLException {
+    public void deleteCustomerDB(int id) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
@@ -92,4 +94,71 @@ public class CustomerDB {
             System.out.println("Error to open customerDB.db");
         }
     }
+
+    public void writePacketDB(Packet packet) throws ClassNotFoundException, SQLException {
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "INSERT INTO packet (name, price, net, voice, data, mobile, tvs) "+"VALUES ( " +
+                    "'"+packet.getName()+"','"+packet.getPrice()+"','"+packet.getNet()+"','"+packet.getVoice()+"','"+packet.getData()+"','"+packet.getMoblie()+"','"+packet.getTvs()+");";
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+    }
+
+    public void deletePacketDB(int id) throws ClassNotFoundException, SQLException {
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "DELETE FROM packet WHERE id = "+id+";";
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+    }
+
+    public void writeRequirementDB(Requirement requirement) throws ClassNotFoundException, SQLException {
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "INSERT INTO requirement (net, voice, data, mobile, tvs) "+"VALUES ( " +
+                    "'"+requirement.getNet()+"','"+requirement.getVoice()+"','"+requirement.getData()+"','"+requirement.getMoblie()+"','"+requirement.getTvs()+");";
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+    }
+
+    public void deleteRequirementDB(int id) throws ClassNotFoundException, SQLException {
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "DELETE FROM requirement WHERE id = "+id+";";
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+    }
+    
 }

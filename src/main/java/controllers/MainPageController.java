@@ -1,7 +1,7 @@
 package controllers;
 
 
-import database.CustomerDB;
+import database.DBConnector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +21,7 @@ import java.util.Observer;
 
 public class MainPageController implements Observer {
 
-    private CustomerDB customerDB = CustomerDB.getSelf();
+    private DBConnector customerDB = DBConnector.getSelf();
 //    AddRecordPageController addRecordPageController;
 
     @FXML
@@ -75,7 +75,7 @@ public class MainPageController implements Observer {
     @FXML
     public void deleteBtn() throws SQLException, ClassNotFoundException {
         Customer customer = (Customer) tableView.getSelectionModel().getSelectedItem();
-        customerDB.deleteCustonerDB(customer.getId());
+        customerDB.deleteCustomerDB(customer.getId());
         this.refresh();
     }
 

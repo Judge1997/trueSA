@@ -1,6 +1,6 @@
 package controllers;
 
-import database.CustomerDB;
+import database.DBConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,12 +10,11 @@ import javafx.stage.Stage;
 import models.Customer;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Observable;
 
 public class AddRecordPageController extends Observable {
 
-    private CustomerDB customerDB = CustomerDB.getSelf();
+    private DBConnector customerDB = DBConnector.getSelf();
 
     @FXML
     private TextField nameField, aeNameField, regionField, businessIDField, capitalField, provinceField, khetField, khwangField, employeeField, contaceTelNumField, contactFaxField, contactField, contactNameField, averageField;
@@ -85,7 +84,7 @@ public class AddRecordPageController extends Observable {
 
             Customer customer = new Customer(0, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
                     packetCost);
-            this.customerDB.writeCustonerDB(customer);
+            this.customerDB.writeCustomerDB(customer);
             this.closeThisWindow(event);
         }
 
