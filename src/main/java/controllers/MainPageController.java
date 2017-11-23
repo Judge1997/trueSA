@@ -36,7 +36,7 @@ public class MainPageController implements Observer {
 
     @FXML
     public void initialize() throws SQLException, ClassNotFoundException {
-        refresh();
+        this.refresh();
     }
 
     @FXML
@@ -70,6 +70,13 @@ public class MainPageController implements Observer {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditRecordPage.fxml"));
         this.goToPage(stage,loader,720,1280);
+    }
+
+    @FXML
+    public void deleteBtn() throws SQLException, ClassNotFoundException {
+        Customer customer = (Customer) tableView.getSelectionModel().getSelectedItem();
+        customerDB.deleteCustonerDB(customer.getId());
+        this.refresh();
     }
 
 //    @FXML

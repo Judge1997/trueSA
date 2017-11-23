@@ -41,7 +41,7 @@
       </ScrollPane>
       <Button layoutX="498.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutBth" prefHeight="25.0" prefWidth="77.0" text="LOGOUT" />
       <Button layoutX="85.0" layoutY="351.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="77.0" text="ADD" />
-      <Button layoutX="435.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="DELETE" />
+      <Button layoutX="435.0" layoutY="351.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="77.0" text="DELETE" />
       <Button layoutX="262.0" layoutY="351.0" mnemonicParsing="false" onAction="#editBtn" prefHeight="25.0" prefWidth="77.0" text="EDIT" />
       <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#reportBtn" prefHeight="25.0" prefWidth="77.0" text="REPORT" />
       <Label layoutX="322.0" layoutY="18.0" prefHeight="17.0" prefWidth="67.0" text="UserName :" />
