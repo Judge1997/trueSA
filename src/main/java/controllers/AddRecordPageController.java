@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.Customer;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Observable;
 
 public class AddRecordPageController extends Observable {
@@ -27,21 +29,6 @@ public class AddRecordPageController extends Observable {
     }
 
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
-        boolean isNameFieldCorrect = true;
-        boolean isAeNameFieldCorrect = true;
-        boolean isRegionFieldCorrect = true;
-        boolean isBussinessIDFieldCorrect = true;
-        boolean isCapitalFieldCorrect = true;
-        boolean isProvinceFieldCorrect = true;
-        boolean isKhetFieldCorrect = true;
-        boolean isKhwangFieldCorrect = true;
-        boolean isEmployeeFieldCorrect = true;
-        boolean isContactTelNumFieldCorrect = true;
-        boolean isContactFaxFieldCorrect = true;
-        boolean isContactFieldCorrect = true;
-        boolean isContactNameFieldCorrect = true;
-        boolean isPacketCostFieldCorrect = true;
-
         String name = this.nameField.getText();
         String aeName = this.aeNameField.getText();
         String region = this.regionField.getText();
@@ -58,20 +45,36 @@ public class AddRecordPageController extends Observable {
         String contactName = this.contactNameField.getText();
         double packetCost;
 
-        isAllCharacter(nameField, isNameFieldCorrect);
-        isAllCharacter(aeNameField, isAeNameFieldCorrect);
-        isAllCharacter(regionField, isRegionFieldCorrect);
-        isAllNumber(businessIDField, isBussinessIDFieldCorrect);
-        isAllNumber(capitalField, isCapitalFieldCorrect);
-        isAllCharacter(provinceField, isProvinceFieldCorrect);
-        isAllCharacter(khetField, isKhetFieldCorrect);
-        isAllCharacter(khwangField, isKhwangFieldCorrect);
-        isAllNumber(employeeField, isEmployeeFieldCorrect);
-        isAllNumber(contaceTelNumField, isContactTelNumFieldCorrect);
-        isAllNumber(contactFaxField, isContactFaxFieldCorrect);
-        isAllNumber(contactField, isContactFieldCorrect);
-        isAllCharacter(contactNameField, isContactNameFieldCorrect);
-        isAllNumber(averageField, isPacketCostFieldCorrect);
+        boolean isNameFieldCorrect = isAllCharacter(nameField);
+        boolean isAeNameFieldCorrect = isAllCharacter(aeNameField);
+        boolean isRegionFieldCorrect = isAllCharacter(regionField);
+        boolean isBussinessIDFieldCorrect = isAllNumber(businessIDField);
+        boolean isCapitalFieldCorrect = isAllNumber(capitalField);
+        boolean isProvinceFieldCorrect = isAllCharacter(provinceField);
+        boolean isKhetFieldCorrect = isAllCharacter(khetField);
+        boolean isKhwangFieldCorrect = isAllCharacter(khwangField);
+        boolean isEmployeeFieldCorrect = isAllNumber(employeeField);
+        boolean isContactTelNumFieldCorrect = isAllNumber(contaceTelNumField);
+        boolean isContactFaxFieldCorrect = isAllNumber(contactFaxField);
+        boolean isContactFieldCorrect = isAllNumber(contactField);
+        boolean isContactNameFieldCorrect = isAllCharacter(contactNameField);
+        boolean isPacketCostFieldCorrect = isAllNumber(averageField);
+
+        ArrayList<Boolean> checkList = new ArrayList<Boolean>();
+        checkList.add(isNameFieldCorrect);
+        checkList.add(isAeNameFieldCorrect);
+        checkList.add(isRegionFieldCorrect);
+        checkList.add(isBussinessIDFieldCorrect);
+        checkList.add(isCapitalFieldCorrect);
+        checkList.add(isProvinceFieldCorrect);
+        checkList.add(isKhetFieldCorrect);
+        checkList.add(isKhwangFieldCorrect);
+        checkList.add(isEmployeeFieldCorrect);
+        checkList.add(isContactTelNumFieldCorrect);
+        checkList.add(isContactFaxFieldCorrect);
+        checkList.add(isContactFieldCorrect);
+        checkList.add(isContactNameFieldCorrect);
+        checkList.add(isPacketCostFieldCorrect);
 
         if (this.averageField.getText().equals("")) {
             packetCost = 0;
@@ -79,8 +82,7 @@ public class AddRecordPageController extends Observable {
             packetCost = Double.parseDouble(this.averageField.getText());
         }
 
-        if (isAllCorrect(isNameFieldCorrect,isAeNameFieldCorrect,isRegionFieldCorrect,isBussinessIDFieldCorrect,isCapitalFieldCorrect,isProvinceFieldCorrect,isKhetFieldCorrect,isKhwangFieldCorrect,isEmployeeFieldCorrect,
-                isContactTelNumFieldCorrect,isContactFaxFieldCorrect,isContactFieldCorrect,isContactNameFieldCorrect,isPacketCostFieldCorrect)){
+        if (isAllCorrect(checkList)){
             Customer customer = new Customer(0, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
                     packetCost);
             this.customerDB.writeCustonerDB(customer);
@@ -100,7 +102,8 @@ public class AddRecordPageController extends Observable {
         stage.close();
     }
 
-    private boolean isAllNumber(TextField field, boolean isCorrect) {
+    private boolean isAllNumber(TextField field) {
+        boolean isCorrect = true;
         for (int i = 0; i < field.getText().length(); i++) {
             if (isCorrect) {
                 if ((field.getText().charAt(i) + "").matches("[0-9]")) {
@@ -113,7 +116,8 @@ public class AddRecordPageController extends Observable {
         return isCorrect;
     }
 
-    private boolean isAllCharacter(TextField field, boolean isCorrect) {
+    private boolean isAllCharacter(TextField field) {
+        boolean isCorrect = true;
         for (int i = 0; i < field.getText().length(); i++) {
             if (isCorrect) {
                 if ((field.getText().charAt(i) + "").matches("[a-zA-Z]")) {
@@ -126,7 +130,8 @@ public class AddRecordPageController extends Observable {
         return isCorrect;
     }
 
-    private boolean isAllCharacter(TextArea Area, boolean isCorrect) {
+    private boolean isAllCharacter(TextArea Area) {
+        boolean isCorrect = true;
         for (int i = 0; i < Area.getText().length(); i++) {
             if (isCorrect) {
                 if ((Area.getText().charAt(i) + "").matches("[a-zA-Z]")) {
@@ -140,14 +145,12 @@ public class AddRecordPageController extends Observable {
     }
 
     //19
-    private boolean isAllCorrect(boolean correct1, boolean correct2, boolean correct3, boolean correct4, boolean correct5, boolean correct6, boolean correct7, boolean correct8, boolean correct9
-            , boolean correct10, boolean correct11, boolean correct12, boolean correct13, boolean correct14) {
-        boolean allCorrect=false;
-        if (correct1 && correct2 && correct3 && correct4 && correct5 && correct6 && correct7 && correct8 && correct9 && correct10 && correct11 && correct12 && correct13 && correct14) {
-            allCorrect = true;
-        } else {
-            allCorrect = false;
+    private boolean isAllCorrect(ArrayList<Boolean> checkList) {
+        for (boolean i : checkList){
+            if (i == false){
+                return false;
+            }
         }
-        return allCorrect;
+        return true;
     }
 }
