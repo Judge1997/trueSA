@@ -29,22 +29,6 @@ public class AddRecordPageController extends Observable {
     }
 
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String name = this.nameField.getText();
-        String aeName = this.aeNameField.getText();
-        String region = this.regionField.getText();
-        String businessID = this.businessIDField.getText();
-        String locationInstall = this.locationInstallArea.getText();//ไม่ต้องเช็ค
-        String capital = this.capitalField.getText();
-        String province = this.provinceField.getText();
-        String khet = this.khetField.getText();
-        String khwang = this.khwangField.getText();
-        String employee = this.employeeField.getText();
-        String contaceTelNum = this.contaceTelNumField.getText();
-        String contactFax = this.contactFaxField.getText();
-        String contact = this.contactField.getText();
-        String contactName = this.contactNameField.getText();
-        double packetCost;
-
         boolean isNameFieldCorrect = isAllCharacter(nameField);
         boolean isAeNameFieldCorrect = isAllCharacter(aeNameField);
         boolean isRegionFieldCorrect = isAllCharacter(regionField);
@@ -76,13 +60,29 @@ public class AddRecordPageController extends Observable {
         checkList.add(isContactNameFieldCorrect);
         checkList.add(isPacketCostFieldCorrect);
 
-        if (this.averageField.getText().equals("")) {
-            packetCost = 0;
-        } else {
-            packetCost = Double.parseDouble(this.averageField.getText());
-        }
-
         if (isAllCorrect(checkList)){
+            String name = this.nameField.getText();
+            String aeName = this.aeNameField.getText();
+            String region = this.regionField.getText();
+            String businessID = this.businessIDField.getText();
+            String locationInstall = this.locationInstallArea.getText();//ไม่ต้องเช็ค
+            String capital = this.capitalField.getText();
+            String province = this.provinceField.getText();
+            String khet = this.khetField.getText();
+            String khwang = this.khwangField.getText();
+            String employee = this.employeeField.getText();
+            String contaceTelNum = this.contaceTelNumField.getText();
+            String contactFax = this.contactFaxField.getText();
+            String contact = this.contactField.getText();
+            String contactName = this.contactNameField.getText();
+            double packetCost;
+
+            if (this.averageField.getText().equals("")) {
+                packetCost = 0;
+            } else {
+                packetCost = Double.parseDouble(this.averageField.getText());
+            }
+
             Customer customer = new Customer(0, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
                     packetCost);
             this.customerDB.writeCustonerDB(customer);
