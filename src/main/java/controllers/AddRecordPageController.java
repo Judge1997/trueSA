@@ -114,6 +114,7 @@ public class AddRecordPageController extends Observable {
                 }
             }
         }
+        field.setStyle("");
         return isCorrect;
     }
 
@@ -129,6 +130,7 @@ public class AddRecordPageController extends Observable {
                 }
             }
         }
+        field.setStyle("");
         return isCorrect;
     }
 
@@ -144,6 +146,7 @@ public class AddRecordPageController extends Observable {
                 }
             }
         }
+        area.setStyle("");
         return isCorrect;
     }
 
