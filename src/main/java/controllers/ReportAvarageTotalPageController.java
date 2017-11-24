@@ -52,7 +52,7 @@ public class ReportAvarageTotalPageController {
         Parent root = loader.load();
         Button loginBtn = (Button) event.getSource();
         Stage stage = (Stage) loginBtn.getScene().getWindow();
-//        MainPageController mainController = loader.getController();
+//        PackageManageController mainController = loader.getController();
         stage.setTitle("trueSA");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);

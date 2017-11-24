@@ -19,6 +19,6 @@ import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
 
-public class MainPageController {
+public class PackageManageController {
 
 }
