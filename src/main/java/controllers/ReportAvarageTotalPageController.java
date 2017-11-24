@@ -48,7 +48,7 @@ public class ReportAvarageTotalPageController {
 
     private void backToMainPage(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CustomerManage.fxml"));
         Parent root = loader.load();
         Button loginBtn = (Button) event.getSource();
         Stage stage = (Stage) loginBtn.getScene().getWindow();

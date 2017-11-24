@@ -1,51 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainPageController">
-   <children>
-      <ScrollPane layoutX="23.0" layoutY="70.0">
-         <content>
-            <TableView fx:id="tableView" prefHeight="245.0" prefWidth="550.0">
-              <columns>
-                <TableColumn prefWidth="150.0" text="ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="200.0" text="Name"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="200.0" text="AE Name"><cellValueFactory><PropertyValueFactory property="aeName" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="Region"><cellValueFactory><PropertyValueFactory property="region" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="Location Install"><cellValueFactory><PropertyValueFactory property="locationInstall" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="Business ID"><cellValueFactory><PropertyValueFactory property="businessId" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="Capital"><cellValueFactory><PropertyValueFactory property="capital" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="Province"><cellValueFactory><PropertyValueFactory property="province" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="KHET"><cellValueFactory><PropertyValueFactory property="khet" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="KHWANG"><cellValueFactory><PropertyValueFactory property="khwang" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="100.0" text="Employee"><cellValueFactory><PropertyValueFactory property="employee" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="Contact_TelNum"><cellValueFactory><PropertyValueFactory property="contactTelNum" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="Contact_Fax"><cellValueFactory><PropertyValueFactory property="contactFax" /></cellValueFactory></TableColumn>
-                <TableColumn minWidth="0.0" prefWidth="150.0" text="Contact"><cellValueFactory><PropertyValueFactory property="contact" /></cellValueFactory></TableColumn>
-                <TableColumn minWidth="7.0" prefWidth="200.0" text="Contact_Name"><cellValueFactory><PropertyValueFactory property="contactName" /></cellValueFactory></TableColumn>
-                <TableColumn minWidth="0.0" prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="Average"><cellValueFactory><PropertyValueFactory property="averageTwoPoint" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="Voice"><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="Internet"><cellValueFactory><PropertyValueFactory property="internet" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="Data"><cellValueFactory><PropertyValueFactory property="dataTwo" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="Mobiles"><cellValueFactory><PropertyValueFactory property="mobilesTwo" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="TVs"><cellValueFactory><PropertyValueFactory property="tvs" /></cellValueFactory></TableColumn>
-              </columns>
-            </TableView>
-         </content>
-      </ScrollPane>
-      <Button layoutX="498.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutBth" prefHeight="25.0" prefWidth="77.0" text="LOGOUT" />
-      <Button layoutX="85.0" layoutY="351.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="77.0" text="ADD" />
-      <Button layoutX="435.0" layoutY="351.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="77.0" text="DELETE" />
-      <Button layoutX="262.0" layoutY="351.0" mnemonicParsing="false" onAction="#editBtn" prefHeight="25.0" prefWidth="77.0" text="EDIT" />
-      <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#reportBtn" prefHeight="25.0" prefWidth="77.0" text="REPORT" />
-      <Label layoutX="322.0" layoutY="18.0" prefHeight="17.0" prefWidth="67.0" text="UserName :" />
-      <Label layoutX="389.0" layoutY="18.0" prefHeight="17.0" prefWidth="44.0" text="admin" />
-      <Button layoutX="512.0" layoutY="317.0" mnemonicParsing="false" onAction="#refresh" text="REFRESH" />
-   </children>
-</AnchorPane>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.152">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>

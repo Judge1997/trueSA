@@ -32,7 +32,7 @@ public class SearchPageController {
     public void backBtn(ActionEvent event) throws IOException {
         Button backBtn = (Button) event.getSource();
         Stage stage = (Stage) backBtn.getScene().getWindow();
-        this.goToPage(stage,"/MainPage.fxml",400,600);
+        this.goToPage(stage, "/CustomerManage.fxml",400,600);
     }
 
     public void goToPage(Stage stage,String namePage,int height,int width) throws IOException {

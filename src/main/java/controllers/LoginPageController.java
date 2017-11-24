@@ -51,7 +51,7 @@ public class LoginPageController {
     }
 
     public void loginPageToMainPage(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CustomerManage.fxml"));
         Parent root = loader.load();
 //        MainPageController mainController = loader.getController();
         stage.setTitle("trueSA");
