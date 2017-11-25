@@ -42,12 +42,12 @@
       </ScrollPane>
       <Button layoutX="759.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutBth" prefHeight="25.0" prefWidth="77.0" text="LOGOUT" />
       <Button layoutX="575.0" layoutY="673.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="77.0" text="ADD" />
-      <Button layoutX="748.0" layoutY="673.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="77.0" text="DELETE" />
-      <Button layoutX="663.0" layoutY="673.0" mnemonicParsing="false" onAction="#editBtn" prefHeight="25.0" prefWidth="77.0" text="EDIT" />
+      <Button fx:id="deleteBtn" layoutX="748.0" layoutY="673.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="77.0" text="DELETE" />
+      <Button fx:id="editBtn" layoutX="663.0" layoutY="673.0" mnemonicParsing="false" onAction="#editBtn" prefHeight="25.0" prefWidth="77.0" text="EDIT" />
       <Label layoutX="586.0" layoutY="18.0" prefHeight="17.0" prefWidth="67.0" text="UserName :" />
       <Label fx:id="userLabel" layoutX="653.0" layoutY="18.0" prefHeight="17.0" prefWidth="106.0" text="admin" />
-      <Button layoutX="252.0" layoutY="39.0" mnemonicParsing="false" text="Search" />
-      <TextField layoutX="23.0" layoutY="39.0" prefHeight="25.0" prefWidth="223.0" />
-      <Button layoutX="23.0" layoutY="673.0" mnemonicParsing="false" text="ADD REQUIREMENT" />
+      <Button fx:id="searchBtn" layoutX="252.0" layoutY="39.0" mnemonicParsing="false" onAction="#searchBtn" text="Search" />
+      <TextField fx:id="searchField" layoutX="23.0" layoutY="39.0" prefHeight="25.0" prefWidth="223.0" />
+      <Button layoutX="23.0" layoutY="673.0" mnemonicParsing="false" onAction="#addRequirementBtn" text="ADD REQUIREMENT" />
    </children>
 </AnchorPane>

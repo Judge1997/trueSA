@@ -81,7 +81,7 @@ public class AddRecordPageController extends Observable {
             this.closeThisWindow(event);
 
             setChanged();
-            notifyObservers(customer);
+            notifyObservers();
         }
 
     }
@@ -140,7 +140,6 @@ public class AddRecordPageController extends Observable {
         return isCorrect;
     }
 
-    //19
     private boolean isAllCorrect(ArrayList<Boolean> checkList) {
         for (boolean i : checkList){
             if (i == false){

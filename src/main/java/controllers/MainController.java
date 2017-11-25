@@ -21,13 +21,13 @@ public class MainController {
         Button loginBtn = (Button) event.getSource();
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginPage.fxml"));
-        this.goToPage(stage,loader,400,600);
+        Parent window = loader.load();
+        this.goToPage(stage,window,400,600);
     }
 
-    public void goToPage(Stage stage,FXMLLoader loader,int height,int width) throws IOException {
-        Parent root = loader.load();
+    public void goToPage(Stage stage, Parent loader, int height, int width) throws IOException {
         stage.setTitle("trueSA");
-        stage.setScene(new Scene(root, width, height));
+        stage.setScene(new Scene(loader, width, height));
         stage.setResizable(false);
         stage.show();
     }

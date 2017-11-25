@@ -6,10 +6,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="450.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddPackagePageController">
+<AnchorPane prefHeight="450.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddPackagePageController">
    <children>
-      <Button layoutX="312.0" layoutY="390.0" mnemonicParsing="false" text="CANCEL" />
-      <Button layoutX="230.0" layoutY="390.0" mnemonicParsing="false" text="SUBMIT" />
+      <Button layoutX="312.0" layoutY="390.0" mnemonicParsing="false" onAction="#cancelBtn" text="CANCEL" />
+      <Button layoutX="230.0" layoutY="390.0" mnemonicParsing="false" onAction="#submitBtn" text="SUBMIT" />
       <Label layoutX="54.0" layoutY="33.0" text="Package Name :" />
       <Label layoutX="107.0" layoutY="63.0" text="Price :" />
       <Label layoutX="91.0" layoutY="93.0" text="Internet :" />
@@ -17,13 +17,13 @@
       <Label layoutX="107.0" layoutY="153.0" text="Data :" />
       <Label layoutX="94.0" layoutY="183.0" text="Mobile :" />
       <Label layoutX="109.0" layoutY="279.0" text="TVs :" />
-      <TextField layoutX="150.0" layoutY="29.0" prefHeight="25.0" prefWidth="196.0" />
-      <TextField layoutX="150.0" layoutY="59.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextField fx:id="packageNameField" layoutX="150.0" layoutY="29.0" prefHeight="25.0" prefWidth="196.0" />
+      <TextField fx:id="priceField" layoutX="150.0" layoutY="59.0" prefHeight="25.0" prefWidth="85.0" />
       <Label layoutX="242.0" layoutY="63.0" text="Baht." />
-      <TextField layoutX="150.0" layoutY="89.0" prefHeight="25.0" prefWidth="85.0" />
-      <TextField layoutX="150.0" layoutY="119.0" prefHeight="25.0" prefWidth="85.0" />
-      <TextField layoutX="150.0" layoutY="149.0" prefHeight="25.0" prefWidth="85.0" />
-      <TextArea layoutX="150.0" layoutY="183.0" prefHeight="90.0" prefWidth="196.0" />
-      <TextArea layoutX="150.0" layoutY="279.0" prefHeight="90.0" prefWidth="196.0" />
+      <TextField fx:id="internetField" layoutX="150.0" layoutY="89.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextField fx:id="voiceField" layoutX="150.0" layoutY="119.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextField fx:id="dataField" layoutX="150.0" layoutY="149.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextArea fx:id="mobileField" layoutX="150.0" layoutY="183.0" prefHeight="90.0" prefWidth="196.0" />
+      <TextArea fx:id="tvsField" layoutX="150.0" layoutY="279.0" prefHeight="90.0" prefWidth="196.0" />
    </children>
 </AnchorPane>
