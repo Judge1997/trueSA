@@ -9,7 +9,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="720" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerManageController">
+<AnchorPane prefHeight="720" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerManageController">
    <children>
       <ScrollPane layoutX="23.0" layoutY="70.0">
          <content>
@@ -48,5 +48,6 @@
       <Label fx:id="userLabel" layoutX="653.0" layoutY="18.0" prefHeight="17.0" prefWidth="106.0" text="admin" />
       <Button layoutX="252.0" layoutY="39.0" mnemonicParsing="false" text="Search" />
       <TextField layoutX="23.0" layoutY="39.0" prefHeight="25.0" prefWidth="223.0" />
+      <Button layoutX="23.0" layoutY="673.0" mnemonicParsing="false" text="ADD REQUIREMENT" />
    </children>
 </AnchorPane>
