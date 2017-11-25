@@ -44,7 +44,7 @@
       <Button layoutX="435.0" layoutY="351.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="77.0" text="DELETE" />
       <Button layoutX="262.0" layoutY="351.0" mnemonicParsing="false" onAction="#editBtn" prefHeight="25.0" prefWidth="77.0" text="EDIT" />
       <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#reportBtn" prefHeight="25.0" prefWidth="77.0" text="REPORT" />
-      <Label layoutX="322.0" layoutY="18.0" prefHeight="17.0" prefWidth="67.0" text="UserName :" />
+      <Label layoutX="325.0" layoutY="18.0" prefHeight="17.0" prefWidth="64.0" text="UserName :" />
       <Label fx:id="userLabel" layoutX="389.0" layoutY="18.0" prefHeight="17.0" prefWidth="106.0" text="admin" />
       <Button layoutX="512.0" layoutY="317.0" mnemonicParsing="false" onAction="#refresh" text="REFRESH" />
    </children>
