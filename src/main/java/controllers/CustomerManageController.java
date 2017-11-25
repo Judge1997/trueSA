@@ -46,17 +46,17 @@ public class CustomerManageController extends MainController implements Observer
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddRecordPage.fxml"));
 
-        addRecordPageController = loader.getController();
-        addRecordPageController.addObserver(this);
+//        addRecordPageController = loader.getController();
+//        addRecordPageController.addObserver(this);
 
-        this.goToPage(stage,loader,720,1280);
+        this.goToPage(stage,loader,720,850);
     }
 
     @FXML
     public void editBtn(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditRecordPage.fxml"));
-        this.goToPage(stage,loader,720,1280);
+        this.goToPage(stage,loader,720,850);
     }
 
     @FXML
