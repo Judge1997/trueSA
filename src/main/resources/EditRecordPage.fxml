@@ -42,7 +42,7 @@
                     </font>
                 </Label>
                 <TextField layoutX="162.0" layoutY="20.0" prefHeight="25.0" prefWidth="249.0" />
-                <TextField layoutX="162.0" layoutY="58.0" prefHeight="25.0" prefWidth="249.0" />
+                <TextField layoutX="162.0" layoutY="58.0" prefHeight="25.0" prefWidth="198.0" />
                 <TextField layoutX="162.0" layoutY="98.0" prefHeight="25.0" prefWidth="150.0" />
                 <TextArea layoutX="38.0" layoutY="170.0" prefHeight="95.0" prefWidth="366.0" wrapText="true" />
                 <Label layoutX="36.0" layoutY="102.0" text="3. Region :">
@@ -57,20 +57,20 @@
                 <TextField layoutX="157.0" layoutY="22.0" prefHeight="25.0" prefWidth="150.0" />
                 <TextField layoutX="157.0" layoutY="136.0" prefHeight="25.0" prefWidth="150.0" />
                 <TextField layoutX="157.0" layoutY="179.0" prefHeight="25.0" prefWidth="150.0" />
-                <TextField layoutX="157.0" layoutY="220.0" prefHeight="25.0" prefWidth="150.0" />
+                <TextField layoutX="157.0" layoutY="220.0" prefHeight="25.0" prefWidth="120.0" />
                 <Label layoutX="28.0" layoutY="223.0" text="6. Employee :">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <TextField layoutX="157.0" layoutY="255.0" prefHeight="25.0" prefWidth="150.0" />
+                <TextField layoutX="157.0" layoutY="255.0" prefHeight="25.0" prefWidth="120.0" />
                 <Label layoutX="27.0" layoutY="258.0" text="7. Contact_TelNum : ">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <TextField layoutX="157.0" layoutY="293.0" prefHeight="25.0" prefWidth="150.0" />
-                <TextField layoutX="157.0" layoutY="328.0" prefHeight="25.0" prefWidth="150.0" />
+                <TextField layoutX="157.0" layoutY="293.0" prefHeight="25.0" prefWidth="120.0" />
+                <TextField layoutX="157.0" layoutY="328.0" prefHeight="25.0" prefWidth="120.0" />
                 <Label layoutX="27.0" layoutY="331.0" text="9. Contact  :">
                     <font>
                         <Font size="14.0" />
@@ -98,7 +98,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <TextField layoutX="157.0" layoutY="364.0" prefHeight="25.0" prefWidth="249.0" />
+                <TextField layoutX="157.0" layoutY="364.0" prefHeight="25.0" prefWidth="198.0" />
                 <Label layoutX="27.0" layoutY="62.0" text="2. Capital :">
                     <font>
                         <Font size="14.0" />

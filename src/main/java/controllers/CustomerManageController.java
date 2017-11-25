@@ -47,7 +47,7 @@ public class CustomerManageController extends MainController implements Observer
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddRecordPage.fxml"));
 
         addRecordPageController = loader.getController();
-//        addRecordPageController.addObserver(this);
+        addRecordPageController.addObserver(this);
 
         this.goToPage(stage,loader,720,1280);
     }
