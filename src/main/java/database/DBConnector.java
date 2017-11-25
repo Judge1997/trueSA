@@ -21,6 +21,33 @@ public class DBConnector {
         return customerDB;
     }
 
+    public String checkUserAndPassword(String i, String p) throws ClassNotFoundException, SQLException {
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if(connection != null){
+            System.out.println("Connected to customerDB.db");
+            String query = "Select * from user";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String name = resultSet.getString(1);
+                String id = resultSet.getString(2);
+                String password = resultSet.getString(3);
+                String position = resultSet.getString(4);
+
+                if (i.equals(id) && p.equals(password)){
+                    return name+" "+position;
+                }
+            }
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+        return "Id or password is wrong";
+    }
+
     public List<Customer> loadCustonerDB() throws ClassNotFoundException, SQLException {
         List<Customer> customers = new Vector<Customer>();
 
@@ -53,6 +80,7 @@ public class DBConnector {
                 customers.add(new Customer(id,name,aeName,region,locationInstall,businessID,capital,province,khet,khwang,employee,contaceTelNum,contactFax,contact,contactName,
                         packetCost));
             }
+            connection.close();
             System.out.println("Closed to customerDB.db");
         } else {
             System.out.println("Error to open customerDB.db");
@@ -138,6 +166,7 @@ public class DBConnector {
 
                 packets.add(new Package(id, name, price, net, voice, data, mobile, tvs));
             }
+            connection.close();
             System.out.println("Closed to customerDB.db");
         } else {
             System.out.println("Error to open customerDB.db");
@@ -199,6 +228,7 @@ public class DBConnector {
 
                 requirements.add(new Requirement(id, net, voice, data, mobile, tvs));
             }
+            connection.close();
             System.out.println("Closed to customerDB.db");
         } else {
             System.out.println("Error to open customerDB.db");
