@@ -5,14 +5,15 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerManageController">
+<AnchorPane prefHeight="720" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerManageController">
    <children>
       <ScrollPane layoutX="23.0" layoutY="70.0">
          <content>
-            <TableView fx:id="tableView" prefHeight="245.0" prefWidth="550.0">
+            <TableView fx:id="tableView" prefHeight="598.0" prefWidth="805.0">
               <columns>
                 <TableColumn prefWidth="150.0" text="ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="200.0" text="Name"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
@@ -39,13 +40,13 @@
             </TableView>
          </content>
       </ScrollPane>
-      <Button layoutX="498.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutBth" prefHeight="25.0" prefWidth="77.0" text="LOGOUT" />
-      <Button layoutX="85.0" layoutY="351.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="77.0" text="ADD" />
-      <Button layoutX="435.0" layoutY="351.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="77.0" text="DELETE" />
-      <Button layoutX="262.0" layoutY="351.0" mnemonicParsing="false" onAction="#editBtn" prefHeight="25.0" prefWidth="77.0" text="EDIT" />
-      <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#reportBtn" prefHeight="25.0" prefWidth="77.0" text="REPORT" />
-      <Label layoutX="357.0" layoutY="18.0" prefHeight="17.0" prefWidth="32.0" text="User :" />
-      <Label fx:id="userLabel" layoutX="389.0" layoutY="18.0" prefHeight="17.0" prefWidth="106.0" text="admin" />
-      <Button layoutX="512.0" layoutY="317.0" mnemonicParsing="false" onAction="#refresh" text="REFRESH" />
+      <Button layoutX="759.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutBth" prefHeight="25.0" prefWidth="77.0" text="LOGOUT" />
+      <Button layoutX="575.0" layoutY="673.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="77.0" text="ADD" />
+      <Button layoutX="748.0" layoutY="673.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="77.0" text="DELETE" />
+      <Button layoutX="663.0" layoutY="673.0" mnemonicParsing="false" onAction="#editBtn" prefHeight="25.0" prefWidth="77.0" text="EDIT" />
+      <Label layoutX="586.0" layoutY="18.0" prefHeight="17.0" prefWidth="67.0" text="UserName :" />
+      <Label fx:id="userLabel" layoutX="653.0" layoutY="18.0" prefHeight="17.0" prefWidth="106.0" text="admin" />
+      <Button layoutX="252.0" layoutY="39.0" mnemonicParsing="false" text="Search" />
+      <TextField layoutX="23.0" layoutY="39.0" prefHeight="25.0" prefWidth="223.0" />
    </children>
 </AnchorPane>

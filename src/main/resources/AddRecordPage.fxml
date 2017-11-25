@@ -136,7 +136,7 @@
          </font></Label>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Button layoutX="128.0" layoutY="26.0" mnemonicParsing="false" onAction="#submitBtn" text="Submit">
+            <Button layoutX="174.0" layoutY="26.0" mnemonicParsing="false" onAction="#submitBtn" text="Submit">
                <font>
                   <Font size="17.0" />
                </font>
