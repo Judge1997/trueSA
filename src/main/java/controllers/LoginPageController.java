@@ -27,11 +27,19 @@ public class LoginPageController {
         loginBtn.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent keyEvent) {
                 if (keyEvent.getCode() == KeyCode.ENTER) {
-                    if (id.getText().equals("admin") && password.getText().equals("admin")){
+                    if (id.getText().equals("customer") && password.getText().equals("customer")){
                         Button loginBtn = (Button) keyEvent.getSource();
                         Stage mainStage = (Stage) loginBtn.getScene().getWindow();
                         try {
-                            loginPageToMainPage(mainStage);
+                            loginPageToMainPage(mainStage,"/CustomerManage.fxml","customer",600,400);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } else if (id.getText().equals("package") && password.getText().equals("package")){
+                        Button loginBtn = (Button) keyEvent.getSource();
+                        Stage mainStage = (Stage) loginBtn.getScene().getWindow();
+                        try {
+                            loginPageToMainPage(mainStage,"/PackageManage.fxml","package",400,400);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -43,19 +51,25 @@ public class LoginPageController {
 
     @FXML
     public void login(ActionEvent event) throws IOException {
-        if (this.id.getText().equals("admin") && this.password.getText().equals("admin")){
+        if (this.id.getText().equals("customer") && this.password.getText().equals("customer")){
             Button loginBtn = (Button) event.getSource();
             Stage mainStage = (Stage) loginBtn.getScene().getWindow();
-            this.loginPageToMainPage(mainStage);
+            this.loginPageToMainPage(mainStage,"/CustomerManage.fxml", "customer",600,400);
+        } else if (this.id.getText().equals("package") && this.password.getText().equals("package")){
+            Button loginBtn = (Button) event.getSource();
+            Stage mainStage = (Stage) loginBtn.getScene().getWindow();
+            this.loginPageToMainPage(mainStage,"/PackageManage.fxml", "package",400,400);
         }
     }
 
-    public void loginPageToMainPage(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CustomerManage.fxml"));
+    @FXML
+    public void loginPageToMainPage(Stage stage,String fxml,String user,int width,int height) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
         Parent root = loader.load();
-//        PackageManageController mainController = loader.getController();
+        MainController mainController = loader.getController();
+        mainController.setUser(user);
         stage.setTitle("trueSA");
-        stage.setScene(new Scene(root, 600, 400));
+        stage.setScene(new Scene(root, width, height));
         stage.setResizable(false);
         stage.show();
     }

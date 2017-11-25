@@ -1,7 +1,7 @@
 package database;
 
 import models.Customer;
-import models.Packet;
+import models.Package;
 import models.Requirement;
 
 import java.sql.*;
@@ -115,15 +115,15 @@ public class DBConnector {
         }
     }
 
-    public List<Packet> loadPacketDB() throws ClassNotFoundException, SQLException {
-        List<Packet> packets = new Vector<Packet>();
+    public List<Package> loadPacketDB() throws ClassNotFoundException, SQLException {
+        List<Package> packets = new Vector<Package>();
 
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
         if(connection != null){
             System.out.println("Connected to customerDB.db");
-            String query = "Select * from packet";
+            String query = "Select * from package";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
@@ -136,7 +136,7 @@ public class DBConnector {
                 String mobile = resultSet.getString(7);
                 String tvs = resultSet.getString(8);
 
-                packets.add(new Packet(id, name, price, net, voice, data, mobile, tvs));
+                packets.add(new Package(id, name, price, net, voice, data, mobile, tvs));
             }
             System.out.println("Closed to customerDB.db");
         } else {
@@ -145,14 +145,14 @@ public class DBConnector {
         return packets;
     }
 
-    public void writePacketDB(Packet packet) throws ClassNotFoundException, SQLException {
+    public void writePacketDB(Package p) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "INSERT INTO packet (name, price, net, voice, data, mobile, tvs) "+"VALUES ( " +
-                    "'"+packet.getName()+"','"+packet.getPrice()+"','"+packet.getNet()+"','"+packet.getVoice()+"','"+packet.getData()+"','"+packet.getMoblie()+"','"+packet.getTvs()+");";
+            String query = "INSERT INTO package (name, price, net, voice, data, mobile, tvs) "+"VALUES ( " +
+                    "'"+p.getName()+"','"+p.getPrice()+"','"+p.getNet()+"','"+p.getVoice()+"','"+p.getData()+"','"+p.getMoblie()+"','"+p.getTvs()+");";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();
@@ -168,7 +168,7 @@ public class DBConnector {
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "DELETE FROM packet WHERE id = "+id+";";
+            String query = "DELETE FROM package WHERE id = "+id+";";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();

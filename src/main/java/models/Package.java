@@ -1,6 +1,6 @@
 package models;
 
-public class Packet {
+public class Package {
 
     private int id;
     private double price;
@@ -11,7 +11,7 @@ public class Packet {
     private String mobile;
     private String tvs;
 
-    public Packet(int id, String name, double price, String net, String voice, String data, String mobile, String tvs){
+    public Package(int id, String name, double price, String net, String voice, String data, String mobile, String tvs){
         this.id = id;
         this.name = name;
         this.price = price;

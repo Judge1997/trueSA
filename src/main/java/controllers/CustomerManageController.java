@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import models.Customer;
@@ -19,7 +20,7 @@ import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
 
-public class CustomerManageController implements Observer {
+public class CustomerManageController extends MainController implements Observer {
 
     private DBConnector customerDB = DBConnector.getSelf();
 //    AddRecordPageController addRecordPageController;
@@ -37,23 +38,6 @@ public class CustomerManageController implements Observer {
     @FXML
     public void initialize() throws SQLException, ClassNotFoundException {
         this.refresh();
-    }
-
-    @FXML
-    public void logoutBth(ActionEvent event) throws IOException {
-        Button loginBtn = (Button) event.getSource();
-        Stage stage = (Stage) loginBtn.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginPage.fxml"));
-        this.goToPage(stage,loader,400,600);
-    }
-
-    public void goToPage(Stage stage,FXMLLoader loader,int height,int width) throws IOException {
-        Parent root = loader.load();
-//        LoginPageController loginPageController = loader.getController();
-        stage.setTitle("trueSA");
-        stage.setScene(new Scene(root, width, height));
-        stage.setResizable(false);
-        stage.show();
     }
 
     @FXML
@@ -97,6 +81,7 @@ public class CustomerManageController implements Observer {
 
     @Override
     public void update(Observable o, Object customer) {
+        System.out.println("update");
 //        if (o instanceof AddRecordPageController){
 //            try {
 //                this.customerDB.writeCustonerDB((Customer) customer);
