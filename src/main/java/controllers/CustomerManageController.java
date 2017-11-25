@@ -23,6 +23,7 @@ import java.util.Observer;
 public class CustomerManageController extends MainController implements Observer {
 
     private DBConnector customerDB = DBConnector.getSelf();
+    private AddRecordPageController addRecordPageController;
 //    AddRecordPageController addRecordPageController;
 
     @FXML
@@ -44,8 +45,10 @@ public class CustomerManageController extends MainController implements Observer
     public void addBtn(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddRecordPage.fxml"));
-//        addRecordPageController = loader.getController();
+
+        addRecordPageController = loader.getController();
 //        addRecordPageController.addObserver(this);
+
         this.goToPage(stage,loader,720,1280);
     }
 

@@ -17,7 +17,7 @@ public class AddRecordPageController extends Observable {
     private DBConnector customerDB = DBConnector.getSelf();
 
     @FXML
-    private TextField nameField, aeNameField, regionField, businessIDField, capitalField, provinceField, khetField, khwangField, employeeField, contaceTelNumField, contactFaxField, contactField, contactNameField, averageField;
+    private TextField nameField, aeNameField, regionField, businessIDField, capitalField, provinceField, khetField, khwangField, employeeField, contaceTelNumField, contactFaxField, contactField, contactNameField;
     @FXML
     private TextArea locationInstallArea;
 
@@ -41,7 +41,6 @@ public class AddRecordPageController extends Observable {
         boolean isContactFaxFieldCorrect = isAllNumber(contactFaxField);
         boolean isContactFieldCorrect = isAllNumber(contactField);
         boolean isContactNameFieldCorrect = isAllCharacter(contactNameField);
-        boolean isPacketCostFieldCorrect = isAllNumber(averageField);
 
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
         checkList.add(isNameFieldCorrect);
@@ -57,7 +56,6 @@ public class AddRecordPageController extends Observable {
         checkList.add(isContactFaxFieldCorrect);
         checkList.add(isContactFieldCorrect);
         checkList.add(isContactNameFieldCorrect);
-        checkList.add(isPacketCostFieldCorrect);
 
         if (isAllCorrect(checkList)){
             String name = this.nameField.getText();
@@ -74,25 +72,18 @@ public class AddRecordPageController extends Observable {
             String contactFax = this.contactFaxField.getText();
             String contact = this.contactField.getText();
             String contactName = this.contactNameField.getText();
-            double packetCost;
-
-            if (this.averageField.getText().equals("")) {
-                packetCost = 0;
-            } else {
-                packetCost = Double.parseDouble(this.averageField.getText());
-            }
+            double packetCost = 0;
 
             Customer customer = new Customer(0, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
                     packetCost);
             this.customerDB.writeCustomerDB(customer);
+
             this.closeThisWindow(event);
+
+            setChanged();
+            notifyObservers(customer);
         }
 
-//        this.customerDB.writeCustonerDB(customer);
-//        this.closeThisWindow(event);
-
-//        setChanged();
-//        notifyObservers(customer);
     }
 
     private void closeThisWindow(ActionEvent event) {

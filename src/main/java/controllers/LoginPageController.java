@@ -81,7 +81,6 @@ public class LoginPageController {
                 Button loginBtn = (Button) event.getSource();
                 Stage mainStage = (Stage) loginBtn.getScene().getWindow();
                 loginPageToMainPage(mainStage,"/PackageManage.fxml",resultSplit[0],400,400);
-
             }
         } else {
             responseLabel.setText(result);

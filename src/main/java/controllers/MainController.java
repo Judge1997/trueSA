@@ -34,7 +34,6 @@ public class MainController {
 
     @FXML
     public void setUser(String user) {
-        System.out.println(123);
         this.userLabel.setText(user);
     }
 
