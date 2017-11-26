@@ -74,16 +74,32 @@ public class AddRecordPageController extends Observable {
             String contactName = this.contactNameField.getText();
             double packetCost = 0;
 
-            Customer customer = new Customer(0, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
-                    packetCost);
-            this.customerDB.writeCustomerDB(customer);
+            boolean checkDup = checkDup(name);
 
-            this.closeThisWindow(event);
+            if (checkDup == false){
+                Customer customer = new Customer(0, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
+                        packetCost);
+                this.customerDB.writeCustomerDB(customer);
 
-            setChanged();
-            notifyObservers();
+                this.closeThisWindow(event);
+
+                setChanged();
+                notifyObservers();
+            } else {
+                nameField.setStyle("-fx-border-color: red");
+            }
+
         }
 
+    }
+
+    private boolean checkDup(String name) throws SQLException, ClassNotFoundException {
+        for (Customer i : customerDB.loadCustonerDB()){
+            if (i.getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
 
     private void closeThisWindow(ActionEvent event) {

@@ -25,25 +25,16 @@ public class AddPackagePageController extends Observable {
     @FXML
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
         boolean isPackageNameField = isAllCharacter(packageNameField);
-        boolean isPriceField = isAllNumber(priceField);
-        boolean isInternetField = isAllNumber(internetField);
-        boolean isVoiceField = isAllNumber(voiceField);
-        boolean isDataField = isAllNumber(dataField);
 
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
         checkList.add(isPackageNameField);
-        checkList.add(isPriceField);
-        checkList.add(isInternetField);
-        checkList.add(isVoiceField);
-        checkList.add(isDataField);
-
-        if (priceField.getText().equals("")){
-            priceField.setText("0");
-        }
 
         if (isAllCorrect(checkList)){
             String name = packageNameField.getText();
-            double price = Double.parseDouble(priceField.getText());
+            if (priceField.getText().equals("")){
+                priceField.setText("0");
+            }
+            double price = Double.parseDouble(String.format("%.2f",priceField.getText()));
             String internet = internetField.getText();
             String voice = voiceField.getText();
             String data = dataField.getText();

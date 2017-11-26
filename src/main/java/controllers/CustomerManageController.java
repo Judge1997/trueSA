@@ -91,6 +91,8 @@ public class CustomerManageController extends MainController implements Observer
         editRecordPageController.setValue(customer);
         editRecordPageController.addObserver(this);
         this.goToPage(stage,window,720,850);
+        this.editBtn.setDisable(true);
+        this.deleteBtn.setDisable(true);
     }
 
     @FXML
@@ -99,6 +101,8 @@ public class CustomerManageController extends MainController implements Observer
             Customer customer = tableView.getSelectionModel().getSelectedItem();
             customerDB.deleteCustomerDB(customer.getId());
             this.refresh();
+            this.editBtn.setDisable(true);
+            this.deleteBtn.setDisable(true);
         }
     }
 

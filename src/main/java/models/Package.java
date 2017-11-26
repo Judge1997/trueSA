@@ -38,8 +38,8 @@ public class Package {
         this.id = id;
     }
 
-    public double getPrice() {
-        return price;
+    public String getPrice() {
+        return String.format("%.2f",this.price);
     }
 
     public void setPrice(int price) {
