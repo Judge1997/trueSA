@@ -183,6 +183,7 @@ public class DBConnector {
             System.out.println("Connected to customerDB.db");
             String query = "INSERT INTO package (name, price, net, voice, data, mobile, tvs) "+"VALUES ( " +
                     "'"+p.getName()+"',"+p.getPrice()+",'"+p.getNet()+"','"+p.getVoice()+"','"+p.getData()+"','"+p.getMobile()+"','"+p.getTvs()+"');";
+
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();

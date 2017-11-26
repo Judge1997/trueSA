@@ -24,32 +24,26 @@ public class AddPackagePageController extends Observable {
 
     @FXML
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
-        boolean isPackageNameField = isAllCharacter(packageNameField);
 
-        ArrayList<Boolean> checkList = new ArrayList<Boolean>();
-        checkList.add(isPackageNameField);
-
-        if (isAllCorrect(checkList)){
-            String name = packageNameField.getText();
-            if (priceField.getText().equals("")){
-                priceField.setText("0");
-            }
-            double price = Double.parseDouble(priceField.getText());
-            String internet = internetField.getText();
-            String voice = voiceField.getText();
-            String data = dataField.getText();
-            String mobile = mobileField.getText();
-            String tvs = tvsField.getText();
-
-            Package packages = new Package(0, name, price, internet, voice, data, mobile, tvs);
-
-            this.packageDB.writePacketDB(packages);
-
-            this.closeThisWindow(event);
-
-            setChanged();
-            notifyObservers();
+        String name = packageNameField.getText();
+        if (priceField.getText().equals("")){
+            priceField.setText("0");
         }
+        double price = Double.parseDouble(priceField.getText());
+        String internet = internetField.getText();
+        String voice = voiceField.getText();
+        String data = dataField.getText();
+        String mobile = mobileField.getText();
+        String tvs = tvsField.getText();
+
+        Package packages = new Package(0, name, price, internet, voice, data, mobile, tvs);
+
+        this.packageDB.writePacketDB(packages);
+
+        this.closeThisWindow(event);
+
+        setChanged();
+        notifyObservers();
     }
 
     @FXML
@@ -61,63 +55,6 @@ public class AddPackagePageController extends Observable {
         Button cancelBtn = (Button) event.getSource();
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();
-    }
-
-    private boolean isAllNumber(TextField field) {
-        boolean isCorrect = true;
-        for (int i = 0; i < field.getText().length(); i++) {
-            if (isCorrect) {
-                if ((field.getText().charAt(i) + "").matches("[0-9]")) {
-                } else {
-                    isCorrect = false;
-                    field.setStyle("-fx-border-color: red");
-                    return isCorrect;
-                }
-            }
-        }
-        field.setStyle("");
-        return isCorrect;
-    }
-
-    private boolean isAllCharacter(TextField field) {
-        boolean isCorrect = true;
-        for (int i = 0; i < field.getText().length(); i++) {
-            if (isCorrect) {
-                if ((field.getText().charAt(i) + "").matches("[a-zA-Z]")) {
-                } else {
-                    isCorrect = false;
-                    field.setStyle("-fx-border-color: red");
-                    return isCorrect;
-                }
-            }
-        }
-        field.setStyle("");
-        return isCorrect;
-    }
-
-    private boolean isAllCharacter(TextArea area) {
-        boolean isCorrect = true;
-        for (int i = 0; i < area.getText().length(); i++) {
-            if (isCorrect) {
-                if ((area.getText().charAt(i) + "").matches("[a-zA-Z]")) {
-                } else {
-                    isCorrect = false;
-                    area.setStyle("-fx-border-color: red");
-                    return isCorrect;
-                }
-            }
-        }
-        area.setStyle("");
-        return isCorrect;
-    }
-
-    private boolean isAllCorrect(ArrayList<Boolean> checkList) {
-        for (boolean i : checkList){
-            if (i == false){
-                return false;
-            }
-        }
-        return true;
     }
 
 }
