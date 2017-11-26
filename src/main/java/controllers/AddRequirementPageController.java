@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import models.Requirement;
 
 import java.sql.SQLException;
 
@@ -19,7 +20,8 @@ public class AddRequirementPageController {
     @FXML
     public void submitBtn() throws SQLException, ClassNotFoundException {
         if (!area.getText().equals("")){
-            requirementDB.writeRequirementDB(area.getText());
+            Requirement requirement = new Requirement(0,area.getText());
+            requirementDB.writeRequirementDB(requirement);
         } else {
             area.setStyle("-fx-border-color: red");
         }

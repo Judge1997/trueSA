@@ -147,6 +147,11 @@ public class CustomerManageController extends MainController implements Observer
     }
 
     @FXML
+    public void displayRequirementBtn(ActionEvent event){
+
+    }
+
+    @FXML
     public void searchBtn(ActionEvent event) throws IOException {
         String name = searchField.getText();
         for (Customer i : tableView.getItems()){

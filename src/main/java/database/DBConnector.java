@@ -232,7 +232,7 @@ public class DBConnector {
         return requirements;
     }
 
-    public void writeRequirementDB(String requirement) throws ClassNotFoundException, SQLException {
+    public void writeRequirementDB(Requirement requirement) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
