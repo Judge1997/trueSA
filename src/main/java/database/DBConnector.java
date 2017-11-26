@@ -355,7 +355,7 @@ public class DBConnector {
         } else {
             System.out.println("Error to open customerDB.db");
         }
-        
+
         return packages;
     }
 
