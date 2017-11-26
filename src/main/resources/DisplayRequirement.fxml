@@ -4,24 +4,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayRequirementController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayRequirementController">
    <children>
-      <TableView layoutX="14.0" layoutY="73.0" prefHeight="278.0" prefWidth="573.0">
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="73.0" prefHeight="278.0" prefWidth="573.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Number" />
-          <TableColumn prefWidth="497.0" text="Requirement" />
+          <TableColumn prefWidth="75.0" text="Number"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
+          <TableColumn prefWidth="497.0" text="Detail"><cellValueFactory><PropertyValueFactory property="detail" /></cellValueFactory></TableColumn>
         </columns>
       </TableView>
-      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" text="DELETE" />
-      <Button layoutX="468.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="OK" />
+      <Button fx:id="deleteBtn" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#deleteBtn" text="DELETE" />
+      <Button layoutX="468.0" layoutY="361.0" mnemonicParsing="false" onAction="#okBtn" prefHeight="25.0" prefWidth="55.0" text="OK" />
       <Label layoutX="14.0" layoutY="26.0" text="REQUIREMENT">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="532.0" layoutY="361.0" mnemonicParsing="false" text="SHOW" />
+      <Button fx:id="showBtn" layoutX="532.0" layoutY="361.0" mnemonicParsing="false" onAction="#showBtn" text="SHOW" />
    </children>
 </AnchorPane>

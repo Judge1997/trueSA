@@ -70,11 +70,11 @@ public class Package {
         this.data = data;
     }
 
-    public String getMoblie() {
+    public String getMobile() {
         return mobile;
     }
 
-    public void setMoblie(String moblie) {
+    public void setMobile(String moblie) {
         this.mobile = moblie;
     }
 
@@ -84,5 +84,9 @@ public class Package {
 
     public void setTvs(String tvs) {
         this.tvs = tvs;
+    }
+
+    public String toString(){
+        return this.name;
     }
 }

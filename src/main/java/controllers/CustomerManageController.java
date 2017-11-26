@@ -53,14 +53,14 @@ public class CustomerManageController extends MainController implements Observer
             @Override
             public void handle(MouseEvent event) {
                 if(event.getButton() == MouseButton.SECONDARY) {
-                    Customer customer = (Customer) tableView.getSelectionModel().getSelectedItem();
+                    Customer customer = tableView.getSelectionModel().getSelectedItem();
                     if ( customer != null ){
                         editBtn.setDisable(false);
                         deleteBtn.setDisable(false);
                         displayBtn.setDisable(false);
                     }
                 }else{
-                    Customer customer = (Customer) tableView.getSelectionModel().getSelectedItem();
+                    Customer customer = tableView.getSelectionModel().getSelectedItem();
                     if ( customer != null ){
                         editBtn.setDisable(false);
                         deleteBtn.setDisable(false);
@@ -116,7 +116,7 @@ public class CustomerManageController extends MainController implements Observer
     }
 
     @FXML
-    public void displayBtn(ActionEvent event) throws IOException {
+    public void displayBtn(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         Customer customer = tableView.getSelectionModel().getSelectedItem();
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayCustomer.fxml"));
@@ -147,12 +147,16 @@ public class CustomerManageController extends MainController implements Observer
     }
 
     @FXML
-    public void displayRequirementBtn(ActionEvent event){
+    public void displayRequirementBtn(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayRequirement.fxml"));
+        Parent window = loader.load();
 
+        this.goToPage(stage,window,400,600);
     }
 
     @FXML
-    public void searchBtn(ActionEvent event) throws IOException {
+    public void searchBtn(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         String name = searchField.getText();
         for (Customer i : tableView.getItems()){
             if (i.getName().equals(name)){

@@ -12,6 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayCustomerPageController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="572.0" minWidth="10.0" prefWidth="350.0" />
@@ -68,19 +69,19 @@
             <Label fx:id="contactFaxLabel" layoutX="381.0" layoutY="131.0" text="xxxxxxxxxxxxxxxxxxxx" />
             <Label fx:id="contactLabel" layoutX="381.0" layoutY="155.0" text="xxxxxxxxxxxxxxxxxxxx" />
             <Label fx:id="contactNameLabel" layoutX="381.0" layoutY="180.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <TableView layoutX="9.0" layoutY="346.0" prefHeight="190.0" prefWidth="551.0">
+            <TableView fx:id="tableView" layoutX="9.0" layoutY="346.0" prefHeight="190.0" prefWidth="551.0">
                <columns>
-                  <TableColumn prefWidth="124.0" text="Name" />
-                  <TableColumn prefWidth="71.0" text="Price" />
-                  <TableColumn prefWidth="60.0" text="Internet" />
-                  <TableColumn prefWidth="47.0" text="Voice" />
-                  <TableColumn prefWidth="51.0" text="Data" />
-                  <TableColumn prefWidth="108.0" text="Mobile" />
-                  <TableColumn prefWidth="98.0" text="TVs" />
+                  <TableColumn prefWidth="124.0" text="Name" ><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="71.0" text="Price" style="-fx-alignment: TOP-RIGHT;"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="60.0" text="Internet" style="-fx-alignment: TOP-RIGHT;"><cellValueFactory><PropertyValueFactory property="net" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="47.0" text="Voice" style="-fx-alignment: TOP-RIGHT;"><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="51.0" text="Data" style="-fx-alignment: TOP-RIGHT;"><cellValueFactory><PropertyValueFactory property="data" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="108.0" text="Mobile" ><cellValueFactory><PropertyValueFactory property="mobile" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="98.0" text="TVs" ><cellValueFactory><PropertyValueFactory property="tvs" /></cellValueFactory></TableColumn>
                </columns>
             </TableView>
             <Button layoutX="460.0" layoutY="545.0" mnemonicParsing="false" onAction="#cancelBtn" prefHeight="25.0" prefWidth="62.0" text="CANCEL" />
-            <Button layoutX="256.0" layoutY="545.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="62.0" text="DELETE" />
+            <Button fx:id="deleteBtn" layoutX="256.0" layoutY="545.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="62.0" text="DELETE" />
             <Button layoutX="54.0" layoutY="545.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="62.0" text="ADD" />
          </children>
       </AnchorPane>

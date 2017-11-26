@@ -29,10 +29,10 @@
                     <columns>
                       <TableColumn prefWidth="75.0" text="PAKAGE ID" ><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
                       <TableColumn prefWidth="106.0" text="PACKAGE NAME" ><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="105.0" text="PRICE" style="-fx-alignment: CENTER-RIGHT;"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="65.0" text="NET" ><cellValueFactory><PropertyValueFactory property="net" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="101.0" text="VOICE" ><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="75.0" text="DATA" ><cellValueFactory><PropertyValueFactory property="data" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="105.0" text="PRICE" style="-fx-alignment: TOP-RIGHT;"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="65.0" text="NET" style="-fx-alignment: TOP-RIGHT;"><cellValueFactory><PropertyValueFactory property="net" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="101.0" text="VOICE" style="-fx-alignment: TOP-RIGHT;"><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="75.0" text="DATA" style="-fx-alignment: TOP-RIGHT;"><cellValueFactory><PropertyValueFactory property="data" /></cellValueFactory></TableColumn>
                         <TableColumn prefWidth="75.0" text="MOBILE" ><cellValueFactory><PropertyValueFactory property="mobile" /></cellValueFactory></TableColumn>
                         <TableColumn prefWidth="75.0" text="TVs" ><cellValueFactory><PropertyValueFactory property="tvs" /></cellValueFactory></TableColumn>
                     </columns>

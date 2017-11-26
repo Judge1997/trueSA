@@ -34,7 +34,7 @@ public class AddPackagePageController extends Observable {
             if (priceField.getText().equals("")){
                 priceField.setText("0");
             }
-            double price = Double.parseDouble(String.format("%.2f",priceField.getText()));
+            double price = Double.parseDouble(priceField.getText());
             String internet = internetField.getText();
             String voice = voiceField.getText();
             String data = dataField.getText();
