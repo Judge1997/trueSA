@@ -49,5 +49,6 @@
       <Button fx:id="searchBtn" layoutX="252.0" layoutY="39.0" mnemonicParsing="false" onAction="#searchBtn" text="Search" />
       <TextField fx:id="searchField" layoutX="23.0" layoutY="39.0" prefHeight="25.0" prefWidth="223.0" />
       <Button layoutX="23.0" layoutY="673.0" mnemonicParsing="false" onAction="#addRequirementBtn" text="ADD REQUIREMENT" />
+      <Button fx:id="displayBtn" layoutX="504.0" layoutY="673.0" mnemonicParsing="false" onAction="#displayBtn" text="DISPLAY" />
    </children>
 </AnchorPane>

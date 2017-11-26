@@ -14,8 +14,8 @@
          </font>
       </Label>
       <TextArea fx:id="area" layoutX="9.0" layoutY="34.0" prefHeight="228.0" prefWidth="378.0" />
-      <Button layoutX="14.0" layoutY="267.0" mnemonicParsing="false" text="SUBMIT" />
-      <Button layoutX="172.0" layoutY="267.0" mnemonicParsing="false" text="CLEAR" />
-      <Button layoutX="326.0" layoutY="267.0" mnemonicParsing="false" text="CANCEL" />
+      <Button layoutX="14.0" layoutY="267.0" mnemonicParsing="false" onAction="#submitBtn" text="SUBMIT" />
+      <Button layoutX="172.0" layoutY="267.0" mnemonicParsing="false" onAction="#clearBtn" text="CLEAR" />
+      <Button layoutX="326.0" layoutY="267.0" mnemonicParsing="false" onAction="#cancelBtn" text="CANCEL" />
    </children>
 </AnchorPane>

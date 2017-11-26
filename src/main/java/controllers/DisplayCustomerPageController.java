@@ -1,7 +1,10 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import models.Customer;
 
 import java.util.ArrayList;
@@ -15,6 +18,26 @@ public class DisplayCustomerPageController {
 
     private Customer customer;
 
+    @FXML
+    public void addBtn(){
+
+    }
+
+    @FXML
+    public void deleteBtn(){
+
+    }
+
+    @FXML
+    public void cancelBtn(ActionEvent event){
+        this.closeThisWindow(event);
+    }
+
+    private void closeThisWindow(ActionEvent event) {
+        Button cancelBtn = (Button) event.getSource();
+        Stage stage = (Stage) cancelBtn.getScene().getWindow();
+        stage.close();
+    }
 
     public void setValue(Customer customer) {
         this.customer = customer;

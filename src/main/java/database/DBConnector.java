@@ -220,13 +220,9 @@ public class DBConnector {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
-                String net = resultSet.getString(4);
-                String voice = resultSet.getString(5);
-                String data = resultSet.getString(6);
-                String mobile = resultSet.getString(7);
-                String tvs = resultSet.getString(8);
+                String detail = resultSet.getString(2);
 
-                requirements.add(new Requirement(id, net, voice, data, mobile, tvs));
+                requirements.add(new Requirement(id, detail));
             }
             connection.close();
             System.out.println("Closed to customerDB.db");
@@ -236,14 +232,14 @@ public class DBConnector {
         return requirements;
     }
 
-    public void writeRequirementDB(Requirement requirement) throws ClassNotFoundException, SQLException {
+    public void writeRequirementDB(String requirement) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "INSERT INTO requirement (net, voice, data, mobile, tvs) "+"VALUES ( " +
-                    "'"+requirement.getNet()+"','"+requirement.getVoice()+"','"+requirement.getData()+"','"+requirement.getMoblie()+"','"+requirement.getTvs()+");";
+            String query = "INSERT INTO requirement (detail) "+"VALUES ( " +
+                    "'"+requirement.getDetail()+"');";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();

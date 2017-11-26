@@ -16,15 +16,18 @@ public class AddRequirementPageController {
     @FXML
     private TextArea area;
 
+    @FXML
     public void submitBtn() throws SQLException, ClassNotFoundException {
-        if (area.getText() != null){
-//            requirementDB.writeRequirementDB(area.getText());
+        if (!area.getText().equals("")){
+            requirementDB.writeRequirementDB(area.getText());
+        } else {
+            area.setStyle("-fx-border-color: red");
         }
         area.setStyle("-fx-border-color: red");
     }
 
     public void clearBtn(){
-        area.setText(null);
+        area.setText("");
     }
 
     public void cancelBtn(ActionEvent event){

@@ -10,9 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -23,6 +21,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Optional;
 
 public class PackageManageController extends MainController implements Observer{
 
@@ -79,9 +78,15 @@ public class PackageManageController extends MainController implements Observer{
     @FXML
     public void deleteBtn() throws SQLException, ClassNotFoundException {
         if (tableView.getSelectionModel().getSelectedItem() != null){
-            Package packages = tableView.getSelectionModel().getSelectedItem();
-            packageDB.deletePacketDB(packages.getId());
-            this.refresh();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to delete " +
+                    tableView.getSelectionModel().getSelectedItem().getName() + " ?",
+                    ButtonType.OK, ButtonType.CANCEL);
+            Optional optional = alert.showAndWait();
+            if (optional.get() == ButtonType.OK) {
+                Package packages = tableView.getSelectionModel().getSelectedItem();
+                packageDB.deletePacketDB(packages.getId());
+                this.refresh();
+            }
         }
     }
 

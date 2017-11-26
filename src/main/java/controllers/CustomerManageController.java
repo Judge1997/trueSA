@@ -10,10 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -24,6 +21,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Optional;
 
 public class CustomerManageController extends MainController implements Observer{
 
@@ -34,7 +32,7 @@ public class CustomerManageController extends MainController implements Observer
     @FXML
     private TextField searchField;
     @FXML
-    private Button editBtn, deleteBtn;
+    private Button editBtn, deleteBtn, displayBtn;
 
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
@@ -48,6 +46,7 @@ public class CustomerManageController extends MainController implements Observer
         this.refresh();
         editBtn.setDisable(true);
         deleteBtn.setDisable(true);
+        displayBtn.setDisable(true);
 
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
@@ -58,12 +57,14 @@ public class CustomerManageController extends MainController implements Observer
                     if ( customer != null ){
                         editBtn.setDisable(false);
                         deleteBtn.setDisable(false);
+                        displayBtn.setDisable(false);
                     }
                 }else{
                     Customer customer = (Customer) tableView.getSelectionModel().getSelectedItem();
                     if ( customer != null ){
                         editBtn.setDisable(false);
                         deleteBtn.setDisable(false);
+                        displayBtn.setDisable(false);
                     }
                 }
             }
@@ -93,17 +94,37 @@ public class CustomerManageController extends MainController implements Observer
         this.goToPage(stage,window,720,850);
         this.editBtn.setDisable(true);
         this.deleteBtn.setDisable(true);
+        displayBtn.setDisable(true);
     }
 
     @FXML
     public void deleteBtn() throws SQLException, ClassNotFoundException {
         if (tableView.getSelectionModel().getSelectedItem() != null){
-            Customer customer = tableView.getSelectionModel().getSelectedItem();
-            customerDB.deleteCustomerDB(customer.getId());
-            this.refresh();
-            this.editBtn.setDisable(true);
-            this.deleteBtn.setDisable(true);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to delete " +
+                    tableView.getSelectionModel().getSelectedItem().getName() + " ?",
+                    ButtonType.OK, ButtonType.CANCEL);
+            Optional optional = alert.showAndWait();
+            if (optional.get() == ButtonType.OK) {
+                Customer customer = tableView.getSelectionModel().getSelectedItem();
+                customerDB.deleteCustomerDB(customer.getId());
+                this.refresh();
+                this.editBtn.setDisable(true);
+                this.deleteBtn.setDisable(true);
+                displayBtn.setDisable(true);
+            }
         }
+    }
+
+    @FXML
+    public void displayBtn(ActionEvent event) throws IOException {
+        Customer customer = tableView.getSelectionModel().getSelectedItem();
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayCustomer.fxml"));
+        Parent window = loader.load();
+        DisplayCustomerPageController displayCustomerPageController = loader.getController();
+        displayCustomerPageController.setValue(customer);
+
+        this.goToPage(stage,window,600,571);
     }
 
     @FXML
@@ -112,7 +133,7 @@ public class CustomerManageController extends MainController implements Observer
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddRequirementPage.fxml"));
         Parent window = loader.load();
 
-        this.goToPage(stage,window,720,850);
+        this.goToPage(stage,window,300,400);
     }
 
 
@@ -130,8 +151,7 @@ public class CustomerManageController extends MainController implements Observer
         String name = searchField.getText();
         for (Customer i : tableView.getItems()){
             if (i.getName().equals(name)){
-                Button btn = (Button) event.getSource();
-                Stage stage = (Stage) btn.getScene().getWindow();
+                Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayCustomer.fxml"));
                 Parent window = loader.load();
                 DisplayCustomerPageController displayCustomerPageController = loader.getController();
@@ -140,6 +160,7 @@ public class CustomerManageController extends MainController implements Observer
                 this.goToPage(stage,window,600,571);
             }
         }
+        searchField.setText("");
     }
 
     @Override

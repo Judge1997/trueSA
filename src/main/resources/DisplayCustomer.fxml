@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -42,26 +43,13 @@
                </font>
             </Label>
             <Label layoutX="315.0" layoutY="80.0" text="Employee :" />
-            <ScrollPane layoutX="7.0" layoutY="403.0">
-               <content>
-                  <TableView prefHeight="190.0" prefWidth="560.0">
-                     <columns>
-                        <TableColumn prefWidth="124.0" text="Name" />
-                        <TableColumn prefWidth="71.0" text="Price" />
-                        <TableColumn prefWidth="60.0" text="Internet" />
-                        <TableColumn prefWidth="47.0" text="Voice" />
-                        <TableColumn prefWidth="51.0" text="Data" />
-                        <TableColumn prefWidth="108.0" text="Mobile" />
-                        <TableColumn prefWidth="98.0" text="TVs" />
-                     </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
+            <ScrollPane layoutX="7.0" layoutY="403.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="268.0" layoutX="4.0" layoutY="319.0" stroke="BLACK" strokeType="INSIDE" width="560.0" />
             <Label layoutX="305.0" layoutY="105.0" text="Contact_Tel :" />
             <Label layoutX="305.0" layoutY="130.0" text="Contact_fax :" />
             <Label layoutX="325.0" layoutY="155.0" text="Contact :" />
             <Label layoutX="287.0" layoutY="180.0" text="Contact_Name :" />
-            <Label layoutX="9.0" layoutY="376.0" text="Package">
+            <Label layoutX="12.0" layoutY="319.0" text="Package">
                <font>
                   <Font size="18.0" />
                </font>
@@ -80,6 +68,20 @@
             <Label fx:id="contactFaxLabel" layoutX="381.0" layoutY="131.0" text="xxxxxxxxxxxxxxxxxxxx" />
             <Label fx:id="contactLabel" layoutX="381.0" layoutY="155.0" text="xxxxxxxxxxxxxxxxxxxx" />
             <Label fx:id="contactNameLabel" layoutX="381.0" layoutY="180.0" text="xxxxxxxxxxxxxxxxxxxx" />
+            <TableView layoutX="9.0" layoutY="346.0" prefHeight="190.0" prefWidth="551.0">
+               <columns>
+                  <TableColumn prefWidth="124.0" text="Name" />
+                  <TableColumn prefWidth="71.0" text="Price" />
+                  <TableColumn prefWidth="60.0" text="Internet" />
+                  <TableColumn prefWidth="47.0" text="Voice" />
+                  <TableColumn prefWidth="51.0" text="Data" />
+                  <TableColumn prefWidth="108.0" text="Mobile" />
+                  <TableColumn prefWidth="98.0" text="TVs" />
+               </columns>
+            </TableView>
+            <Button layoutX="460.0" layoutY="545.0" mnemonicParsing="false" onAction="#cancelBtn" prefHeight="25.0" prefWidth="62.0" text="CANCEL" />
+            <Button layoutX="256.0" layoutY="545.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="62.0" text="DELETE" />
+            <Button layoutX="54.0" layoutY="545.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="62.0" text="ADD" />
          </children>
       </AnchorPane>
    </children>
