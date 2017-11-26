@@ -9,7 +9,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -18,7 +17,6 @@ import models.Customer;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
@@ -141,7 +139,7 @@ public class CustomerManageController extends MainController implements Observer
     public void reportBtn(ActionEvent event) throws IOException {
         Button loginBtn = (Button) event.getSource();
         Stage stage = (Stage) loginBtn.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReportAvarageTotalPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReportTotalPricePage.fxml"));
         Parent window = loader.load();
         this.goToPage(stage,window,400,600);
     }

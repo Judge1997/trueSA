@@ -98,6 +98,7 @@ public class DisplayRequirementController {
             if (optional.get() == ButtonType.OK) {
                 Requirement requirement = tableView.getSelectionModel().getSelectedItem();
                 requirementDB.deleteRequirementDB(requirement.getId());
+
                 this.refresh();
 
                 deleteBtn.setDisable(true);

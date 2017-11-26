@@ -33,7 +33,20 @@ public class ReportTotalPrice {
     }
 
     public String getPriceString() {
-        return String.format("%.2f", price);
+        String str = String.format("%.2f", price);
+        String priceStr = str.substring(str.length()-2,str.length());
+        int count = 0;
+        for (int i = str.length()-3 ; i >= 0 ; i--){
+            String subStr = str.substring(i,i+1);
+            if(count == 3 && i != 0){
+                subStr = ","+subStr;
+                count = 0;
+            }
+            priceStr = subStr+priceStr;
+            count++;
+        }
+
+        return priceStr;
     }
 
     public double getPrice(){

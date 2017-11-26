@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ReportAvarageTotalPageController {
+public class ReportTotalPricePageController {
 
     private DBConnector customerDB = DBConnector.getSelf();
 
