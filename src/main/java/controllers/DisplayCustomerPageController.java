@@ -42,6 +42,7 @@ public class DisplayCustomerPageController implements Observer{
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
         ObservableList<Package> packages = FXCollections.observableArrayList();
+        customerPackages = FXCollections.observableArrayList();
 
         customerPackages.addAll(customerDB.loadCustomerPackage(idCustomer));
 
