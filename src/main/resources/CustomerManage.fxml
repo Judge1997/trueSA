@@ -51,5 +51,6 @@
       <Button layoutX="23.0" layoutY="673.0" mnemonicParsing="false" onAction="#addRequirementBtn" text="ADD REQUIREMENT" />
       <Button fx:id="displayBtn" layoutX="504.0" layoutY="673.0" mnemonicParsing="false" onAction="#displayBtn" text="DISPLAY" />
       <Button layoutX="153.0" layoutY="673.0" mnemonicParsing="false" onAction="#displayRequirementBtn" text="DISPLAY REQUIREMANT" />
+      <Button layoutX="23.0" layoutY="6.0" mnemonicParsing="false" onAction="#reportBtn" text="REPORT" />
    </children>
 </AnchorPane>

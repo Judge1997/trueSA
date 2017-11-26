@@ -17,7 +17,7 @@
               <columns>
                 <TableColumn prefWidth="124.0" text="ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="200.0" text="Name"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="146.0" style="-fx-alignment: CENTER-RIGHT;" text="Avarage"><cellValueFactory><PropertyValueFactory property="averageTwoPoint" /></cellValueFactory></TableColumn>
+                <TableColumn prefWidth="146.0" style="-fx-alignment: CENTER-RIGHT;" text="Price"><cellValueFactory><PropertyValueFactory property="priceString" /></cellValueFactory></TableColumn>
               </columns>
             </TableView>
          </content>
@@ -27,7 +27,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="332.0" layoutY="321.0" prefHeight="38.0" prefWidth="94.0" text="Total avarage">
+      <Label layoutX="332.0" layoutY="321.0" prefHeight="38.0" prefWidth="94.0" text="Total price">
          <font>
             <Font size="13.0" />
          </font>

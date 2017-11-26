@@ -266,6 +266,34 @@ public class DBConnector {
         }
     }
 
+    public List<CustomerPackage> loadAllCustomerPackage() throws SQLException, ClassNotFoundException {
+        List<CustomerPackage> packages = new Vector<CustomerPackage>();
+
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "SELECT * from customerPackage";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                int idCustomer = resultSet.getInt(2);
+                int idPackage = resultSet.getInt(3);
+
+                packages.add(new CustomerPackage(id, idCustomer, idPackage));
+            }
+
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+
+        return packages;
+    }
+
     public List<CustomerPackage> loadCustomerPackage(int idC) throws SQLException, ClassNotFoundException {
         List<CustomerPackage> packages = new Vector<CustomerPackage>();
 
@@ -304,9 +332,9 @@ public class DBConnector {
             System.out.println("Connected to customerDB.db");
             String query = "Select * from package";
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
 
             for (CustomerPackage i : customerPackages){
+                ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
                     int id = resultSet.getInt(1);
                     if (i.getIdPackage() == id){
@@ -327,7 +355,7 @@ public class DBConnector {
         } else {
             System.out.println("Error to open customerDB.db");
         }
-
+        
         return packages;
     }
 
