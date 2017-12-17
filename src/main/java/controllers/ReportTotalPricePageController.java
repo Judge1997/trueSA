@@ -25,6 +25,8 @@ public class ReportTotalPricePageController {
 
     private DBConnector customerDB = DBConnector.getSelf();
 
+    private String username;
+
     @FXML
     private TableView<ReportTotalPrice> tableView;
     @FXML
@@ -82,7 +84,7 @@ public class ReportTotalPricePageController {
             totalPrice += r.getPrice();
         }
 
-        totalReport.setText(String.format("%.2f",totalPrice));
+        totalReport.setText(getPriceString(totalPrice));
     }
 
     private boolean contain(ObservableList<ReportTotalPrice> reportTotalPrices, ReportTotalPrice reportTotalPrice){
@@ -104,6 +106,8 @@ public class ReportTotalPricePageController {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/CustomerManage.fxml"));
         Parent root = loader.load();
+        MainController mainController = loader.getController();
+        mainController.setUser(this.username);
         Button loginBtn = (Button) event.getSource();
         Stage stage = (Stage) loginBtn.getScene().getWindow();
 //        PackageManageController mainController = loader.getController();
@@ -113,4 +117,28 @@ public class ReportTotalPricePageController {
         stage.show();
     }
 
+    public String getPriceString(double price) {
+        String str = String.format("%.2f", price);
+        String priceStr = str.substring(str.length()-2,str.length());
+        int count = 0;
+        for (int i = str.length()-3 ; i >= 0 ; i--){
+            String subStr = str.substring(i,i+1);
+            if(count == 3 && i != 0){
+                subStr = ","+subStr;
+                count = 0;
+            }
+            priceStr = subStr+priceStr;
+            count++;
+        }
+
+        return priceStr;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

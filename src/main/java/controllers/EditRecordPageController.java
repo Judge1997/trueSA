@@ -1,5 +1,6 @@
 package controllers;
 
+import check.CheckData;
 import database.DBConnector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import java.util.Observable;
 public class EditRecordPageController extends Observable{
 
     private DBConnector customerDB = DBConnector.getSelf();
+    private CheckData checkData = new CheckData();
 
     @FXML
     private TextField nameField, aeNameField, regionField, businessIDField, capitalField, provinceField, khetField, khwangField, employeeField, contaceTelNumField;
@@ -37,19 +39,19 @@ public class EditRecordPageController extends Observable{
 
     @FXML
     public void editBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
-        boolean isNameFieldCorrect = isAllCharacter(nameField);
-        boolean isAeNameFieldCorrect = isAllCharacter(aeNameField);
-        boolean isRegionFieldCorrect = isAllCharacter(regionField);
-        boolean isBussinessIDFieldCorrect = isAllNumber(businessIDField);
-        boolean isCapitalFieldCorrect = isAllNumber(capitalField);
-        boolean isProvinceFieldCorrect = isAllCharacter(provinceField);
-        boolean isKhetFieldCorrect = isAllCharacter(khetField);
-        boolean isKhwangFieldCorrect = isAllCharacter(khwangField);
-        boolean isEmployeeFieldCorrect = isAllNumber(employeeField);
-        boolean isContactTelNumFieldCorrect = isAllNumber(contaceTelNumField);
-        boolean isContactFaxFieldCorrect = isAllNumber(contactFaxField);
-        boolean isContactFieldCorrect = isAllNumber(contactField);
-        boolean isContactNameFieldCorrect = isAllCharacter(contactNameField);
+        boolean isNameFieldCorrect = checkData.isAllCharacter(nameField);
+        boolean isAeNameFieldCorrect = checkData.isAllCharacter(aeNameField);
+        boolean isRegionFieldCorrect = checkData.isNull(regionField);
+        boolean isBussinessIDFieldCorrect = checkData.isAllNumber(businessIDField,13);
+        boolean isCapitalFieldCorrect = checkData.isAllNumber(capitalField);
+        boolean isProvinceFieldCorrect = checkData.isAllCharacter(provinceField);
+        boolean isKhetFieldCorrect = checkData.isAllCharacter(khetField);
+        boolean isKhwangFieldCorrect = checkData.isAllCharacter(khwangField);
+        boolean isEmployeeFieldCorrect = checkData.isAllNumber(employeeField);
+        boolean isContactTelNumFieldCorrect = checkData.isAllNumber(contaceTelNumField);
+        boolean isContactFaxFieldCorrect = checkData.isAllNumber(contactFaxField);
+        boolean isContactFieldCorrect = checkData.isAllNumber(contactField);
+        boolean isContactNameFieldCorrect = checkData.isAllCharacter(contactNameField);
 
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
         checkList.add(isNameFieldCorrect);
@@ -66,7 +68,8 @@ public class EditRecordPageController extends Observable{
         checkList.add(isContactFieldCorrect);
         checkList.add(isContactNameFieldCorrect);
 
-        if (isAllCorrect(checkList)){
+        if (checkData.isAllCorrect(checkList)){
+            int id = Integer.parseInt(subscriberNumber.getText());
             String name = this.nameField.getText();
             String aeName = this.aeNameField.getText();
             String region = this.regionField.getText();
@@ -83,8 +86,8 @@ public class EditRecordPageController extends Observable{
             String contactName = this.contactNameField.getText();
             double packetCost = 0;
 
-            Customer customer = new Customer(this.customer.getId(), name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
-                    packetCost);
+            Customer customer = new Customer(id, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
+                        packetCost);
 
             this.customerDB.editCustomerDB(customer);
 
@@ -92,6 +95,7 @@ public class EditRecordPageController extends Observable{
 
             setChanged();
             notifyObservers();
+
         }
     }
 
@@ -121,60 +125,4 @@ public class EditRecordPageController extends Observable{
         stage.close();
     }
 
-    private boolean isAllNumber(TextField field) {
-        boolean isCorrect = true;
-        for (int i = 0; i < field.getText().length(); i++) {
-            if (isCorrect) {
-                if ((field.getText().charAt(i) + "").matches("[0-9]")) {
-                } else {
-                    isCorrect = false;
-                    field.setStyle("-fx-border-color: red");
-                    return isCorrect;
-                }
-            }
-        }
-        field.setStyle("");
-        return isCorrect;
-    }
-
-    private boolean isAllCharacter(TextField field) {
-        boolean isCorrect = true;
-        for (int i = 0; i < field.getText().length(); i++) {
-            if (isCorrect) {
-                if ((field.getText().charAt(i) + "").matches("[a-zA-Z]")) {
-                } else {
-                    isCorrect = false;
-                    field.setStyle("-fx-border-color: red");
-                    return isCorrect;
-                }
-            }
-        }
-        field.setStyle("");
-        return isCorrect;
-    }
-
-    private boolean isAllCharacter(TextArea area) {
-        boolean isCorrect = true;
-        for (int i = 0; i < area.getText().length(); i++) {
-            if (isCorrect) {
-                if ((area.getText().charAt(i) + "").matches("[a-zA-Z]")) {
-                } else {
-                    isCorrect = false;
-                    area.setStyle("-fx-border-color: red");
-                    return isCorrect;
-                }
-            }
-        }
-        area.setStyle("");
-        return isCorrect;
-    }
-
-    private boolean isAllCorrect(ArrayList<Boolean> checkList) {
-        for (boolean i : checkList){
-            if (i == false){
-                return false;
-            }
-        }
-        return true;
-    }
 }

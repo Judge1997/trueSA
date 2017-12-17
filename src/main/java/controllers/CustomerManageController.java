@@ -141,6 +141,8 @@ public class CustomerManageController extends MainController implements Observer
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReportTotalPricePage.fxml"));
         Parent window = loader.load();
+        ReportTotalPricePageController reportTotalPricePageController = loader.getController();
+        reportTotalPricePageController.setUsername(this.userLabel.getText());
         this.goToPage(stage,window,400,600);
     }
 
