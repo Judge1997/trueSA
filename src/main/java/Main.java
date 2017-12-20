@@ -9,7 +9,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StartProc.fxml"));
         Parent root = loader.load();
         LoginPageController controller = loader.getController();
         primaryStage.setTitle("Login");
