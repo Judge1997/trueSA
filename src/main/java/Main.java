@@ -11,8 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("StartProc.fxml"));
         Parent root = loader.load();
-        LoginPageController controller = loader.getController();
-        primaryStage.setTitle("Login");
+        primaryStage.setTitle("TrueSA");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.setResizable(false);
         primaryStage.show();
