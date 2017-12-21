@@ -9,7 +9,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="720" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerManageController">
+<AnchorPane prefHeight="720" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerManageController">
    <children>
       <ScrollPane layoutX="23.0" layoutY="70.0">
          <content>
@@ -26,16 +26,10 @@
                 <TableColumn prefWidth="150.0" text="KHET"><cellValueFactory><PropertyValueFactory property="khet" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="150.0" text="KHWANG"><cellValueFactory><PropertyValueFactory property="khwang" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="100.0" text="Employee"><cellValueFactory><PropertyValueFactory property="employee" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="Contact_TelNum"><cellValueFactory><PropertyValueFactory property="contactTelNum" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" text="Contact_Fax"><cellValueFactory><PropertyValueFactory property="contactFax" /></cellValueFactory></TableColumn>
-                <TableColumn minWidth="0.0" prefWidth="150.0" text="Contact"><cellValueFactory><PropertyValueFactory property="contact" /></cellValueFactory></TableColumn>
-                <TableColumn minWidth="7.0" prefWidth="200.0" text="Contact_Name"><cellValueFactory><PropertyValueFactory property="contactName" /></cellValueFactory></TableColumn>
-                <TableColumn minWidth="0.0" prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="Average"><cellValueFactory><PropertyValueFactory property="averageTwoPoint" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="Voice"><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="Internet"><cellValueFactory><PropertyValueFactory property="internet" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="Data"><cellValueFactory><PropertyValueFactory property="dataTwo" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="Mobiles"><cellValueFactory><PropertyValueFactory property="mobilesTwo" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="150.0" style="-fx-alignment: CENTER-RIGHT;" text="TVs"><cellValueFactory><PropertyValueFactory property="tvs" /></cellValueFactory></TableColumn>
+                <TableColumn prefWidth="150.0" text="Company Tel."><cellValueFactory><PropertyValueFactory property="contactTelNum" /></cellValueFactory></TableColumn>
+                <TableColumn prefWidth="150.0" text="FAX"><cellValueFactory><PropertyValueFactory property="contactFax" /></cellValueFactory></TableColumn>
+                <TableColumn minWidth="7.0" prefWidth="200.0" text="Contact Name"><cellValueFactory><PropertyValueFactory property="contactName" /></cellValueFactory></TableColumn>
+                <TableColumn minWidth="0.0" prefWidth="150.0" text="Tel"><cellValueFactory><PropertyValueFactory property="contact" /></cellValueFactory></TableColumn>
               </columns>
             </TableView>
          </content>
