@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StartProcController">
    <children>
-       <Button fx:id="customerBtn" layoutX="128.0" layoutY="160.0" mnemonicParsing="false" prefHeight="134.0" prefWidth="134.0" style="-fx-background-color: FFA74F;">
+       <Button layoutX="128.0" layoutY="160.0" mnemonicParsing="false" onAction="#customerBtn" prefHeight="134.0" prefWidth="134.0" style="-fx-background-color: FFA74F;">
            <graphic>
                <ImageView fitHeight="134.0" fitWidth="134.0">
                    <image>
@@ -18,18 +18,18 @@
                </ImageView>
            </graphic>
        </Button>
-      <Button fx:id="customerBtn1" layoutX="328.0" layoutY="160.0" mnemonicParsing="false" prefHeight="134.0" prefWidth="134.0" style="-fx-background-color: FFA74F;">
+      <Button layoutX="328.0" layoutY="160.0" mnemonicParsing="false" onAction="#packageBtn" prefHeight="134.0" prefWidth="134.0" style="-fx-background-color: FFA74F;">
        <graphic>
            <ImageView fitHeight="134.0" fitWidth="134.0">
                <image>
-                   <Image url="Pacakge.jpg" />
+                   <Image url="Package.png" />
                </image>
            </ImageView>
        </graphic>
       </Button>
-      <ImageView fx:id="logoView" fitHeight="108.0" fitWidth="214.0" layoutX="143.0" layoutY="33.0" pickOnBounds="true" preserveRatio="false">
+      <ImageView fx:id="logoView" fitHeight="108.0" fitWidth="214.0" layoutX="156.0" layoutY="14.0" pickOnBounds="true" preserveRatio="false">
       </ImageView>
-      <Label layoutX="340.0" layoutY="26.0" text="SA" textFill="#ff6205">
+      <Label layoutX="353.0" layoutY="7.0" text="SA" textFill="#ff6205">
          <font>
             <Font name="Agency FB Bold" size="100.0" />
          </font>
@@ -42,6 +42,11 @@
       <Label layoutX="324.0" layoutY="306.0" text="Pacakage Manager">
          <font>
             <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="171.0" layoutY="117.0" text="Customer &amp; Package Manager" textFill="RED">
+         <font>
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
    </children>
