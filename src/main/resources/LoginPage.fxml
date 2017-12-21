@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginPageController">
+<AnchorPane prefHeight="400" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginPageController">
    <children>
       <Label alignment="CENTER" layoutX="170.0" layoutY="32.0" prefHeight="43.0" prefWidth="260.0" text="Login">
          <font>
-            <Font size="60.0" />
+            <Font name="System Bold" size="60.0" />
          </font>
       </Label>
       <Label layoutX="170.0" layoutY="158.0" text="ID :">
