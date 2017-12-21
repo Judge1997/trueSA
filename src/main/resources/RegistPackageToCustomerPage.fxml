@@ -7,17 +7,17 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistPackageToCustomerController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistPackageToCustomerController">
    <children>
-      <Button fx:id="addBtn" layoutX="433.0" layoutY="361.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="60.0" text="ADD" />
-      <Button layoutX="510.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelBtn" text="CANCEL" />
+      <Button fx:id="addBtn" layoutX="433.0" layoutY="361.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: FFA74F;" text="ADD" />
+      <Button layoutX="510.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelBtn" style="-fx-background-color: FFA74F;" text="CANCEL" />
       <ComboBox fx:id="comboBox" layoutX="155.0" layoutY="34.0" onAction="#comboBox" prefHeight="25.0" prefWidth="421.0" />
       <Label layoutX="38.0" layoutY="36.0" text="Choose Package">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="279.0" layoutX="25.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" width="552.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffddb1" height="279.0" layoutX="25.0" layoutY="76.0" stroke="BLACK" strokeType="INSIDE" width="552.0" />
       <Label layoutX="38.0" layoutY="93.0" text="Package Detail">
          <font>
             <Font size="18.0" />

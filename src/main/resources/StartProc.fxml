@@ -27,9 +27,9 @@
            </ImageView>
        </graphic>
       </Button>
-      <ImageView fx:id="logoView" fitHeight="108.0" fitWidth="214.0" layoutX="156.0" layoutY="14.0" pickOnBounds="true" preserveRatio="false">
+      <ImageView fx:id="logoView" fitHeight="108.0" fitWidth="214.0" layoutX="148.0" layoutY="21.0" pickOnBounds="true" preserveRatio="false">
       </ImageView>
-      <Label layoutX="353.0" layoutY="7.0" text="SA" textFill="#ff6205">
+      <Label layoutX="345.0" layoutY="14.0" text="SA" textFill="#ff6205">
          <font>
             <Font name="Agency FB Bold" size="100.0" />
          </font>
@@ -44,7 +44,7 @@
             <Font name="Bodoni MT" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="171.0" layoutY="117.0" text="Customer &amp; Package Manager" textFill="RED">
+      <Label layoutX="171.0" layoutY="116.0" text="Customer &amp; Package Manager" textFill="RED">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
