@@ -22,13 +22,19 @@ public class DBConnector {
         return customerDB;
     }
 
-    public String checkUserAndPassword(String i, String p) throws ClassNotFoundException, SQLException {
+    public String checkUserAndPassword(String i, String p, int login) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
         if(connection != null){
             System.out.println("Connected to customerDB.db");
-            String query = "Select * from user";
+            String pos;
+            if (login == 1){
+                pos = "CustomerManager";
+            } else {
+                pos = "PackageManager";
+            }
+            String query = "Select * from user WHERE position == '"+pos+"'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {

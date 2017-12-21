@@ -10,8 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class StartProcController {
@@ -27,21 +25,25 @@ public class StartProcController {
     }
 
     @FXML
-    public void customerBtn() throws IOException {
-        this.goToLogIn(1);
+    public void customerBtn(ActionEvent event) throws IOException {
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        this.goToLogIn(stage, 1);
     }
 
     @FXML
-    public void packageBtn() throws IOException {
-        this.goToLogIn(2);
+    public void packageBtn(ActionEvent event) throws IOException {
+        Button btn = (Button) event.getSource();
+        Stage stage = (Stage) btn.getScene().getWindow();
+        this.goToLogIn(stage, 2);
     }
 
     @FXML
-    public void goToLogIn(int Emtype) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginPage.fxml"));
-        LoginPageController loginPageController = new LoginPageController();
-        Stage stage = new Stage();
+    public void goToLogIn(Stage stage, int emty) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginPage.fxml"));
         Parent root = loader.load();
+        LoginPageController loginPageController = loader.getController();
+        loginPageController.setEmty(emty);
         stage.setTitle("TrueSA");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);
