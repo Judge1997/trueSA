@@ -24,18 +24,26 @@
          </font>
       </Label>
       <Label layoutX="88.0" layoutY="140.0" text="Name :" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffed7" height="84.0" layoutX="282.0" layoutY="136.0" stroke="BLACK" strokeType="INSIDE" width="267.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fffed7" height="57.0" layoutX="282.0" layoutY="224.0" stroke="BLACK" strokeType="INSIDE" width="267.0" />
       <Label layoutX="93.0" layoutY="170.0" text="Price :" />
       <Label layoutX="75.0" layoutY="200.0" text="Internet :" />
       <Label layoutX="86.0" layoutY="230.0" text="Voice :" />
       <Label layoutX="90.0" layoutY="260.0" text="Data :" />
-      <Label layoutX="289.0" layoutY="140.0" text="Mobile :" />
-      <Label layoutX="306.0" layoutY="230.0" text="TVs :" />
+      <Label layoutX="288.0" layoutY="146.0" text="Mobile :" />
+      <Label layoutX="305.0" layoutY="236.0" text="TVs :" />
       <Label fx:id="nameLabel" layoutX="140.0" layoutY="140.0" text="xxxxxxxxxxxxxxxxxxxxxxx" />
       <Label fx:id="priceLabel" layoutX="140.0" layoutY="170.0" text="xxxxxxxxxxxxxxxxxxxxxxx" />
       <Label fx:id="internetLabel" layoutX="140.0" layoutY="200.0" text="xxxxxxxxxxxxxxxxxxxxxxx" />
       <Label fx:id="voiceLabel" layoutX="140.0" layoutY="230.0" text="xxxxxxxxxxxxxxxxxxxxxxx" />
       <Label fx:id="dataLabel" layoutX="140.0" layoutY="260.0" text="xxxxxxxxxxxxxxxxxxxxxxx" />
-      <Label fx:id="mobileLabel" alignment="TOP_LEFT" layoutX="342.0" layoutY="140.0" prefHeight="84.0" prefWidth="217.0" text="xxxxxxxxxxxxxxxxxxxxxxx" />
-      <Label fx:id="tvsLabel" alignment="TOP_LEFT" layoutX="342.0" layoutY="230.0" prefHeight="84.0" prefWidth="217.0" text="xxxxxxxxxxxxxxxxxxxxxxx" />
+      <Label layoutX="351.0" layoutY="146.0" text="xxxxxxxxxxxx" />
+      <Label layoutX="351.0" layoutY="168.0" text="xxxxxxxxxxxx" />
+      <Label layoutX="351.0" layoutY="191.0" text="xxxxxxxxxxxx" />
+      <Label layoutX="351.0" layoutY="236.0" text="xxxxxxxxxxxx" />
+      <Label layoutX="431.0" layoutY="148.0" text="Users" />
+      <Label layoutX="431.0" layoutY="170.0" text="Mbps" />
+      <Label layoutX="431.0" layoutY="192.0" text="Minutes" />
+      <Label layoutX="431.0" layoutY="237.0" text="Channels" />
    </children>
 </AnchorPane>
