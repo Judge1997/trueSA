@@ -1,9 +1,11 @@
 package check;
 
 import database.DBConnector;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import models.Customer;
+import models.Package;
 
 import java.awt.*;
 import java.sql.SQLException;
@@ -15,9 +17,9 @@ public class CheckData {
 
     public boolean isAllNumber(TextField field) {
         boolean isCorrect = true;
-        if (field.getText().equals("")){
+        if (field.getText().equals("") || Integer.parseInt(field.getText()) < 0 || Integer.parseInt(field.getText()) > 10000){
             isCorrect = false;
-            field.setStyle("-fx-border-color: red");
+            field.setStyle("-fx-background-color: pink");
             return isCorrect;
         } else {
             for (int i = 0; i < field.getText().length(); i++) {
@@ -25,21 +27,21 @@ public class CheckData {
                     if ((field.getText().charAt(i) + "").matches("[0-9]")) {
                     } else {
                         isCorrect = false;
-                        field.setStyle("-fx-border-color: red");
+                        field.setStyle("-fx-background-color: pink");
                         return isCorrect;
                     }
                 }
             }
         }
-        field.setStyle("");
+        field.setStyle("-fx-background-color: limegreen");
         return isCorrect;
     }
 
     public boolean isAllNumber(TextField field, int len) {
         boolean isCorrect = true;
-        if (field.getText().equals("") || field.getText().length() != len){
+        if (field.getText().equals("") || field.getText().length() != len || Integer.parseInt(field.getText()) < 0 || Integer.parseInt(field.getText()) > 10000){
             isCorrect = false;
-            field.setStyle("-fx-border-color: red");
+            field.setStyle("-fx-background-color: pink");
             return isCorrect;
         } else {
             for (int i = 0; i < field.getText().length(); i++) {
@@ -47,13 +49,13 @@ public class CheckData {
                     if ((field.getText().charAt(i) + "").matches("[0-9]")) {
                     } else {
                         isCorrect = false;
-                        field.setStyle("-fx-border-color: red");
+                        field.setStyle("-fx-background-color: pink");
                         return isCorrect;
                     }
                 }
             }
         }
-        field.setStyle("");
+        field.setStyle("-fx-background-color: limegreen");
         return isCorrect;
     }
 
@@ -61,20 +63,20 @@ public class CheckData {
         boolean isCorrect = true;
         if (field.getText().equals("")){
             isCorrect = false;
-            field.setStyle("-fx-border-color: red");
+            field.setStyle("-fx-background-color: pink");
             return isCorrect;
         } else {
             for (int i = 0; i < field.getText().length(); i++) {
                 if (isCorrect) {
                     if (!field.getText().substring(i, i + 1).matches("[a-zA-Z ก-ฮะา *่ *้ *๊ *๋ *็ *ั *ิ *ี *ึ *ื *ุ *ูเฤฦๅ]")){
                         isCorrect = false;
-                        field.setStyle("-fx-border-color: red");
+                        field.setStyle("-fx-background-color: pink");
                         return isCorrect;
                     }
                 }
             }
         }
-        field.setStyle("");
+        field.setStyle("-fx-background-color: limegreen");
         return isCorrect;
     }
 
@@ -85,12 +87,12 @@ public class CheckData {
                 if ((area.getText().charAt(i) + "").matches("[a-zA-Z]")) {
                 } else {
                     isCorrect = false;
-                    area.setStyle("-fx-border-color: red");
+                    area.setStyle("-fx-background-color: pink");
                     return isCorrect;
                 }
             }
         }
-        area.setStyle("");
+        area.setStyle("-fx-background-color: limegreen");
         return isCorrect;
     }
 
@@ -103,34 +105,49 @@ public class CheckData {
         return true;
     }
 
-    public boolean checkDup(String name) throws SQLException, ClassNotFoundException {
+    public boolean checkDupCustomer(TextField field) throws SQLException, ClassNotFoundException {
         for (Customer i : this.customerDB.loadCustonerDB()){
-            if (i.getName().equals(name)){
+            if (i.getName().equals(field.getText())){
+                field.setStyle("-fx-background-color: pink");
                 return true;
             }
         }
+
+        field.setStyle("-fx-background-color: limegreen");
+        return false;
+    }
+
+    public boolean checkDupPackage(TextField field) throws SQLException, ClassNotFoundException {
+        for (Package i : this.customerDB.loadPacketDB()){
+            if (i.getName().equals(field.getText())){
+                field.setStyle("-fx-background-color: pink");
+                return true;
+            }
+        }
+
+        field.setStyle("-fx-background-color: green");
         return false;
     }
 
     public boolean isNull(TextField field){
-        boolean isCorrect = true;
+        boolean isCorrect = false;
         if (field.getText().equals("")){
-            isCorrect = false;
-            field.setStyle("-fx-border-color: red");
+            isCorrect = true;
+            field.setStyle("-fx-background-color: pink");
             return isCorrect;
         }
-        field.setStyle("");
+        field.setStyle("-fx-background-color: limegreen");
         return isCorrect;
     }
 
     public boolean isNull(TextArea area){
-        boolean isCorrect = true;
+        boolean isCorrect = false;
         if (area.getText().equals("")){
-            isCorrect = false;
-            area.setStyle("-fx-border-color: red");
+            isCorrect = true;
+            area.setStyle("-fx-background-color: pink");
             return isCorrect;
         }
-        area.setStyle("");
+        area.setStyle("-fx-background-color: limegreen");
         return isCorrect;
     }
 }

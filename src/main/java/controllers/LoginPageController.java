@@ -95,7 +95,6 @@ public class LoginPageController {
         Parent root = loader.load();
         MainController mainController = loader.getController();
         mainController.setUser(user);
-        mainController.setEmty(emty);
         stage.setTitle("trueSA");
         stage.setScene(new Scene(root, width, height));
         stage.setResizable(false);

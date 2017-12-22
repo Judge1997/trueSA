@@ -30,11 +30,13 @@
                       <TableColumn prefWidth="75.0" text="PAKAGE ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
                       <TableColumn prefWidth="106.0" text="PACKAGE NAME"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
                         <TableColumn prefWidth="105.0" style="-fx-alignment: TOP-RIGHT;" text="PRICE"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="65.0" style="-fx-alignment: TOP-RIGHT;" text="NET"><cellValueFactory><PropertyValueFactory property="net" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="101.0" style="-fx-alignment: TOP-RIGHT;" text="VOICE"><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="75.0" style="-fx-alignment: TOP-RIGHT;" text="DATA"><cellValueFactory><PropertyValueFactory property="data" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="75.0" text="MOBILE"><cellValueFactory><PropertyValueFactory property="mobile" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="75.0" text="TVs"><cellValueFactory><PropertyValueFactory property="tvs" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="100.0" style="-fx-alignment: TOP-RIGHT;" text="NET (Mbps)"><cellValueFactory><PropertyValueFactory property="net" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="105.0" style="-fx-alignment: TOP-RIGHT;" text="VOICE (Min.)"><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="75.0" style="-fx-alignment: TOP-RIGHT;" text="DATA (GB.)"><cellValueFactory><PropertyValueFactory property="data" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="160.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE QUANTITY (User)"><cellValueFactory><PropertyValueFactory property="mobileQuantity" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="140.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE SPEED (Mbps)"><cellValueFactory><PropertyValueFactory property="mobileSpeed" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="140.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE TIMES (Min.)"><cellValueFactory><PropertyValueFactory property="mobileTimes" /></cellValueFactory></TableColumn>
+                        <TableColumn prefWidth="75.0" style="-fx-alignment: TOP-RIGHT;" text="TVs"><cellValueFactory><PropertyValueFactory property="tvs" /></cellValueFactory></TableColumn>
                     </columns>
                   </TableView>
                </content>

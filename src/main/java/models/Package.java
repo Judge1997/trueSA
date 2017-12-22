@@ -5,20 +5,24 @@ public class Package {
     private int id;
     private double price;
     private String name;
-    private String net;
-    private String voice;
-    private String data;
-    private String mobile;
-    private String tvs;
+    private int net;
+    private int voice;
+    private int data;
+    private int mobileQuantity;
+    private int mobileSpeed;
+    private int mobileTimes;
+    private int tvs;
 
-    public Package(int id, String name, double price, String net, String voice, String data, String mobile, String tvs){
+    public Package(int id, String name, double price, int net, int voice, int data, int mobileQuantity, int mobileSpeed, int mobileTimes, int tvs){
         this.id = id;
         this.name = name;
         this.price = price;
         this.net = net;
         this.voice = voice;
         this.data = data;
-        this.mobile = mobile;
+        this.mobileQuantity = mobileQuantity;
+        this.mobileSpeed = mobileSpeed;
+        this.mobileTimes = mobileTimes;
         this.tvs = tvs;
     }
 
@@ -46,47 +50,67 @@ public class Package {
         this.price = price;
     }
 
-    public String getNet() {
+    public int getNet() {
         return net;
     }
 
-    public void setNet(String net) {
+    public void setNet(int net) {
         this.net = net;
     }
 
-    public String getVoice() {
+    public int getVoice() {
         return voice;
     }
 
-    public void setVoice(String voice) {
+    public void setVoice(int voice) {
         this.voice = voice;
     }
 
-    public String getData() {
+    public int getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(int data) {
         this.data = data;
     }
 
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String moblie) {
-        this.mobile = moblie;
-    }
-
-    public String getTvs() {
+    public int getTvs() {
         return tvs;
     }
 
-    public void setTvs(String tvs) {
+    public void setTvs(int tvs) {
         this.tvs = tvs;
     }
 
     public String toString(){
         return this.name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getMobileQuantity() {
+        return mobileQuantity;
+    }
+
+    public void setMobileQuantity(int mobileQuantity) {
+        this.mobileQuantity = mobileQuantity;
+    }
+
+    public int getMobileSpeed() {
+        return mobileSpeed;
+    }
+
+    public void setMobileSpeed(int mobileSpeed) {
+        this.mobileSpeed = mobileSpeed;
+    }
+
+    public int getMobileTimes() {
+        return mobileTimes;
+    }
+
+    public void setMobileTimes(int mobileTimes) {
+        this.mobileTimes = mobileTimes;
     }
 }

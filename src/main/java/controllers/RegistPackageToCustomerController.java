@@ -43,11 +43,11 @@ public class RegistPackageToCustomerController extends Observable {
 
         nameLabel.setText(packages.getName());
         priceLabel.setText(packages.getPrice());
-        internetLabel.setText(packages.getNet());
-        voiceLabel.setText(packages.getVoice());
-        dataLabel.setText(packages.getData());
-        mobileLabel.setText(packages.getMobile());
-        tvsLabel.setText(packages.getTvs());
+        internetLabel.setText(String.valueOf(packages.getNet()));
+        voiceLabel.setText(String.valueOf(packages.getVoice()));
+        dataLabel.setText(String.valueOf(packages.getData()));
+//        mobileLabel.setText(packages.getMobile());
+        tvsLabel.setText(String.valueOf(packages.getTvs()));
 
         addBtn.setDisable(false);
     }

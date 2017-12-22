@@ -78,15 +78,27 @@ public class PackageManageController extends MainController implements Observer{
     @FXML
     public void deleteBtn() throws SQLException, ClassNotFoundException {
         if (tableView.getSelectionModel().getSelectedItem() != null){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to delete " +
-                    tableView.getSelectionModel().getSelectedItem().getName() + " ?",
-                    ButtonType.OK, ButtonType.CANCEL);
-            Optional optional = alert.showAndWait();
-            if (optional.get() == ButtonType.OK) {
-                Package packages = tableView.getSelectionModel().getSelectedItem();
-                packageDB.deletePacketDB(packages.getId());
-                this.refresh();
-            }
+                int numberUsePackage = packageDB.checkCustomerPackage(tableView.getSelectionModel().getSelectedItem().getId());
+                System.out.println(numberUsePackage);
+                if (numberUsePackage == 0){
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to delete " +
+                            tableView.getSelectionModel().getSelectedItem().getName() + " ?",
+                            ButtonType.OK, ButtonType.CANCEL);
+                    Optional optional = alert.showAndWait();
+                    if (optional.get() == ButtonType.OK) {
+                        Package packages = tableView.getSelectionModel().getSelectedItem();
+                        packageDB.deletePacketDB(packages.getId());
+                        this.refresh();
+                    }
+                } else {
+                    String user = "user";
+                    if (numberUsePackage > 1){
+                        user = "users";
+                    }
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "There is " + numberUsePackage + " " + user +
+                            " subscribed this package", ButtonType.OK);
+                    Optional optional = alert.showAndWait();
+                }
         }
     }
 

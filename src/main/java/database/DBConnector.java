@@ -165,13 +165,15 @@ public class DBConnector {
                 int id = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 double price = resultSet.getDouble(3);
-                String net = resultSet.getString(4);
-                String voice = resultSet.getString(5);
-                String data = resultSet.getString(6);
-                String mobile = resultSet.getString(7);
-                String tvs = resultSet.getString(8);
+                int net = resultSet.getInt(4);
+                int voice = resultSet.getInt(5);
+                int data = resultSet.getInt(6);
+                int mobileQuantity = resultSet.getInt(7);
+                int mobileSpeed = resultSet.getInt(8);
+                int mobileTimes = resultSet.getInt(9);
+                int tvs = resultSet.getInt(10);
 
-                packages.add(new Package(id, name, price, net, voice, data, mobile, tvs));
+                packages.add(new Package(id, name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs));
             }
             connection.close();
             System.out.println("Closed to customerDB.db");
@@ -187,8 +189,9 @@ public class DBConnector {
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "INSERT INTO package (name, price, net, voice, data, mobile, tvs) "+"VALUES ( " +
-                    "'"+p.getName()+"',"+p.getPrice()+",'"+p.getNet()+"','"+p.getVoice()+"','"+p.getData()+"','"+p.getMobile()+"','"+p.getTvs()+"');";
+            String query = "INSERT INTO package (name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs) "+"VALUES ( " +
+                    "'"+p.getName()+"',"+p.getPrice()+","+p.getNet()+","+p.getVoice()+","+p.getData()+","+p.getMobileQuantity()+","+p.getMobileSpeed()+","+p.getMobileTimes()+","+p.getTvs()+");";
+            System.out.println(query);
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();
@@ -328,6 +331,28 @@ public class DBConnector {
         return packages;
     }
 
+    public int checkCustomerPackage(int idP) throws SQLException, ClassNotFoundException {
+        int count = 0;
+
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "SELECT * from customerPackage WHERE idPackage = "+idP+";";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                count++;
+            }
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+        return count;
+    }
+
     public List<Package> loadPackageFromCustomerPackage(List<CustomerPackage> customerPackages) throws ClassNotFoundException, SQLException {
         List<Package> packages = new Vector<Package>();
 
@@ -346,13 +371,15 @@ public class DBConnector {
                     if (i.getIdPackage() == id){
                         String name = resultSet.getString(2);
                         double price = resultSet.getDouble(3);
-                        String net = resultSet.getString(4);
-                        String voice = resultSet.getString(5);
-                        String data = resultSet.getString(6);
-                        String mobile = resultSet.getString(7);
-                        String tvs = resultSet.getString(8);
+                        int net = resultSet.getInt(4);
+                        int voice = resultSet.getInt(5);
+                        int data = resultSet.getInt(6);
+                        int mobileQuantity = resultSet.getInt(7);
+                        int mobileSpeed = resultSet.getInt(8);
+                        int mobileTimes = resultSet.getInt(9);
+                        int tvs = resultSet.getInt(10);
 
-                        packages.add(new Package(id, name, price, net, voice, data, mobile, tvs));
+                        packages.add(new Package(id, name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs));
                     }
                 }
             }

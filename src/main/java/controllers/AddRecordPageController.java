@@ -76,7 +76,7 @@ public class AddRecordPageController extends Observable {
             String contactName = this.contactNameField.getText();
             double packetCost = 0;
 
-            boolean checkDup = checkData.checkDup(name);
+            boolean checkDup = checkData.checkDupCustomer(nameField);
 
             if (checkDup == false){
                 Customer customer = new Customer(0, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,

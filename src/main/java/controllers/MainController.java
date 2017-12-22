@@ -16,16 +16,12 @@ public class MainController {
     @FXML
     protected Label userLabel;
 
-    protected int emty;
-
     @FXML
     public void logoutBth(ActionEvent event) throws IOException {
         Button loginBtn = (Button) event.getSource();
         Stage stage = (Stage) loginBtn.getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/StartProc.fxml"));
         Parent window = loader.load();
-        LoginPageController loginPageController = loader.getController();
-        loginPageController.setEmty(emty);
         this.goToPage(stage,window,400,600);
     }
 
@@ -39,9 +35,5 @@ public class MainController {
     @FXML
     public void setUser(String user) {
         this.userLabel.setText(user);
-    }
-
-    public void setEmty(int emty) {
-        this.emty = emty;
     }
 }

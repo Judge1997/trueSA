@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="400.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddPackagePageController">
+<AnchorPane prefHeight="450.0" prefWidth="400.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddPackagePageController">
    <children>
       <Button layoutX="316.0" layoutY="415.0" mnemonicParsing="false" onAction="#cancelBtn" style="-fx-background-color: FFA74F;" text="CANCEL" />
       <Button layoutX="246.0" layoutY="415.0" mnemonicParsing="false" onAction="#submitBtn" style="-fx-background-color: FFA74F;" text="SUBMIT" />
@@ -25,19 +25,19 @@
       <TextField fx:id="voiceField" layoutX="203.0" layoutY="143.0" prefHeight="25.0" prefWidth="85.0" />
       <TextField fx:id="dataField" layoutX="203.0" layoutY="173.0" prefHeight="25.0" prefWidth="85.0" />
       <Label layoutX="295.0" layoutY="117.0" text="Mbps." />
-      <Label layoutX="295.0" layoutY="147.0" text="GB." />
+      <Label layoutX="295.0" layoutY="147.0" text="Minute" />
       <Label layoutX="295.0" layoutY="177.0" text="GB." />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff1cb" height="119.0" layoutX="8.0" layoutY="215.0" stroke="BLACK" strokeType="INSIDE" width="384.0" />
       <Label layoutX="294.0" layoutY="240.0" text="Users" />
-      <TextField fx:id="dataField1" layoutX="205.0" layoutY="236.0" prefHeight="25.0" prefWidth="85.0" />
-      <TextField fx:id="dataField11" layoutX="205.0" layoutY="267.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextField fx:id="mobileQuantityField" layoutX="205.0" layoutY="236.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextField fx:id="mobileSpeedField" layoutX="205.0" layoutY="267.0" prefHeight="25.0" prefWidth="85.0" />
       <Label layoutX="21.0" layoutY="223.0" text="Mobiles">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Label layoutX="294.0" layoutY="271.0" text="Mbps" />
-      <TextField fx:id="dataField111" layoutX="205.0" layoutY="298.0" prefHeight="25.0" prefWidth="85.0" />
+      <TextField fx:id="mobileTimesField" layoutX="205.0" layoutY="298.0" prefHeight="25.0" prefWidth="85.0" />
       <Label layoutX="294.0" layoutY="302.0" text="Minute" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff1cb" height="54.0" layoutX="8.0" layoutY="340.0" stroke="BLACK" strokeType="INSIDE" style="-fx-background-color: FFA74F;" width="384.0" />
       <Label layoutX="21.0" layoutY="346.0" text="TVs">
@@ -46,7 +46,7 @@
          </font>
       </Label>
       <Label layoutX="295.0" layoutY="359.0" text="Channels" />
-      <ComboBox layoutX="204.0" layoutY="355.0" prefHeight="25.0" prefWidth="85.0" />
+      <ComboBox fx:id="tvsComboBox" layoutX="204.0" layoutY="355.0" prefHeight="25.0" prefWidth="85.0" />
       <Label layoutX="170.0" layoutY="359.0" text="tvs :" />
       <Label layoutX="143.0" layoutY="240.0" text="Quantity :" />
       <Label layoutX="156.0" layoutY="271.0" text="Speed :" />
@@ -56,6 +56,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="328.0" layoutY="21.0" mnemonicParsing="false" onAction="#submitBtn" style="-fx-background-color: FFA74F;" text="CHECK" />
+      <Button layoutX="328.0" layoutY="21.0" mnemonicParsing="false" onAction="#checkBtn" style="-fx-background-color: FFA74F;" text="CHECK" />
    </children>
 </AnchorPane>
