@@ -31,6 +31,7 @@ public class EditRecordPageController extends Observable{
 
     private String[] regionList = {"01","02"};
     private String[] provinceList;
+    private String[] khetList;
 
     public void initialize() throws SQLException, ClassNotFoundException {
         ObservableList aeName = FXCollections.observableArrayList();
@@ -44,6 +45,35 @@ public class EditRecordPageController extends Observable{
         ObservableList province = FXCollections.observableArrayList();
         province.addAll(provinceList);
         cmbProvince.setItems(province);
+
+    }
+
+    @FXML
+    public void regionComboBox(){
+        ObservableList province = FXCollections.observableArrayList();
+        if (cmbRegion.getValue().equals("01")){
+            provinceList = new String[]{"กรุงเทพมหานคร"};
+        } else {
+            provinceList = new String[]{"นนทบุรี","ปทุมธานี"};
+        }
+        province.addAll(provinceList);
+        cmbProvince.setValue(province.get(0));
+        cmbProvince.setItems(province);
+    }
+
+    @FXML
+    public void provinceComboBox(){
+        ObservableList khet = FXCollections.observableArrayList();
+        if (cmbProvince.getValue().equals("กรุงเทพมหานคร")){
+            khetList = new String[]{"จตุจักร", "ลาดพร้าว", "ดอนเมือง"};
+        } else if (cmbProvince.getValue().equals("นนทบุรี")){
+            khetList = new String[]{"เมืองนนทบุรี", "บางใหญ่", "บางบัวทอง", "ปากเกร็ด"};
+        } else {
+            khetList = new String[]{"เมืองปทุมธานี", "ธัญบุรี", "ลำลูกกา", "สามโคก"};
+        }
+        khet.addAll(khetList);
+        cmbKhet.setValue(khet.get(0));
+        cmbKhet.setItems(khet);
     }
 
     @FXML

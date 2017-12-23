@@ -60,30 +60,14 @@ public class AddRecordPageController extends Observable {
     @FXML
     public void regionComboBox(){
         ObservableList province = FXCollections.observableArrayList();
-        ObservableList khet = FXCollections.observableArrayList();
         if (cmbRegion.getValue().equals("01")){
             provinceList = new String[]{"กรุงเทพมหานคร"};
-            province.removeAll(province);
-            province.addAll(provinceList);
-            cmbProvince.setItems(province);
-            cmbProvince.setValue(cmbProvince.getItems().get(0));
-
-            khetList = new String[]{"จตุจักร", "ลาดพร้าว", "ดอนเมือง"};
-            khet.addAll(khetList);
-            cmbKhet.setItems(khet);
-            cmbKhet.setValue(cmbKhet.getItems().get(0));
         } else {
             provinceList = new String[]{"นนทบุรี","ปทุมธานี"};
-            province.removeAll(province);
-            province.addAll(provinceList);
-            cmbProvince.setItems(province);
-            cmbProvince.setValue(cmbProvince.getItems().get(0));
-
-            khetList = new String[]{"เมืองนนทบุรี", "บางใหญ่", "บางบัวทอง", "ปากเกร็ด"};
-            khet.addAll(khetList);
-            cmbKhet.setItems(khet);
-            cmbKhet.setValue(cmbKhet.getItems().get(0));
         }
+        province.addAll(provinceList);
+        cmbProvince.setValue(province.get(0));
+        cmbProvince.setItems(province);
     }
 
     @FXML
@@ -91,22 +75,14 @@ public class AddRecordPageController extends Observable {
         ObservableList khet = FXCollections.observableArrayList();
         if (cmbProvince.getValue().equals("กรุงเทพมหานคร")){
             khetList = new String[]{"จตุจักร", "ลาดพร้าว", "ดอนเมือง"};
-            khet.addAll(khetList);
-            cmbKhet.setItems(khet);
-            cmbKhet.setValue(cmbKhet.getItems().get(0));
-
         } else if (cmbProvince.getValue().equals("นนทบุรี")){
             khetList = new String[]{"เมืองนนทบุรี", "บางใหญ่", "บางบัวทอง", "ปากเกร็ด"};
-            khet.addAll(khetList);
-            cmbKhet.setItems(khet);
-            cmbKhet.setValue(cmbKhet.getItems().get(0));
-
         } else {
             khetList = new String[]{"เมืองปทุมธานี", "ธัญบุรี", "ลำลูกกา", "สามโคก"};
-            khet.addAll(khetList);
-            cmbKhet.setItems(khet);
-            cmbKhet.setValue(cmbKhet.getItems().get(0));
         }
+        khet.addAll(khetList);
+        cmbKhet.setValue(khet.get(0));
+        cmbKhet.setItems(khet);
     }
 
     @FXML
