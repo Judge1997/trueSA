@@ -29,14 +29,11 @@ public class AddPackagePageController extends Observable {
 
     public void initialize(){
         ObservableList observableList = FXCollections.observableArrayList();
-        observableList.add("50");
         observableList.add("100");
         observableList.add("200");
         observableList.add("300");
-        observableList.add("400");
-        observableList.add("500");
         tvsComboBox.setItems(observableList);
-        tvsComboBox.setValue("50");
+        tvsComboBox.setValue(tvsComboBox.getItems().get(0));
     }
 
     @FXML
@@ -84,7 +81,7 @@ public class AddPackagePageController extends Observable {
 
     @FXML
     public void checkBtn() throws SQLException, ClassNotFoundException {
-        this.packageNameField.setText(this.packageNameField.getText().replaceAll("'",""));
+        checkData.clearQuote(this.packageNameField);
         if (checkData.checkDupPackage(packageNameField) || checkData.isNull(packageNameField)){
             isPackageNameFieldCorrect = false;
         } else {

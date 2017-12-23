@@ -9,12 +9,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import models.Customer;
 import models.Package;
 
 import java.io.IOException;
@@ -87,7 +85,7 @@ public class PackageManageController extends MainController implements Observer{
                     Optional optional = alert.showAndWait();
                     if (optional.get() == ButtonType.OK) {
                         Package packages = tableView.getSelectionModel().getSelectedItem();
-                        packageDB.deletePacketDB(packages.getId());
+                        packageDB.inActivePackageDB(packages.getId());
                         this.refresh();
                     }
                 } else {

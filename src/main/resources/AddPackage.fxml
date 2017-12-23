@@ -14,13 +14,13 @@
       <Button layoutX="246.0" layoutY="415.0" mnemonicParsing="false" onAction="#submitBtn" style="-fx-background-color: FFA74F;" text="SUBMIT" />
       <Label layoutX="54.0" layoutY="25.0" text="Package Name :" />
       <Label layoutX="108.0" layoutY="57.0" text="Price :" />
+      <TextField fx:id="packageNameField" layoutX="150.0" layoutY="21.0" prefHeight="25.0" prefWidth="172.0" />
       <TextField fx:id="priceField" layoutX="151.0" layoutY="53.0" prefHeight="25.0" prefWidth="108.0" />
       <Label layoutX="262.0" layoutY="57.0" text="Baht." />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff1cb" height="119.0" layoutX="8.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" width="384.0" />
       <Label layoutX="144.0" layoutY="117.0" text="Internet :" />
       <Label layoutX="156.0" layoutY="147.0" text="Voice :" />
       <Label layoutX="160.0" layoutY="177.0" text="Data :" />
-      <TextField fx:id="packageNameField" layoutX="150.0" layoutY="21.0" prefHeight="25.0" prefWidth="172.0" />
       <TextField fx:id="internetField" layoutX="203.0" layoutY="113.0" prefHeight="25.0" prefWidth="85.0" />
       <TextField fx:id="voiceField" layoutX="203.0" layoutY="143.0" prefHeight="25.0" prefWidth="85.0" />
       <TextField fx:id="dataField" layoutX="203.0" layoutY="173.0" prefHeight="25.0" prefWidth="85.0" />

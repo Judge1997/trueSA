@@ -22,6 +22,30 @@ public class DBConnector {
         return customerDB;
     }
 
+    public List<String> loadNameEmployee() throws ClassNotFoundException, SQLException {
+        List<String> list = new Vector<>();
+
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if(connection != null){
+            System.out.println("Connected to customerDB.db");
+            String query = "Select * from user WHERE position == '"+"CustomerManager"+"'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String name = resultSet.getString(1);
+                list.add(name);
+            }
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+
+        return list;
+    }
+
     public String checkUserAndPassword(String i, String p, int login) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
@@ -158,7 +182,7 @@ public class DBConnector {
         Connection connection = DriverManager.getConnection(dbURL);
         if(connection != null){
             System.out.println("Connected to customerDB.db");
-            String query = "Select * from package";
+            String query = "Select * from package WHERE status == 'Active'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
@@ -189,8 +213,8 @@ public class DBConnector {
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "INSERT INTO package (name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs) "+"VALUES ( " +
-                    "'"+p.getName()+"',"+p.getPrice()+","+p.getNet()+","+p.getVoice()+","+p.getData()+","+p.getMobileQuantity()+","+p.getMobileSpeed()+","+p.getMobileTimes()+","+p.getTvs()+");";
+            String query = "INSERT INTO package (name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs, status) "+"VALUES ( " +
+                    "'"+p.getName()+"',"+p.getPrice()+","+p.getNet()+","+p.getVoice()+","+p.getData()+","+p.getMobileQuantity()+","+p.getMobileSpeed()+","+p.getMobileTimes()+","+p.getTvs()+", 'Active'"+");";
             System.out.println(query);
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
@@ -201,13 +225,13 @@ public class DBConnector {
         }
     }
 
-    public void deletePacketDB(int id) throws ClassNotFoundException, SQLException {
+    public void inActivePackageDB(int id) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "DELETE FROM package WHERE id = "+id+";";
+            String query = "UPDATE package SET status = 'InActive' WHERE id = "+id+";";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();

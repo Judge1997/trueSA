@@ -17,7 +17,29 @@ public class CheckData {
 
     public boolean isAllNumber(TextField field) {
         boolean isCorrect = true;
-        if (field.getText().equals("") || Integer.parseInt(field.getText()) < 0 || Integer.parseInt(field.getText()) > 10000){
+        if (field.getText().equals("") || Integer.parseInt(field.getText()) < 0){
+            isCorrect = false;
+            field.setStyle("-fx-background-color: pink");
+            return isCorrect;
+        } else {
+            for (int i = 0; i < field.getText().length(); i++) {
+                if (isCorrect) {
+                    if ((field.getText().charAt(i) + "").matches("[0-9]")) {
+                    } else {
+                        isCorrect = false;
+                        field.setStyle("-fx-background-color: pink");
+                        return isCorrect;
+                    }
+                }
+            }
+        }
+        field.setStyle("-fx-background-color: limegreen");
+        return isCorrect;
+    }
+
+    public boolean isAllNumberSpec(TextField field, double len){
+        boolean isCorrect = true;
+        if (field.getText().equals("") || Integer.parseInt(field.getText()) < 0 || Integer.parseInt(field.getText()) < len){
             isCorrect = false;
             field.setStyle("-fx-background-color: pink");
             return isCorrect;
@@ -39,7 +61,29 @@ public class CheckData {
 
     public boolean isAllNumber(TextField field, int len) {
         boolean isCorrect = true;
-        if (field.getText().equals("") || field.getText().length() != len || Integer.parseInt(field.getText()) < 0 || Integer.parseInt(field.getText()) > 10000){
+        if (field.getText().equals("") || field.getText().length() != len || Integer.parseInt(field.getText()) < 0){
+            isCorrect = false;
+            field.setStyle("-fx-background-color: pink");
+            return isCorrect;
+        } else {
+            for (int i = 0; i < field.getText().length(); i++) {
+                if (isCorrect) {
+                    if ((field.getText().charAt(i) + "").matches("[0-9]")) {
+                    } else {
+                        isCorrect = false;
+                        field.setStyle("-fx-background-color: pink");
+                        return isCorrect;
+                    }
+                }
+            }
+        }
+        field.setStyle("-fx-background-color: limegreen");
+        return isCorrect;
+    }
+
+    public boolean isAllNumberSpecLen(TextField field, int start , int end){
+        boolean isCorrect = true;
+        if (field.getText().equals("") || !(field.getText().length() >= start && field.getText().length() <= end)){
             isCorrect = false;
             field.setStyle("-fx-background-color: pink");
             return isCorrect;
@@ -149,5 +193,15 @@ public class CheckData {
         }
         area.setStyle("-fx-background-color: limegreen");
         return isCorrect;
+    }
+
+    public void clearQuote(TextField field){
+        field.setText(field.getText().replaceAll("'",""));
+        field.setText(field.getText().replaceAll("\"",""));
+    }
+
+    public void clearQuote(TextArea area) {
+        area.setText(area.getText().replaceAll("'",""));
+        area.setText(area.getText().replaceAll("\"",""));
     }
 }

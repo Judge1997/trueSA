@@ -2,6 +2,8 @@ package controllers;
 
 import check.CheckData;
 import database.DBConnector;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -18,26 +20,30 @@ public class EditRecordPageController extends Observable{
     private CheckData checkData = new CheckData();
 
     @FXML
-    private TextField nameField, aeNameField, regionField, businessIDField, capitalField, provinceField, khetField, khwangField, employeeField, contaceTelNumField,contactFaxField, contactField, contactNameField;
+    private TextField nameField, businessIDField, capitalField, employeeField, contaceTelNumField,contactFaxField, contactField, contactNameField;
     @FXML
-    private ComboBox<String> cmbAeName = new ComboBox<>(),cmbRegion = new ComboBox<>(),cmbProvince = new ComboBox<>(),cmbKhet = new ComboBox<>(),cmbKhwang = new ComboBox<>();
+    private ComboBox cmbAeName,cmbRegion,cmbProvince,cmbKhet,cmbKhwang;
     @FXML
     private TextArea locationInstallArea;
     @FXML
     private Label subscriberNumber;
     private Customer customer;
 
-    private String[] aeNameList = {"สมครี","สมยศ","สมหมาย","สมบัติ","สมชาย","สมหญิง"};
-    private String[] regionList = {"bk01","bk02","bk03","kb01","kb02","kcb01","kcb02","kcb03"};
-    private String[] provinceList = {"กรุงเทพมหานคร","กระบี่","กาญจนบุรี","กาฬสินธุ์","กำแพงเพชร","ขอนแก่น","จันทบุรี","ฉะเชิงเทรา","ชลบุรี","ชัยนาท","ชัยภูมิ","ชุมพร","เชียงราย","เชียงใหม่","ตรัง","ตราด","ตาก","นครนายก","นครปฐม","นครพนม","นครราชสีมา "
-    ,"นครศรีธรรมราช","นครสวรรค์","นนทบุรี","นราธิวาส","น่าน","บึงกาฬ","บุรีรัมย์","ปทุมธานี","ประจวบคีรีขันธ์","ปราจีนบุรี","ปัตตานี","พระนครศรีอยุธยา","พังงา","พัทลุง","พิจิตร","พิษณุโลก","เพชรบุรี","เพชรบูรณ์","แพร่","พะเยา","ภูเก็ต","มหาสารคาม","มุกดาหาร","แม่ฮ่องสอน"
-    ,"ยะลา","ยโสธร","ร้อยเอ็ด","ระนอง","ระยอง","ราชบุรี","ลพบุรี","ลำปาง","ลำพูน","เลย","ศรีสะเกษ","สกลนคร","สงขลา","สตูล","สมุทรปราการ","สมุทรสงคราม","สมุทรสาคร","สระแก้ว","สระบุรี","สิงห์บุรี","สุโขทัย","สุพรรณบุรี","สุราษฎร์ธานี","สุรินทร์","หนองคาย","หนองบัวลำภู","อ่างทอง"
-    ,"อุดรธานี","อุทัยธานี","อุตรดิตถ์","อุบลราชธานี","อำนาจเจริญ"};
+    private String[] regionList = {"01","02"};
+    private String[] provinceList;
 
-    public void initialize(){
-        cmbAeName.getItems().addAll(aeNameList);
-        cmbRegion.getItems().addAll(regionList);
-        cmbProvince.getItems().addAll(provinceList);
+    public void initialize() throws SQLException, ClassNotFoundException {
+        ObservableList aeName = FXCollections.observableArrayList();
+        aeName.addAll(customerDB.loadNameEmployee());
+        cmbAeName.setItems(aeName);
+
+        ObservableList region = FXCollections.observableArrayList();
+        region.addAll(regionList);
+        cmbRegion.setItems(region);
+
+        ObservableList province = FXCollections.observableArrayList();
+        province.addAll(provinceList);
+        cmbProvince.setItems(province);
     }
 
     @FXML
@@ -50,13 +56,8 @@ public class EditRecordPageController extends Observable{
     @FXML
     public void editBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
         boolean isNameFieldCorrect = checkData.isAllCharacter(nameField);
-        boolean isAeNameFieldCorrect = checkData.isAllCharacter(aeNameField);
-        boolean isRegionFieldCorrect = checkData.isNull(regionField);
         boolean isBussinessIDFieldCorrect = checkData.isAllNumber(businessIDField,13);
         boolean isCapitalFieldCorrect = checkData.isAllNumber(capitalField);
-        boolean isProvinceFieldCorrect = checkData.isAllCharacter(provinceField);
-        boolean isKhetFieldCorrect = checkData.isAllCharacter(khetField);
-        boolean isKhwangFieldCorrect = checkData.isAllCharacter(khwangField);
         boolean isEmployeeFieldCorrect = checkData.isAllNumber(employeeField);
         boolean isContactTelNumFieldCorrect = checkData.isAllNumber(contaceTelNumField);
         boolean isContactFaxFieldCorrect = checkData.isAllNumber(contactFaxField);
@@ -65,13 +66,8 @@ public class EditRecordPageController extends Observable{
 
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
         checkList.add(isNameFieldCorrect);
-        checkList.add(isAeNameFieldCorrect);
-        checkList.add(isRegionFieldCorrect);
         checkList.add(isBussinessIDFieldCorrect);
         checkList.add(isCapitalFieldCorrect);
-        checkList.add(isProvinceFieldCorrect);
-        checkList.add(isKhetFieldCorrect);
-        checkList.add(isKhwangFieldCorrect);
         checkList.add(isEmployeeFieldCorrect);
         checkList.add(isContactTelNumFieldCorrect);
         checkList.add(isContactFaxFieldCorrect);
@@ -81,14 +77,14 @@ public class EditRecordPageController extends Observable{
         if (checkData.isAllCorrect(checkList)){
             int id = Integer.parseInt(subscriberNumber.getText());
             String name = this.nameField.getText();
-            String aeName = this.aeNameField.getText();
-            String region = this.regionField.getText();
+            String aeName = String.valueOf(this.cmbAeName.getValue());
+            String region = String.valueOf(this.cmbRegion.getValue());
             String businessID = this.businessIDField.getText();
             String locationInstall = this.locationInstallArea.getText();//ไม่ต้องเช็ค
             String capital = this.capitalField.getText();
-            String province = this.provinceField.getText();
-            String khet = this.khetField.getText();
-            String khwang = this.khwangField.getText();
+            String province = String.valueOf(this.cmbProvince.getValue());
+            String khet = String.valueOf(this.cmbKhet.getValue());
+            String khwang = String.valueOf(this.cmbKhwang.getValue());
             String employee = this.employeeField.getText();
             String contaceTelNum = this.contaceTelNumField.getText();
             String contactFax = this.contactFaxField.getText();
@@ -114,14 +110,14 @@ public class EditRecordPageController extends Observable{
 
         subscriberNumber.setText(String.valueOf(this.customer.getId()));
         nameField.setText(this.customer.getName());
-        aeNameField.setText(this.customer.getAeName());
-        regionField.setText(this.customer.getRegion());
+        cmbAeName.setValue(this.customer.getAeName());
+        cmbRegion.setValue(this.customer.getRegion());
         locationInstallArea.setText(this.customer.getLocationInstall());
         businessIDField.setText(this.customer.getBusinessId());
         capitalField.setText(this.customer.getCapital());
-        provinceField.setText(this.customer.getProvince());
-        khetField.setText(this.customer.getKhet());
-        khwangField.setText(this.customer.getKhwang());
+        cmbProvince.setValue(this.customer.getProvince());
+        cmbKhet.setValue(this.customer.getKhet());
+        cmbKhwang.setValue(this.customer.getKhwang());
         employeeField.setText(this.customer.getEmployee());
         contaceTelNumField.setText(this.customer.getContactTelNum());
         contactFaxField.setText(this.customer.getContactFax());

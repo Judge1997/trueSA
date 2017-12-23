@@ -2,9 +2,12 @@ package controllers;
 
 import check.CheckData;
 import database.DBConnector;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,9 +22,92 @@ public class AddRecordPageController extends Observable {
     private CheckData checkData = new CheckData();
 
     @FXML
-    private TextField nameField, aeNameField, regionField, businessIDField, capitalField, provinceField, khetField, khwangField, employeeField, contaceTelNumField, contactFaxField, contactField, contactNameField;
+    private TextField nameField, businessIDField, capitalField, employeeField, contaceTelNumField, contactFaxField, contactField, contactNameField;
     @FXML
     private TextArea locationInstallArea;
+
+    @FXML
+    private ComboBox cmbAeName,cmbRegion,cmbProvince,cmbKhet,cmbKhwang;
+
+    private String[] regionList = {"01","02"};
+    private String[] provinceList;
+    private String[] khetList;
+
+    public void initialize() throws SQLException, ClassNotFoundException {
+        ObservableList aeName = FXCollections.observableArrayList();
+        aeName.addAll(customerDB.loadNameEmployee());
+        cmbAeName.setItems(aeName);
+        cmbAeName.setValue(cmbAeName.getItems().get(0));
+
+        ObservableList region = FXCollections.observableArrayList();
+        region.addAll(regionList);
+        cmbRegion.setItems(region);
+        cmbRegion.setValue(cmbRegion.getItems().get(0));
+
+        ObservableList province = FXCollections.observableArrayList();
+        provinceList = new String[]{"กรุงเทพมหานคร"};
+        province.addAll(provinceList);
+        cmbProvince.setItems(province);
+        cmbProvince.setValue(cmbProvince.getItems().get(0));
+
+        ObservableList khet = FXCollections.observableArrayList();
+        khetList = new String[]{"จตุจักร", "ลาดพร้าว", "ดอนเมือง"};
+        khet.addAll(khetList);
+        cmbKhet.setItems(khet);
+        cmbKhet.setValue(cmbKhet.getItems().get(0));
+    }
+
+    @FXML
+    public void regionComboBox(){
+        ObservableList province = FXCollections.observableArrayList();
+        ObservableList khet = FXCollections.observableArrayList();
+        if (cmbRegion.getValue().equals("01")){
+            provinceList = new String[]{"กรุงเทพมหานคร"};
+            province.removeAll(province);
+            province.addAll(provinceList);
+            cmbProvince.setItems(province);
+            cmbProvince.setValue(cmbProvince.getItems().get(0));
+
+            khetList = new String[]{"จตุจักร", "ลาดพร้าว", "ดอนเมือง"};
+            khet.addAll(khetList);
+            cmbKhet.setItems(khet);
+            cmbKhet.setValue(cmbKhet.getItems().get(0));
+        } else {
+            provinceList = new String[]{"นนทบุรี","ปทุมธานี"};
+            province.removeAll(province);
+            province.addAll(provinceList);
+            cmbProvince.setItems(province);
+            cmbProvince.setValue(cmbProvince.getItems().get(0));
+
+            khetList = new String[]{"เมืองนนทบุรี", "บางใหญ่", "บางบัวทอง", "ปากเกร็ด"};
+            khet.addAll(khetList);
+            cmbKhet.setItems(khet);
+            cmbKhet.setValue(cmbKhet.getItems().get(0));
+        }
+    }
+
+    @FXML
+    public void provinceComboBox(){
+        ObservableList khet = FXCollections.observableArrayList();
+        if (cmbProvince.getValue().equals("กรุงเทพมหานคร")){
+            khetList = new String[]{"จตุจักร", "ลาดพร้าว", "ดอนเมือง"};
+            khet.addAll(khetList);
+            cmbKhet.setItems(khet);
+            cmbKhet.setValue(cmbKhet.getItems().get(0));
+
+        } else if (cmbProvince.getValue().equals("นนทบุรี")){
+            khetList = new String[]{"เมืองนนทบุรี", "บางใหญ่", "บางบัวทอง", "ปากเกร็ด"};
+            khet.addAll(khetList);
+            cmbKhet.setItems(khet);
+            cmbKhet.setValue(cmbKhet.getItems().get(0));
+
+        } else {
+            khetList = new String[]{"เมืองปทุมธานี", "ธัญบุรี", "ลำลูกกา", "สามโคก"};
+            khet.addAll(khetList);
+            cmbKhet.setItems(khet);
+            cmbKhet.setValue(cmbKhet.getItems().get(0));
+        }
+    }
 
     @FXML
     public void cancelBtn(ActionEvent event) {
@@ -30,29 +116,22 @@ public class AddRecordPageController extends Observable {
     }
 
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
+        checkData.clearQuote(nameField);
+        checkData.clearQuote(locationInstallArea);
+
         boolean isNameFieldCorrect = checkData.isAllCharacter(nameField);
-        boolean isAeNameFieldCorrect = checkData.isAllCharacter(aeNameField);
-        boolean isRegionFieldCorrect = checkData.isNull(regionField);
         boolean isBussinessIDFieldCorrect = checkData.isAllNumber(businessIDField,13);
-        boolean isCapitalFieldCorrect = checkData.isAllNumber(capitalField);
-        boolean isProvinceFieldCorrect = checkData.isAllCharacter(provinceField);
-        boolean isKhetFieldCorrect = checkData.isAllCharacter(khetField);
-        boolean isKhwangFieldCorrect = checkData.isAllCharacter(khwangField);
-        boolean isEmployeeFieldCorrect = checkData.isAllNumber(employeeField);
-        boolean isContactTelNumFieldCorrect = checkData.isAllNumber(contaceTelNumField);
-        boolean isContactFaxFieldCorrect = checkData.isAllNumber(contactFaxField);
-        boolean isContactFieldCorrect = checkData.isAllNumber(contactField);
+        boolean isCapitalFieldCorrect = checkData.isAllNumberSpec(capitalField, 1000000000);
+        boolean isEmployeeFieldCorrect = checkData.isAllNumber(employeeField, 2000);
+        boolean isContactTelNumFieldCorrect = checkData.isAllNumber(contaceTelNumField,9);
+        boolean isContactFaxFieldCorrect = checkData.isAllNumber(contactFaxField,9);
+        boolean isContactFieldCorrect = checkData.isAllNumberSpecLen(contactField,9,10);
         boolean isContactNameFieldCorrect = checkData.isAllCharacter(contactNameField);
 
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
         checkList.add(isNameFieldCorrect);
-        checkList.add(isAeNameFieldCorrect);
-        checkList.add(isRegionFieldCorrect);
         checkList.add(isBussinessIDFieldCorrect);
         checkList.add(isCapitalFieldCorrect);
-        checkList.add(isProvinceFieldCorrect);
-        checkList.add(isKhetFieldCorrect);
-        checkList.add(isKhwangFieldCorrect);
         checkList.add(isEmployeeFieldCorrect);
         checkList.add(isContactTelNumFieldCorrect);
         checkList.add(isContactFaxFieldCorrect);
@@ -61,14 +140,14 @@ public class AddRecordPageController extends Observable {
 
         if (checkData.isAllCorrect(checkList)){
             String name = this.nameField.getText();
-            String aeName = this.aeNameField.getText();
-            String region = this.regionField.getText();
+            String aeName = String.valueOf(this.cmbAeName.getValue());
+            String region = String.valueOf(this.cmbRegion.getValue());
             String businessID = this.businessIDField.getText();
             String locationInstall = this.locationInstallArea.getText();//ไม่ต้องเช็ค
             String capital = this.capitalField.getText();
-            String province = this.provinceField.getText();
-            String khet = this.khetField.getText();
-            String khwang = this.khwangField.getText();
+            String province = String.valueOf(this.cmbProvince.getValue());
+            String khet = String.valueOf(this.cmbKhet.getValue());
+            String khwang = String.valueOf(this.cmbKhwang.getValue());
             String employee = this.employeeField.getText();
             String contaceTelNum = this.contaceTelNumField.getText();
             String contactFax = this.contactFaxField.getText();
