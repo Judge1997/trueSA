@@ -22,12 +22,14 @@ public class AddRecordPageController extends Observable {
     private CheckData checkData = new CheckData();
 
     @FXML
-    private TextField nameField, businessIDField, capitalField, employeeField, contaceTelNumField, contactFaxField, contactField, contactNameField;
+    private TextField nameField, businessIDField, capitalField, khwangField, employeeField, contaceTelNumField, contactFaxField, contactField, contactNameField;
     @FXML
     private TextArea locationInstallArea;
 
+    private boolean isCustomerNameFieldCorrect = false;
+
     @FXML
-    private ComboBox cmbAeName,cmbRegion,cmbProvince,cmbKhet,cmbKhwang;
+    private ComboBox cmbAeName,cmbRegion,cmbProvince,cmbKhet;
 
     private String[] regionList = {"01","02"};
     private String[] provinceList;
@@ -94,11 +96,13 @@ public class AddRecordPageController extends Observable {
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
         checkData.clearQuote(nameField);
         checkData.clearQuote(locationInstallArea);
+        checkData.clearQuote(khwangField);
 
         boolean isNameFieldCorrect = checkData.isAllCharacter(nameField);
         boolean isBussinessIDFieldCorrect = checkData.isAllNumber(businessIDField,13);
         boolean isCapitalFieldCorrect = checkData.isAllNumberSpec(capitalField, 1000000000);
-        boolean isEmployeeFieldCorrect = checkData.isAllNumber(employeeField, 2000);
+        boolean isKhwangFieldCorrect = checkData.isAllCharacter(khwangField);
+        boolean isEmployeeFieldCorrect = checkData.isAllNumberSpec(employeeField, 2000);
         boolean isContactTelNumFieldCorrect = checkData.isAllNumber(contaceTelNumField,9);
         boolean isContactFaxFieldCorrect = checkData.isAllNumber(contactFaxField,9);
         boolean isContactFieldCorrect = checkData.isAllNumberSpecLen(contactField,9,10);
@@ -108,6 +112,7 @@ public class AddRecordPageController extends Observable {
         checkList.add(isNameFieldCorrect);
         checkList.add(isBussinessIDFieldCorrect);
         checkList.add(isCapitalFieldCorrect);
+        checkList.add(isKhwangFieldCorrect);
         checkList.add(isEmployeeFieldCorrect);
         checkList.add(isContactTelNumFieldCorrect);
         checkList.add(isContactFaxFieldCorrect);
@@ -123,7 +128,7 @@ public class AddRecordPageController extends Observable {
             String capital = this.capitalField.getText();
             String province = String.valueOf(this.cmbProvince.getValue());
             String khet = String.valueOf(this.cmbKhet.getValue());
-            String khwang = String.valueOf(this.cmbKhwang.getValue());
+            String khwang = String.valueOf(this.khwangField.getText());
             String employee = this.employeeField.getText();
             String contaceTelNum = this.contaceTelNumField.getText();
             String contactFax = this.contactFaxField.getText();
@@ -150,7 +155,15 @@ public class AddRecordPageController extends Observable {
 
     }
 
-
+    @FXML
+    public void checkBtn() throws SQLException, ClassNotFoundException {
+        checkData.clearQuote(this.nameField);
+        if (checkData.checkDupCustomer(nameField) || checkData.isNull(nameField)){
+            isCustomerNameFieldCorrect = false;
+        } else {
+            isCustomerNameFieldCorrect = true;
+        }
+    }
 
     private void closeThisWindow(ActionEvent event) {
         Button cancelBtn = (Button) event.getSource();

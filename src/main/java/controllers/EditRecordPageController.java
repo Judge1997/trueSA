@@ -20,9 +20,12 @@ public class EditRecordPageController extends Observable{
     private CheckData checkData = new CheckData();
 
     @FXML
-    private TextField nameField, businessIDField, capitalField, employeeField, contaceTelNumField,contactFaxField, contactField, contactNameField;
+    private TextField nameField, businessIDField, capitalField, khwangField, employeeField, contaceTelNumField,contactFaxField, contactField, contactNameField;
     @FXML
-    private ComboBox cmbAeName,cmbRegion,cmbProvince,cmbKhet,cmbKhwang;
+    private ComboBox cmbAeName,cmbRegion,cmbProvince,cmbKhet;
+
+    private boolean isCustomerNameFieldCorrect = false;
+
     @FXML
     private TextArea locationInstallArea;
     @FXML
@@ -41,11 +44,6 @@ public class EditRecordPageController extends Observable{
         ObservableList region = FXCollections.observableArrayList();
         region.addAll(regionList);
         cmbRegion.setItems(region);
-
-        ObservableList province = FXCollections.observableArrayList();
-        province.addAll(provinceList);
-        cmbProvince.setItems(province);
-
     }
 
     @FXML
@@ -85,19 +83,25 @@ public class EditRecordPageController extends Observable{
 
     @FXML
     public void editBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
+        checkData.clearQuote(nameField);
+        checkData.clearQuote(locationInstallArea);
+        checkData.clearQuote(khwangField);
+
         boolean isNameFieldCorrect = checkData.isAllCharacter(nameField);
         boolean isBussinessIDFieldCorrect = checkData.isAllNumber(businessIDField,13);
-        boolean isCapitalFieldCorrect = checkData.isAllNumber(capitalField);
-        boolean isEmployeeFieldCorrect = checkData.isAllNumber(employeeField);
-        boolean isContactTelNumFieldCorrect = checkData.isAllNumber(contaceTelNumField);
-        boolean isContactFaxFieldCorrect = checkData.isAllNumber(contactFaxField);
-        boolean isContactFieldCorrect = checkData.isAllNumber(contactField);
+        boolean isCapitalFieldCorrect = checkData.isAllNumberSpec(capitalField, 1000000000);
+        boolean isKhwangFieldCorrect = checkData.isAllCharacter(khwangField);
+        boolean isEmployeeFieldCorrect = checkData.isAllNumberSpec(employeeField, 2000);
+        boolean isContactTelNumFieldCorrect = checkData.isAllNumber(contaceTelNumField,9);
+        boolean isContactFaxFieldCorrect = checkData.isAllNumber(contactFaxField,9);
+        boolean isContactFieldCorrect = checkData.isAllNumberSpecLen(contactField,9,10);
         boolean isContactNameFieldCorrect = checkData.isAllCharacter(contactNameField);
 
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
         checkList.add(isNameFieldCorrect);
         checkList.add(isBussinessIDFieldCorrect);
         checkList.add(isCapitalFieldCorrect);
+        checkList.add(isKhwangFieldCorrect);
         checkList.add(isEmployeeFieldCorrect);
         checkList.add(isContactTelNumFieldCorrect);
         checkList.add(isContactFaxFieldCorrect);
@@ -114,7 +118,7 @@ public class EditRecordPageController extends Observable{
             String capital = this.capitalField.getText();
             String province = String.valueOf(this.cmbProvince.getValue());
             String khet = String.valueOf(this.cmbKhet.getValue());
-            String khwang = String.valueOf(this.cmbKhwang.getValue());
+            String khwang = String.valueOf(this.khwangField.getText());
             String employee = this.employeeField.getText();
             String contaceTelNum = this.contaceTelNumField.getText();
             String contactFax = this.contactFaxField.getText();
@@ -147,12 +151,42 @@ public class EditRecordPageController extends Observable{
         capitalField.setText(this.customer.getCapital());
         cmbProvince.setValue(this.customer.getProvince());
         cmbKhet.setValue(this.customer.getKhet());
-        cmbKhwang.setValue(this.customer.getKhwang());
+        khwangField.setText(this.customer.getKhwang());
         employeeField.setText(this.customer.getEmployee());
         contaceTelNumField.setText(this.customer.getContactTelNum());
         contactFaxField.setText(this.customer.getContactFax());
         contactField.setText(this.customer.getContact());
         contactNameField.setText(this.customer.getContactName());
+
+        ObservableList province = FXCollections.observableArrayList();
+        if (cmbRegion.getValue().equals("01")){
+            provinceList = new String[]{"กรุงเทพมหานคร"};
+        } else {
+            provinceList = new String[]{"นนทบุรี","ปทุมธานี"};
+        }
+        province.addAll(provinceList);
+        cmbProvince.setItems(province);
+
+        ObservableList khet = FXCollections.observableArrayList();
+        if (cmbProvince.getValue().equals("กรุงเทพมหานคร")){
+            khetList = new String[]{"จตุจักร", "ลาดพร้าว", "ดอนเมือง"};
+        } else if (cmbProvince.getValue().equals("นนทบุรี")){
+            khetList = new String[]{"เมืองนนทบุรี", "บางใหญ่", "บางบัวทอง", "ปากเกร็ด"};
+        } else {
+            khetList = new String[]{"เมืองปทุมธานี", "ธัญบุรี", "ลำลูกกา", "สามโคก"};
+        }
+        khet.addAll(khetList);
+        cmbKhet.setItems(khet);
+    }
+
+    @FXML
+    public void checkBtn() throws SQLException, ClassNotFoundException {
+        checkData.clearQuote(this.nameField);
+        if (checkData.checkDupCustomer(nameField) || checkData.isNull(nameField)){
+            isCustomerNameFieldCorrect = false;
+        } else {
+            isCustomerNameFieldCorrect = true;
+        }
     }
 
     private void closeThisWindow(ActionEvent event) {

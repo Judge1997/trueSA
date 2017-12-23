@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="640" maxWidth="1280" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720" prefWidth="850" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditRecordPageController">
+<GridPane maxHeight="640" maxWidth="1280" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720" prefWidth="850" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditRecordPageController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -55,7 +55,7 @@
                     </content>
                 </ScrollPane>
                 <ComboBox fx:id="cmbAeName" layoutX="135.0" layoutY="78.0" prefHeight="25.0" prefWidth="186.0" />
-                <ComboBox fx:id="cmbRegion" layoutX="135.0" layoutY="113.0" prefHeight="25.0" prefWidth="186.0" />
+                <ComboBox fx:id="cmbRegion" layoutX="135.0" layoutY="113.0" onAction="#regionComboBox" prefHeight="25.0" prefWidth="186.0" />
             </children></AnchorPane>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>
@@ -118,9 +118,9 @@
                     </font>
                 </Label>
                 <TextField fx:id="contactNameField" layoutX="166.0" layoutY="446.0" prefHeight="25.0" prefWidth="105.0" />
-                <ComboBox fx:id="cmbProvince" layoutX="166.0" layoutY="114.0" prefHeight="25.0" prefWidth="139.0" />
+                <ComboBox fx:id="cmbProvince" layoutX="166.0" layoutY="114.0" onAction="#provinceComboBox" prefHeight="25.0" prefWidth="139.0" />
             <ComboBox fx:id="cmbKhet" layoutX="166.0" layoutY="149.0" prefHeight="25.0" prefWidth="139.0" />
-            <ComboBox fx:id="cmbKhwang" layoutX="166.0" layoutY="184.0" prefHeight="25.0" prefWidth="139.0" />
+            <TextField fx:id="khwangField" layoutX="166.0" layoutY="184.0" prefHeight="25.0" prefWidth="105.0" />
             </children></AnchorPane>
         <Label text="Customer Informations">
             <padding>
