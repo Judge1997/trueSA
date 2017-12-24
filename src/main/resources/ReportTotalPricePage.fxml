@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportTotalPricePageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportTotalPricePageController">
    <children>
-      <ScrollPane layoutX="65.0" layoutY="73.0">
+      <ScrollPane layoutX="9.0" layoutY="75.0" prefHeight="272.0" prefWidth="585.0">
          <content>
-            <TableView fx:id="tableView" prefHeight="200.0" prefWidth="471.0">
+            <TableView fx:id="tableView" prefHeight="270.0" prefWidth="583.0">
               <columns>
                 <TableColumn prefWidth="124.0" text="ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="200.0" text="Name"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
@@ -22,18 +22,19 @@
             </TableView>
          </content>
       </ScrollPane>
-      <Label alignment="CENTER" layoutY="31.0" prefHeight="28.0" prefWidth="600.0" text="Total Avarage Report">
+      <Label alignment="CENTER" layoutX="189.0" layoutY="29.0" prefHeight="28.0" prefWidth="81.0" text="Report" textFill="#ff5e01">
          <font>
-            <Font size="16.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="332.0" layoutY="321.0" prefHeight="38.0" prefWidth="94.0" text="Total price">
+      <Label layoutX="370.0" layoutY="348.0" prefHeight="38.0" prefWidth="94.0" text="Total price">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="totalReport" alignment="CENTER_RIGHT" layoutX="426.0" layoutY="332.0" prefHeight="17.0" prefWidth="81.0" text="?" />
-      <Button layoutX="39.0" layoutY="328.0" mnemonicParsing="false" onAction="#backBtn" text="BACK" />
-      <Label layoutX="524.0" layoutY="332.0" text="Baht" />
+      <Label fx:id="totalReport" alignment="CENTER_RIGHT" layoutX="464.0" layoutY="359.0" prefHeight="17.0" prefWidth="81.0" text="?" />
+      <Label layoutX="562.0" layoutY="359.0" text="Baht" />
+      <Label layoutX="284.0" layoutY="34.0" text="............" />
+      <Button layoutX="9.0" layoutY="355.0" mnemonicParsing="false" style="-fx-background-color: FFA74F;" text="PRINT REPORT" />
    </children>
 </AnchorPane>

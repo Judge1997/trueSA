@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistPackageToCustomerController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistPackageToCustomerController">
    <children>
       <Button fx:id="addBtn" layoutX="433.0" layoutY="361.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: FFA74F;" text="ADD" />
       <Button layoutX="510.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelBtn" style="-fx-background-color: FFA74F;" text="CANCEL" />
@@ -37,13 +37,16 @@
       <Label fx:id="internetLabel" layoutX="140.0" layoutY="200.0" text="xxxxxxxxxxxxxxxxxxxxxxx" />
       <Label fx:id="voiceLabel" layoutX="140.0" layoutY="230.0" text="xxxxxxxxxxxxxxxxxxxxxxx" />
       <Label fx:id="dataLabel" layoutX="140.0" layoutY="260.0" text="xxxxxxxxxxxxxxxxxxxxxxx" />
-      <Label fx:id="mobileUserLabel" layoutX="351.0" layoutY="146.0" text="xxxxxxxxxxxx" />
-      <Label fx:id="mobileSpeedLabel" layoutX="351.0" layoutY="168.0" text="xxxxxxxxxxxx" />
-      <Label fx:id="mobileTimesLabel" layoutX="351.0" layoutY="191.0" text="xxxxxxxxxxxx" />
-      <Label fx:id="tvsLabel" layoutX="351.0" layoutY="236.0" text="xxxxxxxxxxxx" />
-      <Label layoutX="431.0" layoutY="148.0" text="Users" />
-      <Label layoutX="431.0" layoutY="170.0" text="Mbps" />
-      <Label layoutX="431.0" layoutY="192.0" text="Minutes" />
-      <Label layoutX="431.0" layoutY="237.0" text="Channels" />
+      <Label fx:id="mobileUserLabel" layoutX="402.0" layoutY="147.0" text="xxxxxxxxxxxx" />
+      <Label fx:id="mobileSpeedLabel" layoutX="402.0" layoutY="169.0" text="xxxxxxxxxxxx" />
+      <Label fx:id="mobileTimesLabel" layoutX="402.0" layoutY="192.0" text="xxxxxxxxxxxx" />
+      <Label fx:id="tvsLabel" layoutX="399.0" layoutY="236.0" text="xxxxxxxxxxxx" />
+      <Label layoutX="482.0" layoutY="149.0" text="Users" />
+      <Label layoutX="482.0" layoutY="171.0" text="Mbps" />
+      <Label layoutX="482.0" layoutY="193.0" text="Minutes" />
+      <Label layoutX="479.0" layoutY="237.0" text="Channels" />
+      <Label layoutX="343.0" layoutY="149.0" text="Quantity" />
+      <Label layoutX="343.0" layoutY="170.0" text="Speed" />
+      <Label layoutX="343.0" layoutY="192.0" text="Times" />
    </children>
 </AnchorPane>
