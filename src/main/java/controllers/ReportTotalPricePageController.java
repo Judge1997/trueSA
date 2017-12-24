@@ -27,6 +27,8 @@ public class ReportTotalPricePageController {
 
     private String username;
 
+    private String status;
+
     @FXML
     private TableView<ReportTotalPrice> tableView;
     @FXML
@@ -47,44 +49,7 @@ public class ReportTotalPricePageController {
 //    }
 
     public void initialize() throws SQLException, ClassNotFoundException {
-        ObservableList<Package> packages = FXCollections.observableArrayList();
 
-        ObservableList<CustomerPackage> customerPackages = FXCollections.observableArrayList();
-
-        ObservableList<Customer> customers = FXCollections.observableArrayList();
-
-        customers.addAll(customerDB.loadCustonerDB());
-
-        customerPackages.addAll(customerDB.loadAllCustomerPackage());
-
-        packages.addAll(customerDB.loadPacketDB());
-
-        ObservableList<ReportTotalPrice> reportTotalPrices = FXCollections.observableArrayList();
-
-        double totalPrice = 0;
-
-        for (CustomerPackage cp : customerPackages){
-            for (Package p : packages){
-                if (cp.getIdPackage() == p.getId()){
-                    for (Customer c : customers){
-                        if (cp.getIdCustomer() == c.getId()){
-                            ReportTotalPrice reportTotalPrice = new ReportTotalPrice(c.getId(), c.getName(), Double.parseDouble(p.getPrice()));
-                            if (this.contain(reportTotalPrices, reportTotalPrice) == false){
-                                reportTotalPrices.add(reportTotalPrice);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        tableView.setItems(reportTotalPrices);
-
-        for (ReportTotalPrice r : tableView.getItems()){
-            totalPrice += r.getPrice();
-        }
-
-        totalReport.setText(getPriceString(totalPrice));
     }
 
     private boolean contain(ObservableList<ReportTotalPrice> reportTotalPrices, ReportTotalPrice reportTotalPrice){
@@ -140,5 +105,69 @@ public class ReportTotalPricePageController {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setStatus(String status) throws SQLException, ClassNotFoundException {
+        this.status = status;
+        this.render();
+    }
+
+    private void render() throws SQLException, ClassNotFoundException {
+        ObservableList<Package> packages = FXCollections.observableArrayList();
+
+        ObservableList<CustomerPackage> customerPackages = FXCollections.observableArrayList();
+
+        ObservableList<Customer> customers = FXCollections.observableArrayList();
+
+        customers.addAll(customerDB.loadCustonerDB());
+
+        customerPackages.addAll(customerDB.loadAllCustomerPackage());
+
+        packages.addAll(customerDB.loadPacketDB());
+
+        ObservableList<ReportTotalPrice> reportTotalPrices = FXCollections.observableArrayList();
+
+        double totalPrice = 0;
+
+        if (status.equals("TotalEachCustomer")){
+            for (CustomerPackage cp : customerPackages){
+                for (Package p : packages){
+                    if (cp.getIdPackage() == p.getId()){
+                        for (Customer c : customers){
+                            if (cp.getIdCustomer() == c.getId() && cp.getStatus().equals("Active")){
+                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(c.getId(), c.getName(), Double.parseDouble(p.getPrice()));
+                                if (this.contain(reportTotalPrices, reportTotalPrice) == false){
+                                    reportTotalPrices.add(reportTotalPrice);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            for (CustomerPackage cp : customerPackages){
+                for (Package p : packages){
+                    if (cp.getIdPackage() == p.getId()){
+                        for (Customer c : customers){
+                            if (cp.getIdCustomer() == c.getId() && cp.getStatus().equals("Active")){
+                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(p.getId(), p.getName(), Double.parseDouble(p.getPrice()));
+                                if (this.contain(reportTotalPrices, reportTotalPrice) == false){
+                                    reportTotalPrices.add(reportTotalPrice);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+        tableView.setItems(reportTotalPrices);
+
+        for (ReportTotalPrice r : tableView.getItems()){
+            totalPrice += r.getPrice();
+        }
+
+        totalReport.setText(getPriceString(totalPrice));
     }
 }

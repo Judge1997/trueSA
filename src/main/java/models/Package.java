@@ -12,8 +12,9 @@ public class Package {
     private int mobileSpeed;
     private int mobileTimes;
     private int tvs;
+    private String status;
 
-    public Package(int id, String name, double price, int net, int voice, int data, int mobileQuantity, int mobileSpeed, int mobileTimes, int tvs){
+    public Package(int id, String name, double price, int net, int voice, int data, int mobileQuantity, int mobileSpeed, int mobileTimes, int tvs, String status){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -24,6 +25,7 @@ public class Package {
         this.mobileSpeed = mobileSpeed;
         this.mobileTimes = mobileTimes;
         this.tvs = tvs;
+        this.status = status;
     }
 
     public String getName() {
@@ -112,5 +114,13 @@ public class Package {
 
     public void setMobileTimes(int mobileTimes) {
         this.mobileTimes = mobileTimes;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -31,6 +31,8 @@ public class CustomerManageController extends MainController implements Observer
     private TextField searchField;
     @FXML
     private Button editBtn, deleteBtn, displayBtn;
+    @FXML
+    private ComboBox cmbReport;
 
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
@@ -45,6 +47,12 @@ public class CustomerManageController extends MainController implements Observer
         editBtn.setDisable(true);
         deleteBtn.setDisable(true);
         displayBtn.setDisable(true);
+
+        String[] reportList = {"TotalEachCustomer", "TotalEachPackage"};
+        ObservableList lst = FXCollections.observableArrayList();
+        lst.addAll(reportList);
+        cmbReport.setItems(lst);
+        cmbReport.setValue(cmbReport.getItems().get(0));
 
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
@@ -136,13 +144,14 @@ public class CustomerManageController extends MainController implements Observer
 
 
     @FXML
-    public void reportBtn(ActionEvent event) throws IOException {
+    public void reportBtn(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         Button loginBtn = (Button) event.getSource();
         Stage stage = (Stage) loginBtn.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReportTotalPricePage.fxml"));
         Parent window = loader.load();
         ReportTotalPricePageController reportTotalPricePageController = loader.getController();
         reportTotalPricePageController.setUsername(this.userLabel.getText());
+        reportTotalPricePageController.setStatus(String.valueOf(cmbReport.getValue()));
         this.goToPage(stage,window,400,600);
     }
 
@@ -158,17 +167,11 @@ public class CustomerManageController extends MainController implements Observer
     @FXML
     public void searchBtn(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         String name = searchField.getText();
-        for (Customer i : tableView.getItems()){
-            if (i.getName().equals(name)){
-                Stage stage = new Stage();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayCustomer.fxml"));
-                Parent window = loader.load();
-                DisplayCustomerPageController displayCustomerPageController = loader.getController();
-                displayCustomerPageController.setValue(i);
 
-                this.goToPage(stage,window,600,571);
-            }
-        }
+        ObservableList lst = FXCollections.observableArrayList();
+        lst.addAll(customerDB.loadSearchName(name));
+        tableView.setItems(lst);
+
         searchField.setText("");
     }
 

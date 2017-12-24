@@ -28,7 +28,7 @@ public class RegistPackageToCustomerController extends Observable {
     private Button addBtn;
 
     @FXML
-    private Label nameLabel, priceLabel, internetLabel, dataLabel, voiceLabel, mobileLabel, tvsLabel;
+    private Label nameLabel, priceLabel, internetLabel, dataLabel, voiceLabel, mobileUserLabel, mobileSpeedLabel, mobileTimesLabel, tvsLabel;
 
     public void initialize() throws SQLException, ClassNotFoundException {
         ObservableList<Package> packages = FXCollections.observableArrayList();
@@ -47,6 +47,9 @@ public class RegistPackageToCustomerController extends Observable {
         voiceLabel.setText(String.valueOf(packages.getVoice()));
         dataLabel.setText(String.valueOf(packages.getData()));
 //        mobileLabel.setText(packages.getMobile());
+        mobileUserLabel.setText(String.valueOf(packages.getMobileQuantity()));
+        mobileSpeedLabel.setText(String.valueOf(packages.getMobileSpeed()));
+        mobileTimesLabel.setText(String.valueOf(packages.getMobileTimes()));
         tvsLabel.setText(String.valueOf(packages.getTvs()));
 
         addBtn.setDisable(false);

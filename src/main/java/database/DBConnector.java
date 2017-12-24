@@ -22,6 +22,47 @@ public class DBConnector {
         return customerDB;
     }
 
+    public List<Customer> loadSearchName(String str) throws ClassNotFoundException, SQLException {
+        List<Customer> list = new Vector<>();
+
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if(connection != null){
+            System.out.println("Connected to customerDB.db");
+            String query = "Select * from customer WHERE name LIKE '%"+str+"%'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int id = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                String aeName = resultSet.getString(3);
+                String region = resultSet.getString(4);
+                String locationInstall = resultSet.getString(5);
+                String businessID = resultSet.getString(6);
+                String capital = resultSet.getString(7);
+                String province = resultSet.getString(8);
+                String khet = resultSet.getString(9);
+                String khwang = resultSet.getString(10);
+                String employee = resultSet.getString(11);
+                String contaceTelNum = resultSet.getString(12);
+                String contactFax = resultSet.getString(13);
+                String contact = resultSet.getString(14);
+                String contactName = resultSet.getString(15);
+                double packetCost = resultSet.getDouble(16);
+
+                list.add(new Customer(id,name,aeName,region,locationInstall,businessID,capital,province,khet,khwang,employee,contaceTelNum,contactFax,contact,contactName,
+                        packetCost));
+            }
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+
+        return list;
+    }
+
     public List<String> loadNameEmployee() throws ClassNotFoundException, SQLException {
         List<String> list = new Vector<>();
 
@@ -196,8 +237,9 @@ public class DBConnector {
                 int mobileSpeed = resultSet.getInt(8);
                 int mobileTimes = resultSet.getInt(9);
                 int tvs = resultSet.getInt(10);
+                String status = resultSet.getString(11);
 
-                packages.add(new Package(id, name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs));
+                packages.add(new Package(id, name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs, status));
             }
             connection.close();
             System.out.println("Closed to customerDB.db");
@@ -214,7 +256,7 @@ public class DBConnector {
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
             String query = "INSERT INTO package (name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs, status) "+"VALUES ( " +
-                    "'"+p.getName()+"',"+p.getPrice()+","+p.getNet()+","+p.getVoice()+","+p.getData()+","+p.getMobileQuantity()+","+p.getMobileSpeed()+","+p.getMobileTimes()+","+p.getTvs()+", 'Active'"+");";
+                    "'"+p.getName()+"',"+p.getPrice()+","+p.getNet()+","+p.getVoice()+","+p.getData()+","+p.getMobileQuantity()+","+p.getMobileSpeed()+","+p.getMobileTimes()+","+p.getTvs()+", '"+p.getStatus()+"'"+");";
             System.out.println(query);
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
@@ -314,8 +356,9 @@ public class DBConnector {
                 int id = resultSet.getInt(1);
                 int idCustomer = resultSet.getInt(2);
                 int idPackage = resultSet.getInt(3);
+                String status = resultSet.getString(4);
 
-                packages.add(new CustomerPackage(id, idCustomer, idPackage));
+                packages.add(new CustomerPackage(id, idCustomer, idPackage, status));
             }
 
             connection.close();
@@ -342,8 +385,9 @@ public class DBConnector {
                 int id = resultSet.getInt(1);
                 int idCustomer = resultSet.getInt(2);
                 int idPackage = resultSet.getInt(3);
+                String status = resultSet.getString(4);
 
-                packages.add(new CustomerPackage(id, idCustomer, idPackage));
+                packages.add(new CustomerPackage(id, idCustomer, idPackage, status));
             }
 
             connection.close();
@@ -402,8 +446,8 @@ public class DBConnector {
                         int mobileSpeed = resultSet.getInt(8);
                         int mobileTimes = resultSet.getInt(9);
                         int tvs = resultSet.getInt(10);
-
-                        packages.add(new Package(id, name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs));
+                        String status = i.getStatus();
+                        packages.add(new Package(id, name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs, status));
                     }
                 }
             }
@@ -422,8 +466,8 @@ public class DBConnector {
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "INSERT INTO customerPackage (idCustomer, idPackage) "+"VALUES ( " +
-                    ""+idCustomer+","+idPackage+");";
+            String query = "INSERT INTO customerPackage (idCustomer, idPackage, status) "+"VALUES ( " +
+                    ""+idCustomer+","+idPackage+", 'Active');";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();
@@ -448,5 +492,20 @@ public class DBConnector {
             System.out.println("Error to open customerDB.db");
         }
     }
-    
+
+    public void inActiveCustomerPackage(int id) throws ClassNotFoundException, SQLException {
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "UPDATE customerPackage SET status = 'InActive' WHERE id = "+id+";";
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+    }
 }

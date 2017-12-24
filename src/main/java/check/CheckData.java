@@ -17,7 +17,7 @@ public class CheckData {
 
     public boolean isAllNumber(TextField field) {
         boolean isCorrect = true;
-        if (field.getText().equals("") || Integer.parseInt(field.getText()) < 0){
+        if (field.getText().equals("") || Integer.parseInt(field.getText()) <= 0){
             isCorrect = false;
             field.setStyle("-fx-background-color: pink");
             return isCorrect;
@@ -39,7 +39,7 @@ public class CheckData {
 
     public boolean isAllNumberSpec(TextField field, double len){
         boolean isCorrect = true;
-        if (field.getText().equals("") || Integer.parseInt(field.getText()) < 0 || Integer.parseInt(field.getText()) > len){
+        if (field.getText().equals("") || Integer.parseInt(field.getText()) <= 0 || Integer.parseInt(field.getText()) > len){
             isCorrect = false;
             field.setStyle("-fx-background-color: pink");
             return isCorrect;

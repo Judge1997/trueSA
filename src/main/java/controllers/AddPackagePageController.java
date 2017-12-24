@@ -68,7 +68,7 @@ public class AddPackagePageController extends Observable {
             int mobileTimes = Integer.parseInt(mobileTimesField.getText());
             int tvs = Integer.parseInt(String.valueOf(tvsComboBox.getValue()));
 
-            Package packages = new Package(0, name, price, internet, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs);
+            Package packages = new Package(0, name, price, internet, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs,"Active");
 
             this.packageDB.writePacketDB(packages);
 
