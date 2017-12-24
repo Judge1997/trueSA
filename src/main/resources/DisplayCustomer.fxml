@@ -79,6 +79,8 @@
                   <TableColumn prefWidth="140.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE SPEED (Mbps)"><cellValueFactory><PropertyValueFactory property="mobileSpeed" /></cellValueFactory></TableColumn>
                   <TableColumn prefWidth="140.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE TIMES (Min.)"><cellValueFactory><PropertyValueFactory property="mobileTimes" /></cellValueFactory></TableColumn>
                   <TableColumn prefWidth="75.0" style="-fx-alignment: TOP-RIGHT;" text="TVs"><cellValueFactory><PropertyValueFactory property="tvs" /></cellValueFactory></TableColumn>
+                   <TableColumn prefWidth="75.0" text="START TIME"><cellValueFactory><PropertyValueFactory property="startTime" /></cellValueFactory></TableColumn>
+                   <TableColumn prefWidth="75.0" text="END TIME"><cellValueFactory><PropertyValueFactory property="endTime" /></cellValueFactory></TableColumn>
                   <TableColumn prefWidth="75.0" text="Status"><cellValueFactory><PropertyValueFactory property="status" /></cellValueFactory></TableColumn>
                </columns>
             </TableView>

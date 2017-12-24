@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import models.Customer;
 import models.CustomerPackage;
 import models.Package;
+import models.PackageForCustomer;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,7 +33,7 @@ public class DisplayCustomerPageController implements Observer{
     @FXML
     private Button deleteBtn;
     @FXML
-    private TableView<Package> tableView;
+    private TableView<PackageForCustomer> tableView;
 
     private Customer customer;
     private int idCustomer;
@@ -41,7 +42,7 @@ public class DisplayCustomerPageController implements Observer{
 
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
-        ObservableList<Package> packages = FXCollections.observableArrayList();
+        ObservableList<PackageForCustomer> packages = FXCollections.observableArrayList();
 
         customerPackages = FXCollections.observableArrayList();
 

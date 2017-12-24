@@ -77,7 +77,6 @@ public class PackageManageController extends MainController implements Observer{
     public void deleteBtn() throws SQLException, ClassNotFoundException {
         if (tableView.getSelectionModel().getSelectedItem() != null){
                 int numberUsePackage = packageDB.checkCustomerPackage(tableView.getSelectionModel().getSelectedItem().getId());
-                System.out.println(numberUsePackage);
                 if (numberUsePackage == 0){
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to delete " +
                             tableView.getSelectionModel().getSelectedItem().getName() + " ?",

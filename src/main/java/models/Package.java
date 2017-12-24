@@ -2,17 +2,17 @@ package models;
 
 public class Package {
 
-    private int id;
-    private double price;
-    private String name;
-    private int net;
-    private int voice;
-    private int data;
-    private int mobileQuantity;
-    private int mobileSpeed;
-    private int mobileTimes;
-    private int tvs;
-    private String status;
+    protected int id;
+    protected double price;
+    protected String name;
+    protected int net;
+    protected int voice;
+    protected int data;
+    protected int mobileQuantity;
+    protected int mobileSpeed;
+    protected int mobileTimes;
+    protected int tvs;
+    protected String status;
 
     public Package(int id, String name, double price, int net, int voice, int data, int mobileQuantity, int mobileSpeed, int mobileTimes, int tvs, String status){
         this.id = id;

@@ -1,13 +1,11 @@
-package check;
+package tools;
 
 import database.DBConnector;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import models.Customer;
 import models.Package;
 
-import java.awt.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

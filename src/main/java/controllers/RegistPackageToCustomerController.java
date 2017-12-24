@@ -11,11 +11,14 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import models.Customer;
 import models.Package;
+import tools.GenTime;
 
 import java.sql.SQLException;
 import java.util.Observable;
 
 public class RegistPackageToCustomerController extends Observable {
+
+    private GenTime time = new GenTime();
 
     private DBConnector packageDB = DBConnector.getSelf();
 

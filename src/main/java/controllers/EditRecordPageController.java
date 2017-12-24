@@ -1,6 +1,6 @@
 package controllers;
 
-import check.CheckData;
+import tools.CheckData;
 import database.DBConnector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

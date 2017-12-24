@@ -5,13 +5,15 @@ public class CustomerPackage {
     private int id;
     private int idCustomer;
     private int idPackage;
-    private String status;
+    private String status,startTime,endTime;
 
-    public CustomerPackage(int id, int idCustomer, int idPackage ,String status){
+    public CustomerPackage(int id, int idCustomer, int idPackage ,String status, String startTime, String endTime){
         this.id = id;
         this.idCustomer = idCustomer;
         this.idPackage = idPackage;
         this.status = status;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     public int getId() {
@@ -44,5 +46,21 @@ public class CustomerPackage {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 }

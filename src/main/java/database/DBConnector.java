@@ -2,6 +2,7 @@ package database;
 
 import models.*;
 import models.Package;
+import tools.GenTime;
 
 import java.sql.*;
 import java.util.List;
@@ -406,8 +407,10 @@ public class DBConnector {
                 int idCustomer = resultSet.getInt(2);
                 int idPackage = resultSet.getInt(3);
                 String status = resultSet.getString(4);
+                String startTime = resultSet.getString(5);
+                String endTime = resultSet.getString(6);
 
-                packages.add(new CustomerPackage(id, idCustomer, idPackage, status));
+                packages.add(new CustomerPackage(id, idCustomer, idPackage, status, startTime, endTime));
             }
 
             connection.close();
@@ -435,8 +438,10 @@ public class DBConnector {
                 int idCustomer = resultSet.getInt(2);
                 int idPackage = resultSet.getInt(3);
                 String status = resultSet.getString(4);
+                String startTime = resultSet.getString(5);
+                String endTime = resultSet.getString(6);
 
-                packages.add(new CustomerPackage(id, idCustomer, idPackage, status));
+                packages.add(new CustomerPackage(id, idCustomer, idPackage, status, startTime, endTime));
             }
 
             connection.close();
@@ -470,8 +475,8 @@ public class DBConnector {
         return count;
     }
 
-    public List<Package> loadPackageFromCustomerPackage(List<CustomerPackage> customerPackages) throws ClassNotFoundException, SQLException {
-        List<Package> packages = new Vector<Package>();
+    public List<PackageForCustomer> loadPackageFromCustomerPackage(List<CustomerPackage> customerPackages) throws ClassNotFoundException, SQLException {
+        List<PackageForCustomer> packages = new Vector<>();
 
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
@@ -496,7 +501,9 @@ public class DBConnector {
                         int mobileTimes = resultSet.getInt(9);
                         int tvs = resultSet.getInt(10);
                         String status = i.getStatus();
-                        packages.add(new Package(id, name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs, status));
+                        String startTime = i.getStartTime();
+                        String endTime = i.getEndTime();
+                        packages.add(new PackageForCustomer(id, name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs, status, startTime, endTime));
                     }
                 }
             }
@@ -510,13 +517,17 @@ public class DBConnector {
     }
 
     public void writeCustomerPackage(int idCustomer, int idPackage) throws SQLException, ClassNotFoundException {
+        GenTime time = new GenTime();
+        String startTime = time.getTime();
+        String endTime = time.getTimePlusOneYear(startTime);
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "INSERT INTO customerPackage (idCustomer, idPackage, status) "+"VALUES ( " +
-                    ""+idCustomer+","+idPackage+", 'Active');";
+            String query = "INSERT INTO customerPackage (idCustomer, idPackage, status, startTime, endTime) "+"VALUES ( " +
+                    ""+idCustomer+","+idPackage+", 'Active','"+startTime+"','"+endTime+"');";
+
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             connection.close();
