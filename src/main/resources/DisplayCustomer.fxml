@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayCustomerPageController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayCustomerPageController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="572.0" minWidth="10.0" prefWidth="350.0" />
   </columnConstraints>
@@ -91,8 +91,8 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="289.0" layoutY="265.0" mnemonicParsing="false" style="-fx-background-color: FFA74F;" text="ADD REQUIREMENT" />
-            <Button layoutX="420.0" layoutY="265.0" mnemonicParsing="false" style="-fx-background-color: FFA74F;" text="SHOW REQUIREMENT" />
+            <Button layoutX="289.0" layoutY="265.0" mnemonicParsing="false" onAction="#addRequirementBtn" style="-fx-background-color: FFA74F;" text="ADD REQUIREMENT" />
+            <Button layoutX="420.0" layoutY="265.0" mnemonicParsing="false" onAction="#showRequirementBtn" style="-fx-background-color: FFA74F;" text="SHOW REQUIREMENT" />
             <Label layoutX="16.0" layoutY="308.0" text="Employee :" />
             <Label fx:id="employeeeLabel" layoutX="85.0" layoutY="308.0" text="xxxxxxxxxxxxxxxxxxxs" />
          </children>

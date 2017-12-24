@@ -31,8 +31,6 @@ public class CustomerManageController extends MainController implements Observer
     private TextField searchField;
     @FXML
     private Button editBtn, deleteBtn, displayBtn;
-    @FXML
-    private ComboBox cmbReport;
 
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
@@ -47,12 +45,6 @@ public class CustomerManageController extends MainController implements Observer
         editBtn.setDisable(true);
         deleteBtn.setDisable(true);
         displayBtn.setDisable(true);
-
-        String[] reportList = {"TotalEachCustomer", "TotalEachPackage"};
-        ObservableList lst = FXCollections.observableArrayList();
-        lst.addAll(reportList);
-        cmbReport.setItems(lst);
-        cmbReport.setValue(cmbReport.getItems().get(0));
 
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
@@ -134,33 +126,13 @@ public class CustomerManageController extends MainController implements Observer
     }
 
     @FXML
-    public void addRequirementBtn(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddRequirementPage.fxml"));
-        Parent window = loader.load();
-
-        this.goToPage(stage,window,300,400);
-    }
-
-
-    @FXML
     public void reportBtn(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
-        Button loginBtn = (Button) event.getSource();
-        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReportTotalPricePage.fxml"));
         Parent window = loader.load();
         ReportTotalPricePageController reportTotalPricePageController = loader.getController();
         reportTotalPricePageController.setUsername(this.userLabel.getText());
-        reportTotalPricePageController.setStatus(String.valueOf(cmbReport.getValue()));
-        this.goToPage(stage,window,400,600);
-    }
-
-    @FXML
-    public void displayRequirementBtn(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayRequirement.fxml"));
-        Parent window = loader.load();
-
+        reportTotalPricePageController.setStatus("Customer");
         this.goToPage(stage,window,400,600);
     }
 

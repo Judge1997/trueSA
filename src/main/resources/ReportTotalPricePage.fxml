@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportTotalPricePageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportTotalPricePageController">
    <children>
       <ScrollPane layoutX="9.0" layoutY="75.0" prefHeight="272.0" prefWidth="585.0">
          <content>
             <TableView fx:id="tableView" prefHeight="270.0" prefWidth="583.0">
               <columns>
-                <TableColumn prefWidth="124.0" text="ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="200.0" text="Name"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
-                <TableColumn prefWidth="146.0" style="-fx-alignment: CENTER-RIGHT;" text="Price"><cellValueFactory><PropertyValueFactory property="priceString" /></cellValueFactory></TableColumn>
+                <TableColumn prefWidth="83.0" text="ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
+                <TableColumn prefWidth="324.0" text="Name"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
+                <TableColumn prefWidth="175.0" style="-fx-alignment: CENTER-RIGHT;" text="Price"><cellValueFactory><PropertyValueFactory property="priceString" /></cellValueFactory></TableColumn>
               </columns>
             </TableView>
          </content>
@@ -35,6 +35,6 @@
       <Label fx:id="totalReport" alignment="CENTER_RIGHT" layoutX="464.0" layoutY="359.0" prefHeight="17.0" prefWidth="81.0" text="?" />
       <Label layoutX="562.0" layoutY="359.0" text="Baht" />
       <Button layoutX="9.0" layoutY="355.0" mnemonicParsing="false" style="-fx-background-color: FFA74F;" text="PRINT REPORT" />
-      <Label alignment="BASELINE_CENTER" layoutY="35.0" prefHeight="17.0" prefWidth="600.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="titleLabel" alignment="BASELINE_CENTER" layoutY="35.0" prefHeight="17.0" prefWidth="600.0" text="Label" textAlignment="CENTER" />
    </children>
 </AnchorPane>

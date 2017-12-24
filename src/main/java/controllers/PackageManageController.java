@@ -100,6 +100,17 @@ public class PackageManageController extends MainController implements Observer{
         }
     }
 
+    @FXML
+    public void reportBtn(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReportTotalPricePage.fxml"));
+        Parent window = loader.load();
+        ReportTotalPricePageController reportTotalPricePageController = loader.getController();
+        reportTotalPricePageController.setUsername(this.userLabel.getText());
+        reportTotalPricePageController.setStatus("Package");
+        this.goToPage(stage,window,400,600);
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         try {

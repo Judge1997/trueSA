@@ -17,10 +17,12 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import models.Customer;
+import models.CustomerRequirement;
 import models.Requirement;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 public class DisplayRequirementController {
@@ -30,18 +32,30 @@ public class DisplayRequirementController {
     @FXML
     private TableView<Requirement> tableView;
 
+    private int idCustomer;
+
     @FXML
     private Button deleteBtn, showBtn;
 
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
         ObservableList<Requirement> requirements = FXCollections.observableArrayList();
-        requirements.addAll(requirementDB.loadRequirementDB());
+        List<Requirement> requirementList = requirementDB.loadRequirementDB();
+        List<CustomerRequirement> customerRequirements = requirementDB.loadCustomerRequirement(idCustomer);
+
+        for (CustomerRequirement cr : customerRequirements){
+            for (Requirement r : requirementList){
+                if (cr.getIdRequirement() == r.getId()){
+                    requirements.add(r);
+                }
+            }
+        }
+
         tableView.setItems(requirements);
     }
 
     public void initialize() throws SQLException, ClassNotFoundException {
-        this.refresh();
+//        this.refresh();
         deleteBtn.setDisable(true);
         showBtn.setDisable(true);
 
@@ -118,4 +132,12 @@ public class DisplayRequirementController {
         stage.close();
     }
 
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) throws SQLException, ClassNotFoundException {
+        this.idCustomer = idCustomer;
+        this.refresh();
+    }
 }

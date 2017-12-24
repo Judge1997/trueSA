@@ -155,4 +155,24 @@ public class DisplayCustomerPageController implements Observer{
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void addRequirementBtn() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddRequirementPage.fxml"));
+        Parent window = loader.load();
+        AddRequirementPageController addRequirementPageController = loader.getController();
+        addRequirementPageController.setIdCustomer(customer.getId());
+        this.goToPage(stage,window,300,400);
+    }
+
+    @FXML
+    public void showRequirementBtn() throws IOException, SQLException, ClassNotFoundException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayRequirement.fxml"));
+        Parent window = loader.load();
+        DisplayRequirementController displayRequirementController = loader.getController();
+        displayRequirementController.setIdCustomer(customer.getId());
+        this.goToPage(stage,window,400,600);
+    }
 }

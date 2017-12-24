@@ -14,6 +14,8 @@ public class AddRequirementPageController {
 
     private DBConnector requirementDB = DBConnector.getSelf();
 
+    private int idCustomer;
+
     @FXML
     private TextArea area;
 
@@ -21,7 +23,8 @@ public class AddRequirementPageController {
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
         if (!area.getText().equals("")){
             Requirement requirement = new Requirement(0,area.getText());
-            requirementDB.writeRequirementDB(requirement);
+            int idRequirement = requirementDB.writeRequirementDB(requirement);
+            requirementDB.writeCustomerRequirementDB(idCustomer, idRequirement);
             this.closeThisWindow(event);
         } else {
             area.setStyle("-fx-border-color: red");
@@ -40,5 +43,13 @@ public class AddRequirementPageController {
         Button cancelBtn = (Button) event.getSource();
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();
+    }
+
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
     }
 }

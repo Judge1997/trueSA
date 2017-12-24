@@ -32,7 +32,7 @@ public class ReportTotalPricePageController {
     @FXML
     private TableView<ReportTotalPrice> tableView;
     @FXML
-    private Label totalReport;
+    private Label totalReport, titleLabel;
 
 //    public void initialize() throws SQLException, ClassNotFoundException {
 //        List<Customer> listFromCustomerDB = customerDB.loadCustonerDB();
@@ -109,6 +109,7 @@ public class ReportTotalPricePageController {
 
     public void setStatus(String status) throws SQLException, ClassNotFoundException {
         this.status = status;
+        titleLabel.setText(this.status + " Report");
         this.render();
     }
 
@@ -129,7 +130,7 @@ public class ReportTotalPricePageController {
 
         double totalPrice = 0;
 
-        if (status.equals("TotalEachCustomer")){
+        if (status.equals("Customer")){
             for (CustomerPackage cp : customerPackages){
                 for (Package p : packages){
                     if (cp.getIdPackage() == p.getId()){
