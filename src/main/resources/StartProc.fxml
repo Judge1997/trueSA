@@ -49,5 +49,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Label layoutX="489.0" layoutY="378.0" text="develop by dudes." />
    </children>
 </AnchorPane>

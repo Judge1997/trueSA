@@ -28,22 +28,23 @@ public class StartProcController {
     public void customerBtn(ActionEvent event) throws IOException {
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
-        this.goToLogIn(stage, 1);
+        this.goToLogIn(stage, 1, "Customer Manager");
     }
 
     @FXML
     public void packageBtn(ActionEvent event) throws IOException {
         Button btn = (Button) event.getSource();
         Stage stage = (Stage) btn.getScene().getWindow();
-        this.goToLogIn(stage, 2);
+        this.goToLogIn(stage, 2, "Package Manager");
     }
 
     @FXML
-    public void goToLogIn(Stage stage, int emty) throws IOException {
+    public void goToLogIn(Stage stage, int empType, String role) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/LoginPage.fxml"));
         Parent root = loader.load();
         LoginPageController loginPageController = loader.getController();
-        loginPageController.setEmty(emty);
+        loginPageController.setRoleLabel(role);
+        loginPageController.setEmty(empType);
         stage.setTitle("TrueSA");
         stage.setScene(new Scene(root, 600, 400));
         stage.setResizable(false);

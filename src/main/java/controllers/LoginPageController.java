@@ -13,6 +13,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,7 +29,7 @@ public class LoginPageController {
     @FXML
     private Button loginBtn;
     @FXML
-    private Label responseLabel;
+    private Label responseLabel, roleLabel;
 
     private int emty;
 
@@ -115,5 +117,9 @@ public class LoginPageController {
 
     public void setEmty(int emty) {
         this.emty = emty;
+    }
+
+    public void setRoleLabel(String role) {
+        this.roleLabel.setText(role);
     }
 }
