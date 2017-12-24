@@ -18,8 +18,6 @@ import java.util.Observable;
 
 public class RegistPackageToCustomerController extends Observable {
 
-    private GenTime time = new GenTime();
-
     private DBConnector packageDB = DBConnector.getSelf();
 
     private Customer customer;
