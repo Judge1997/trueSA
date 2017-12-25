@@ -139,6 +139,7 @@ public class ReportPage {
         double totalPrice = 0;
 
         if (status.equals("Customer")){
+            printer.printReport("Report Customer");
             for (CustomerPackage cp : customerPackages){
                 for (Package p : packages){
                     if (cp.getIdPackage() == p.getId()){
@@ -147,8 +148,8 @@ public class ReportPage {
                                 ReportTotalPrice reportTotalPrice = new ReportTotalPrice(c.getId(), c.getName(), Double.parseDouble(p.getPrice()));
                                 if (this.contain(reportTotalPrices, reportTotalPrice) == false){
                                     reportTotalPrices.add(reportTotalPrice);
-                                    totalEach += String.format("%d %.2f /n",reportTotalPrice.getName(), reportTotalPrice.getPrice());
-
+                                    totalEach = String.format("%-30s %20.2f Baht\n",reportTotalPrice.getName(), reportTotalPrice.getPrice());
+                                    printer.printReport(totalEach);
                                 }
                             }
                         }
@@ -156,6 +157,7 @@ public class ReportPage {
                 }
             }
         } else {
+            printer.printReport("Report Package");
             for (CustomerPackage cp : customerPackages){
                 for (Package p : packages){
                     if (cp.getIdPackage() == p.getId()){
@@ -164,7 +166,8 @@ public class ReportPage {
                                 ReportTotalPrice reportTotalPrice = new ReportTotalPrice(p.getId(), p.getName(), Double.parseDouble(p.getPrice()));
                                 if (this.contain(reportTotalPrices, reportTotalPrice) == false){
                                     reportTotalPrices.add(reportTotalPrice);
-                                    totalEach += String.format(c.getName()+reportTotalPrice+"/n");
+                                    totalEach = String.format("%-30s %20.2f Baht\n",reportTotalPrice.getName(), reportTotalPrice.getPrice());
+                                    printer.printReport(totalEach);
                                 }
                             }
                         }
@@ -181,6 +184,7 @@ public class ReportPage {
         }
 
         totalReport.setText(getPriceString(totalPrice));
-        printer.printReport(totalEach,totalPrice+"");
+        printer.printReport("End-report Total "+totalPrice);
+//        printer.printReport(totalEach,totalPrice+"");
     }
 }
