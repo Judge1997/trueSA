@@ -31,8 +31,6 @@ public class ReportPage {
 
     private String status;
 
-    private ReportPrinter printer;
-
     private String totalEach, totalAll;
 
     @FXML
@@ -53,10 +51,6 @@ public class ReportPage {
 //        tableView.setItems(customers);
 //        totalReport.setText(String.format("%.2f",totalCost));
 //    }
-
-    public void initialize() throws SQLException, ClassNotFoundException, IOException {
-        printer = new ReportPrinter();
-    }
 
     private boolean contain(ObservableList<ReportTotalPrice> reportTotalPrices, ReportTotalPrice reportTotalPrice){
         for (ReportTotalPrice r : reportTotalPrices){
@@ -121,7 +115,10 @@ public class ReportPage {
         this.render();
     }
 
-    private void render() throws SQLException, ClassNotFoundException {
+    @FXML
+    public void printBtn() throws SQLException, ClassNotFoundException, IOException {
+        ReportPrinter printer = new ReportPrinter();
+
         ObservableList<Package> packages = FXCollections.observableArrayList();
 
         ObservableList<CustomerPackage> customerPackages = FXCollections.observableArrayList();
@@ -176,6 +173,62 @@ public class ReportPage {
             }
         }
 
+        for (ReportTotalPrice r : tableView.getItems()){
+            totalPrice += r.getPrice();
+        }
+
+        printer.printReport("End-report Total "+String.format("%.2f",totalPrice));
+    }
+
+    private void render() throws SQLException, ClassNotFoundException {
+        ObservableList<Package> packages = FXCollections.observableArrayList();
+
+        ObservableList<CustomerPackage> customerPackages = FXCollections.observableArrayList();
+
+        ObservableList<Customer> customers = FXCollections.observableArrayList();
+
+        customers.addAll(customerDB.loadCustonerDB());
+
+        customerPackages.addAll(customerDB.loadAllCustomerPackage());
+
+        packages.addAll(customerDB.loadPacketDB());
+
+        ObservableList<ReportTotalPrice> reportTotalPrices = FXCollections.observableArrayList();
+
+        double totalPrice = 0;
+
+        if (status.equals("Customer")){
+            for (CustomerPackage cp : customerPackages){
+                for (Package p : packages){
+                    if (cp.getIdPackage() == p.getId()){
+                        for (Customer c : customers){
+                            if (cp.getIdCustomer() == c.getId() && cp.getStatus().equals("Active")){
+                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(c.getId(), c.getName(), Double.parseDouble(p.getPrice()));
+                                if (this.contain(reportTotalPrices, reportTotalPrice) == false){
+                                    reportTotalPrices.add(reportTotalPrice);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            for (CustomerPackage cp : customerPackages){
+                for (Package p : packages){
+                    if (cp.getIdPackage() == p.getId()){
+                        for (Customer c : customers){
+                            if (cp.getIdCustomer() == c.getId() && cp.getStatus().equals("Active")){
+                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(p.getId(), p.getName(), Double.parseDouble(p.getPrice()));
+                                if (this.contain(reportTotalPrices, reportTotalPrice) == false){
+                                    reportTotalPrices.add(reportTotalPrice);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         tableView.setItems(reportTotalPrices);
 
@@ -184,7 +237,6 @@ public class ReportPage {
         }
 
         totalReport.setText(getPriceString(totalPrice));
-        printer.printReport("End-report Total "+String.format("%.2f",totalPrice));
 //        printer.printReport(totalEach,totalPrice+"");
     }
 }
