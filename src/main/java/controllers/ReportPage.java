@@ -148,7 +148,7 @@ public class ReportPage {
                                 ReportTotalPrice reportTotalPrice = new ReportTotalPrice(c.getId(), c.getName(), Double.parseDouble(p.getPrice()));
                                 if (this.contain(reportTotalPrices, reportTotalPrice) == false){
                                     reportTotalPrices.add(reportTotalPrice);
-                                    totalEach = String.format("%-30s %20.2f Baht\n",reportTotalPrice.getName(), reportTotalPrice.getPrice());
+                                    totalEach = String.format("%-30s %20s Baht\n",reportTotalPrice.getName(), reportTotalPrice.getPriceString());
                                     printer.printReport(totalEach);
                                 }
                             }
@@ -166,7 +166,7 @@ public class ReportPage {
                                 ReportTotalPrice reportTotalPrice = new ReportTotalPrice(p.getId(), p.getName(), Double.parseDouble(p.getPrice()));
                                 if (this.contain(reportTotalPrices, reportTotalPrice) == false){
                                     reportTotalPrices.add(reportTotalPrice);
-                                    totalEach = String.format("%-30s %20.2f Baht\n",reportTotalPrice.getName(), reportTotalPrice.getPrice());
+                                    totalEach = String.format("%-30s %20s Baht\n",reportTotalPrice.getName(), reportTotalPrice.getPriceString());
                                     printer.printReport(totalEach);
                                 }
                             }
