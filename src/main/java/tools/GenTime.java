@@ -6,11 +6,10 @@ import java.util.Date;
 public class GenTime {
 
     public String getTime(){
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
         String genDate = formatDate.format(new Date());
-        String date = genDate.substring(0,2)+"-"+genDate.substring(3,5)+"-"+genDate.substring(6,10);
 
-        return date;
+        return genDate;
     }
 
     public String getTimePlusOneYear(String date){
