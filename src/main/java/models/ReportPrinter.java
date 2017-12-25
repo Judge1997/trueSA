@@ -1,7 +1,9 @@
 package models;
 
 import javafx.stage.FileChooser;
+import tools.GenTime;
 
+import java.awt.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
@@ -12,9 +14,8 @@ public class ReportPrinter {
     private PrintWriter writer;
 
     public ReportPrinter() throws IOException {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
-        LocalDate localDate = LocalDate.now();
-        outputFileName = "report-"+dtf.format(localDate)+".txt";
+        GenTime time = new GenTime();
+        outputFileName = "report "+time.getTime()+".txt";
         writer = new PrintWriter(outputFileName, "UTF-8");
     }
 
