@@ -35,14 +35,13 @@
          </content>
       </ScrollPane>
       <Button layoutX="759.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutBth" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: FFA74F;" text="LOGOUT" />
-      <Button layoutX="567.0" layoutY="659.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: FFA74F;" text="ADD" />
-      <Button fx:id="deleteBtn" layoutX="750.0" layoutY="659.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: FFA74F;" text="DELETE" />
-      <Button fx:id="editBtn" layoutX="659.0" layoutY="659.0" mnemonicParsing="false" onAction="#editBtn" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: FFA74F;" text="EDIT" />
+      <Button layoutX="661.0" layoutY="659.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: FFA74F;" text="ADD" />
+      <Button fx:id="editBtn" layoutX="753.0" layoutY="659.0" mnemonicParsing="false" onAction="#editBtn" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: FFA74F;" text="EDIT" />
       <Label layoutX="586.0" layoutY="18.0" prefHeight="17.0" prefWidth="67.0" text="UserName :" />
       <Label fx:id="userLabel" layoutX="653.0" layoutY="18.0" prefHeight="17.0" prefWidth="106.0" text="admin" />
       <Button fx:id="searchBtn" layoutX="252.0" layoutY="54.0" mnemonicParsing="false" onAction="#searchBtn" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: FFA74F;" text="Search" />
       <TextField fx:id="searchField" layoutX="12.0" layoutY="54.0" prefHeight="25.0" prefWidth="232.0" />
-      <Button fx:id="displayBtn" layoutX="480.0" layoutY="659.0" mnemonicParsing="false" onAction="#displayBtn" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: FFA74F;" text="DISPLAY" />
+      <Button fx:id="displayBtn" layoutX="574.0" layoutY="659.0" mnemonicParsing="false" onAction="#displayBtn" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: FFA74F;" text="DISPLAY" />
       <Button layoutX="12.0" layoutY="14.0" mnemonicParsing="false" onAction="#reportBtn" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: FFA74F;" text="REPORT" />
       <Button layoutX="23.0" layoutY="659.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="223.0" style="-fx-background-color: FFA74F;" text="DISPLAY ALL REQUIREMENT" />
    </children>

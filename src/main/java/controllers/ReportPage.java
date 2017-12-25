@@ -31,7 +31,7 @@ public class ReportPage {
 
     private String status;
 
-    private String totalEach, totalAll;
+    private String totalEach, reportType;
 
     @FXML
     private TableView<ReportTotalPrice> tableView;
@@ -136,7 +136,10 @@ public class ReportPage {
         double totalPrice = 0;
 
         if (status.equals("Customer")){
-            printer.printReport("Report Customer");
+            printer.printReport( "                   Report Customer");
+            printer.printReport("");
+            printer.printReport(String.format("%-30s %20s", "Name","Price"));
+            printer.printReport("");
             for (CustomerPackage cp : customerPackages){
                 for (Package p : packages){
                     if (cp.getIdPackage() == p.getId()){
@@ -154,7 +157,10 @@ public class ReportPage {
                 }
             }
         } else {
-            printer.printReport("Report Package");
+            printer.printReport("                   Report Package");
+            printer.printReport("");
+            printer.printReport(String.format("%-30s %20s", "Name","Price"));
+            printer.printReport("");
             for (CustomerPackage cp : customerPackages){
                 for (Package p : packages){
                     if (cp.getIdPackage() == p.getId()){

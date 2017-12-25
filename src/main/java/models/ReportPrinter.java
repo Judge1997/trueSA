@@ -21,10 +21,11 @@ public class ReportPrinter {
 
     public void printReport(String str) {
         if (str.split(" ")[0].equals("End-report")){
-            writer.println(str.substring(11)+" Baht");
+            writer.println("");
+            writer.println(String.format("%55s", (str.substring(11)+" Baht")));
             writer.close();
         } else {
-            writer.println(str);
+            writer.println(String.format(str));
         }
 //        writer.println(totAll);
 //        System.out.println("report has printed !");

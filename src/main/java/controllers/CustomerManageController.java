@@ -43,7 +43,6 @@ public class CustomerManageController extends MainController implements Observer
     public void initialize() throws SQLException, ClassNotFoundException {
         this.refresh();
         editBtn.setDisable(true);
-        deleteBtn.setDisable(true);
         displayBtn.setDisable(true);
 
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
