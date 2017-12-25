@@ -38,7 +38,12 @@ public class DisplayRequirementController {
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
         ObservableList<Requirement> requirements = FXCollections.observableArrayList();
-        List<Requirement> requirementList = requirementDB.loadCustomerRequirement(idCustomer);
+        List<Requirement> requirementList;
+        if (idCustomer == -1){
+            requirementList = requirementDB.loadRequirementDB();
+        } else {
+            requirementList = requirementDB.loadCustomerRequirement(idCustomer);
+        }
         requirements.addAll(requirementList);
         tableView.setItems(requirements);
     }
@@ -70,8 +75,7 @@ public class DisplayRequirementController {
     public void showBtn(ActionEvent event) throws IOException {
         Requirement requirement = tableView.getSelectionModel().getSelectedItem();
 
-        Button loginBtn = (Button) event.getSource();
-        Stage stage = (Stage) loginBtn.getScene().getWindow();
+        Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayEachRequirement.fxml"));
         Parent window = loader.load();
 

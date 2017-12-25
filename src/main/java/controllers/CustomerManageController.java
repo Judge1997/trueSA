@@ -121,6 +121,16 @@ public class CustomerManageController extends MainController implements Observer
     }
 
     @FXML
+    public void displayRequirement() throws IOException, SQLException, ClassNotFoundException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Displayrequirement.fxml"));
+        Parent window = loader.load();
+        DisplayRequirementController displayRequirementController = loader.getController();
+        displayRequirementController.setIdCustomer(-1);
+        this.goToPage(stage,window,400,600);
+    }
+
+    @FXML
     public void reportBtn(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReportPage.fxml"));

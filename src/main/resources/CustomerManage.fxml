@@ -9,7 +9,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="720" prefWidth="850.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerManageController">
+<AnchorPane prefHeight="720" prefWidth="850.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CustomerManageController">
    <children>
       <ScrollPane layoutX="12.0" layoutY="86.0" prefHeight="561.0" prefWidth="818.0">
          <content>
@@ -43,6 +43,6 @@
       <TextField fx:id="searchField" layoutX="12.0" layoutY="54.0" prefHeight="25.0" prefWidth="232.0" />
       <Button fx:id="displayBtn" layoutX="574.0" layoutY="659.0" mnemonicParsing="false" onAction="#displayBtn" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: FFA74F;" text="DISPLAY" />
       <Button layoutX="12.0" layoutY="14.0" mnemonicParsing="false" onAction="#reportBtn" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: FFA74F;" text="REPORT" />
-      <Button layoutX="23.0" layoutY="659.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="223.0" style="-fx-background-color: FFA74F;" text="DISPLAY ALL REQUIREMENT" />
+      <Button layoutX="23.0" layoutY="659.0" mnemonicParsing="false" onAction="#displayRequirement" prefHeight="25.0" prefWidth="223.0" style="-fx-background-color: FFA74F;" text="DISPLAY ALL REQUIREMENT" />
    </children>
 </AnchorPane>
