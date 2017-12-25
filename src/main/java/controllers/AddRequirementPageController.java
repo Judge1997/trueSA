@@ -24,9 +24,8 @@ public class AddRequirementPageController {
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
         GenTime time = new GenTime();
         if (!area.getText().equals("")){
-            Requirement requirement = new Requirement(0,area.getText(),time.getTime());
-            int idRequirement = requirementDB.writeRequirementDB(requirement);
-            requirementDB.writeCustomerRequirementDB(idCustomer, idRequirement);
+            Requirement requirement = new Requirement(0,idCustomer,area.getText(),time.getTime());
+            requirementDB.writeRequirementDB(requirement);
             this.closeThisWindow(event);
         } else {
             area.setStyle("-fx-border-color: red");

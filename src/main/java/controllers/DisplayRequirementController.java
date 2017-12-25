@@ -16,8 +16,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import models.Customer;
-import models.CustomerRequirement;
 import models.Requirement;
 
 import java.io.IOException;
@@ -40,17 +38,8 @@ public class DisplayRequirementController {
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
         ObservableList<Requirement> requirements = FXCollections.observableArrayList();
-        List<Requirement> requirementList = requirementDB.loadRequirementDB();
-        List<CustomerRequirement> customerRequirements = requirementDB.loadCustomerRequirement(idCustomer);
-
-        for (CustomerRequirement cr : customerRequirements){
-            for (Requirement r : requirementList){
-                if (cr.getIdRequirement() == r.getId()){
-                    requirements.add(r);
-                }
-            }
-        }
-
+        List<Requirement> requirementList = requirementDB.loadCustomerRequirement(idCustomer);
+        requirements.addAll(requirementList);
         tableView.setItems(requirements);
     }
 

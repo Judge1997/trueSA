@@ -295,10 +295,11 @@ public class DBConnector {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
-                String detail = resultSet.getString(2);
-                String date = resultSet.getString(3);
+                int idCustomer = resultSet.getInt(2);
+                String detail = resultSet.getString(3);
+                String date = resultSet.getString(4);
 
-                requirements.add(new Requirement(id, detail, date));
+                requirements.add(new Requirement(id, idCustomer, detail, date));
             }
             connection.close();
             System.out.println("Closed to customerDB.db");
@@ -308,29 +309,22 @@ public class DBConnector {
         return requirements;
     }
 
-    public int writeRequirementDB(Requirement requirement) throws ClassNotFoundException, SQLException {
-        int idRequiment = 0;
+    public void writeRequirementDB(Requirement requirement) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "INSERT INTO requirement (detail, date) "+"VALUES ( " +
-                    "'"+requirement.getDetail()+"','"+requirement.getDate()+"');";
+            String query = "INSERT INTO requirement (idCustomer, detail, date) "+"VALUES ( " +requirement.getIdCustomer()+
+                    ",'"+requirement.getDetail()+"','"+requirement.getDate()+"');";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
-            query = "Select * from requirement";
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                idRequiment = resultSet.getInt(1);
-            }
             connection.close();
             System.out.println("Closed to customerDB.db");
         } else {
             System.out.println("Error to open customerDB.db");
         }
 
-        return idRequiment;
     }
 
     public void writeCustomerRequirementDB(int idCustomer, int idRequirement) throws ClassNotFoundException, SQLException {
@@ -349,23 +343,24 @@ public class DBConnector {
         }
     }
 
-    public List<CustomerRequirement> loadCustomerRequirement(int idC) throws ClassNotFoundException, SQLException {
-        List<CustomerRequirement> customerRequirements = new Vector<>();
+    public List<Requirement> loadCustomerRequirement(int idC) throws ClassNotFoundException, SQLException {
+        List<Requirement> customerRequirements = new Vector<>();
 
         Class.forName("org.sqlite.JDBC");
         String dbURL = "jdbc:sqlite:customerDB.db";
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "SELECT * FROM customerRequirement WHERE idCustomer =="+idC;
+            String query = "SELECT * FROM requirement WHERE idCustomer =="+idC;
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
                 int idCustomer = resultSet.getInt(2);
-                int idRequiment = resultSet.getInt(3);
+                String detail = resultSet.getString(3);
+                String date = resultSet.getString(4);
 
-                customerRequirements.add(new CustomerRequirement(id, idCustomer, idRequiment));
+                customerRequirements.add(new Requirement(id, idCustomer, detail, date));
             }
             connection.close();
             System.out.println("Closed to customerDB.db");
