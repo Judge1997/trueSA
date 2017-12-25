@@ -4,15 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 public class DisplayEachRequirementController {
 
     @FXML
-    private Label detailLabel;
+    private TextArea detailArea;
 
     public void setDetail(String detail){
-        detailLabel.setText(detail);
+        detailArea.setText(detail);
     }
 
     @FXML

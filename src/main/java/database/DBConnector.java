@@ -296,8 +296,9 @@ public class DBConnector {
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
                 String detail = resultSet.getString(2);
+                String date = resultSet.getString(3);
 
-                requirements.add(new Requirement(id, detail));
+                requirements.add(new Requirement(id, detail, date));
             }
             connection.close();
             System.out.println("Closed to customerDB.db");
@@ -314,8 +315,8 @@ public class DBConnector {
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "INSERT INTO requirement (detail) "+"VALUES ( " +
-                    "'"+requirement.getDetail()+"');";
+            String query = "INSERT INTO requirement (detail, date) "+"VALUES ( " +
+                    "'"+requirement.getDetail()+"','"+requirement.getDate()+"');";
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
             query = "Select * from requirement";

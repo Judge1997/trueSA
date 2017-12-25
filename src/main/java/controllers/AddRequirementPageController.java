@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import models.Requirement;
+import tools.GenTime;
 
 import java.sql.SQLException;
 
@@ -21,8 +22,9 @@ public class AddRequirementPageController {
 
     @FXML
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
+        GenTime time = new GenTime();
         if (!area.getText().equals("")){
-            Requirement requirement = new Requirement(0,area.getText());
+            Requirement requirement = new Requirement(0,area.getText(),time.getTime());
             int idRequirement = requirementDB.writeRequirementDB(requirement);
             requirementDB.writeCustomerRequirementDB(idCustomer, idRequirement);
             this.closeThisWindow(event);

@@ -35,7 +35,7 @@ public class DisplayRequirementController {
     private int idCustomer;
 
     @FXML
-    private Button deleteBtn, showBtn;
+    private Button showBtn;
 
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
@@ -56,7 +56,6 @@ public class DisplayRequirementController {
 
     public void initialize() throws SQLException, ClassNotFoundException {
 //        this.refresh();
-        deleteBtn.setDisable(true);
         showBtn.setDisable(true);
 
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -66,13 +65,11 @@ public class DisplayRequirementController {
                 if(event.getButton() == MouseButton.SECONDARY) {
                     Requirement requirement = tableView.getSelectionModel().getSelectedItem();
                     if ( requirement != null ){
-                        deleteBtn.setDisable(false);
                         showBtn.setDisable(false);
                 }
                 }else{
                     Requirement requirement = tableView.getSelectionModel().getSelectedItem();
                     if ( requirement != null ){
-                        deleteBtn.setDisable(false);
                         showBtn.setDisable(false);
                     }
                 }
@@ -115,7 +112,6 @@ public class DisplayRequirementController {
 
                 this.refresh();
 
-                deleteBtn.setDisable(true);
                 showBtn.setDisable(true);
             }
         }

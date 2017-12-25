@@ -30,7 +30,7 @@ public class CustomerManageController extends MainController implements Observer
     @FXML
     private TextField searchField;
     @FXML
-    private Button editBtn, deleteBtn, displayBtn;
+    private Button editBtn, displayBtn;
 
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
@@ -53,14 +53,12 @@ public class CustomerManageController extends MainController implements Observer
                     Customer customer = tableView.getSelectionModel().getSelectedItem();
                     if ( customer != null ){
                         editBtn.setDisable(false);
-                        deleteBtn.setDisable(false);
                         displayBtn.setDisable(false);
                     }
                 }else{
                     Customer customer = tableView.getSelectionModel().getSelectedItem();
                     if ( customer != null ){
                         editBtn.setDisable(false);
-                        deleteBtn.setDisable(false);
                         displayBtn.setDisable(false);
                     }
                 }
@@ -90,7 +88,6 @@ public class CustomerManageController extends MainController implements Observer
         editRecordPageController.addObserver(this);
         this.goToPage(stage,window,720,850);
         this.editBtn.setDisable(true);
-        this.deleteBtn.setDisable(true);
         displayBtn.setDisable(true);
     }
 
@@ -106,7 +103,6 @@ public class CustomerManageController extends MainController implements Observer
                 customerDB.deleteCustomerDB(customer.getId());
                 this.refresh();
                 this.editBtn.setDisable(true);
-                this.deleteBtn.setDisable(true);
                 displayBtn.setDisable(true);
             }
         }
@@ -143,7 +139,8 @@ public class CustomerManageController extends MainController implements Observer
         lst.addAll(customerDB.loadSearchName(name));
         tableView.setItems(lst);
 
-        searchField.setText("");
+        editBtn.setDisable(true);
+        displayBtn.setDisable(true);
     }
 
     @Override

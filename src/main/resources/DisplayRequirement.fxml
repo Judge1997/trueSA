@@ -8,12 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayRequirementController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayRequirementController">
    <children>
       <TableView fx:id="tableView" layoutX="14.0" layoutY="73.0" prefHeight="278.0" prefWidth="573.0">
         <columns>
           <TableColumn prefWidth="77.0" text="Number"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
-          <TableColumn prefWidth="495.0" text="Detail"><cellValueFactory><PropertyValueFactory property="detail" /></cellValueFactory></TableColumn>
+          <TableColumn prefWidth="391.0" text="Detail"><cellValueFactory><PropertyValueFactory property="detail" /></cellValueFactory></TableColumn>
+            <TableColumn prefWidth="104.0" text="Date"><cellValueFactory><PropertyValueFactory property="date" /></cellValueFactory></TableColumn>
         </columns>
       </TableView>
       <Button layoutX="468.0" layoutY="361.0" mnemonicParsing="false" onAction="#okBtn" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: FFA74F;" text="OK" />
