@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportTotalPricePageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReportPage">
    <children>
       <ScrollPane layoutX="9.0" layoutY="75.0" prefHeight="272.0" prefWidth="585.0">
          <content>
@@ -22,7 +22,7 @@
             </TableView>
          </content>
       </ScrollPane>
-      <Label alignment="CENTER" layoutX="189.0" layoutY="29.0" prefHeight="28.0" prefWidth="81.0" text="Report" textFill="#ff5e01">
+      <Label alignment="CENTER" layoutX="206.0" layoutY="28.0" prefHeight="28.0" prefWidth="81.0" text="Report" textFill="#ff5e01">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -35,6 +35,6 @@
       <Label fx:id="totalReport" alignment="CENTER_RIGHT" layoutX="464.0" layoutY="359.0" prefHeight="17.0" prefWidth="81.0" text="?" />
       <Label layoutX="562.0" layoutY="359.0" text="Baht" />
       <Button layoutX="9.0" layoutY="355.0" mnemonicParsing="false" style="-fx-background-color: FFA74F;" text="PRINT REPORT" />
-      <Label fx:id="titleLabel" alignment="BASELINE_CENTER" layoutY="35.0" prefHeight="17.0" prefWidth="600.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="titleLabel" alignment="BOTTOM_LEFT" layoutX="285.0" layoutY="32.0" prefHeight="17.0" prefWidth="117.0" text="type" />
    </children>
 </AnchorPane>

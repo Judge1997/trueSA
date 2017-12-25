@@ -11,23 +11,29 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import models.Customer;
-import models.CustomerPackage;
+import models.*;
 import models.Package;
-import models.ReportTotalPrice;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ReportTotalPricePageController {
+public class ReportPage {
 
     private DBConnector customerDB = DBConnector.getSelf();
 
     private String username;
 
     private String status;
+
+    private ReportPrinter printer;
+
+    private String totalEach, totalAll;
 
     @FXML
     private TableView<ReportTotalPrice> tableView;
@@ -48,8 +54,8 @@ public class ReportTotalPricePageController {
 //        totalReport.setText(String.format("%.2f",totalCost));
 //    }
 
-    public void initialize() throws SQLException, ClassNotFoundException {
-
+    public void initialize() throws SQLException, ClassNotFoundException, IOException {
+        printer = new ReportPrinter();
     }
 
     private boolean contain(ObservableList<ReportTotalPrice> reportTotalPrices, ReportTotalPrice reportTotalPrice){
@@ -109,7 +115,9 @@ public class ReportTotalPricePageController {
 
     public void setStatus(String status) throws SQLException, ClassNotFoundException {
         this.status = status;
-        titleLabel.setText(this.status + " Report");
+        titleLabel.setFont(Font.font ("Verdana", FontWeight.BOLD, 18));
+        titleLabel.setTextFill(Color.rgb(255,94,1));
+        titleLabel.setText(this.status);
         this.render();
     }
 
@@ -139,6 +147,8 @@ public class ReportTotalPricePageController {
                                 ReportTotalPrice reportTotalPrice = new ReportTotalPrice(c.getId(), c.getName(), Double.parseDouble(p.getPrice()));
                                 if (this.contain(reportTotalPrices, reportTotalPrice) == false){
                                     reportTotalPrices.add(reportTotalPrice);
+                                    totalEach += String.format("%d %.2f /n",reportTotalPrice.getName(), reportTotalPrice.getPrice());
+
                                 }
                             }
                         }
@@ -154,6 +164,7 @@ public class ReportTotalPricePageController {
                                 ReportTotalPrice reportTotalPrice = new ReportTotalPrice(p.getId(), p.getName(), Double.parseDouble(p.getPrice()));
                                 if (this.contain(reportTotalPrices, reportTotalPrice) == false){
                                     reportTotalPrices.add(reportTotalPrice);
+                                    totalEach += String.format(c.getName()+reportTotalPrice+"/n");
                                 }
                             }
                         }
@@ -170,5 +181,6 @@ public class ReportTotalPricePageController {
         }
 
         totalReport.setText(getPriceString(totalPrice));
+        printer.printReport(totalEach,totalPrice+"");
     }
 }
