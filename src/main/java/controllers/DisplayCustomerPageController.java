@@ -7,11 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import models.Customer;
 import models.CustomerPackage;
@@ -37,6 +40,8 @@ public class DisplayCustomerPageController implements Observer{
 
     private Customer customer;
     private int idCustomer;
+    @FXML
+    private TableColumn mobileQuantityHeader,mobileSpeedHeader,mobileTimesHeader;
 
     ObservableList<CustomerPackage> customerPackages = FXCollections.observableArrayList();
 
@@ -54,9 +59,26 @@ public class DisplayCustomerPageController implements Observer{
         tableView.setItems(packages);
     }
 
+    public void makeHeaderWrappable(TableColumn tc){
+        Label label = new Label(tc.getText());
+        label.setStyle("-fx-padding: 8px;");
+        label.setWrapText(true);
+        label.setAlignment(Pos.CENTER);
+        label.setTextAlignment(TextAlignment.CENTER);
+        StackPane stack = new StackPane();
+        stack.getChildren().add(label);
+        stack.prefWidthProperty().bind(tc.widthProperty().subtract(5));
+        label.prefWidthProperty().bind(stack.prefWidthProperty());
+        tc.setGraphic(stack);
+    }
+
     public void initialize() throws SQLException, ClassNotFoundException {
 //        this.refresh();
         deleteBtn.setDisable(true);
+
+        this.makeHeaderWrappable(mobileQuantityHeader);
+        this.makeHeaderWrappable(mobileSpeedHeader);
+        this.makeHeaderWrappable(mobileTimesHeader);
 
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
