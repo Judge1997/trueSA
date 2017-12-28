@@ -182,7 +182,7 @@ public class EditRecordPageController extends Observable{
     @FXML
     public void checkBtn() throws SQLException, ClassNotFoundException {
         checkData.clearQuote(this.nameField);
-        if (checkData.checkDupCustomer(nameField) || checkData.isNull(nameField)){
+        if (checkData.checkDupCustomerName(nameField) || checkData.isNull(nameField)){
             isCustomerNameFieldCorrect = false;
         } else {
             isCustomerNameFieldCorrect = true;

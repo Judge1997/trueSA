@@ -13,6 +13,28 @@ public class CheckData {
 
     private DBConnector customerDB = DBConnector.getSelf();
 
+    public boolean isAllNumberIntegerSpecLen(TextField field,int start,int end){
+        boolean isCorrect = true;
+        if (field.getText().equals("") || !(field.getText().length() >= start && field.getText().length() <= end) || Double.parseDouble(field.getText()) <= 0){
+            isCorrect = false;
+            field.setStyle("-fx-background-color: pink");
+            return isCorrect;
+        } else {
+            for (int i = 0; i < field.getText().length(); i++) {
+                if (isCorrect) {
+                    if ((field.getText().charAt(i) + "").matches("[0-9]")) {
+                    } else {
+                        isCorrect = false;
+                        field.setStyle("-fx-background-color: pink");
+                        return isCorrect;
+                    }
+                }
+            }
+        }
+        field.setStyle("-fx-background-color: limegreen");
+        return isCorrect;
+    }
+
     public boolean isAllNumber(TextField field) {
         boolean isCorrect = true;
         if (field.getText().equals("") || Integer.parseInt(field.getText()) <= 0){
@@ -140,6 +162,7 @@ public class CheckData {
 
     public boolean isAllCorrect(ArrayList<Boolean> checkList) {
         for (boolean i : checkList){
+            System.out.println(i);
             if (i == false){
                 return false;
             }
@@ -147,39 +170,49 @@ public class CheckData {
         return true;
     }
 
-    public boolean checkDupCustomer(TextField field) throws SQLException, ClassNotFoundException {
+    public boolean checkDupCustomerName(TextField field) throws SQLException, ClassNotFoundException {
         for (Customer i : this.customerDB.loadCustonerDB()){
             if (i.getName().equals(field.getText())){
                 field.setStyle("-fx-background-color: pink");
-                return true;
+                return false;
             }
         }
 
         field.setStyle("-fx-background-color: limegreen");
-        return false;
+        return true;
     }
 
-    public boolean checkDupPackage(TextField field) throws SQLException, ClassNotFoundException {
+    public boolean checkDupCustomerBussinessID(TextField field) throws SQLException, ClassNotFoundException {
+        for (Customer i : this.customerDB.loadCustonerDB()){
+            if (i.getBusinessId().equals(field.getText())){
+                field.setStyle("-fx-background-color: pink");
+                return false;
+            }
+        }
+
+        field.setStyle("-fx-background-color: limegreen");
+        return true;
+    }
+
+    public boolean checkDupPackageName(TextField field) throws SQLException, ClassNotFoundException {
         for (Package i : this.customerDB.loadPackageDB()){
             if (i.getName().equals(field.getText())){
                 field.setStyle("-fx-background-color: pink");
-                return true;
+                return false;
             }
         }
 
         field.setStyle("-fx-background-color: green");
-        return false;
+        return true;
     }
 
     public boolean isNull(TextField field){
-        boolean isCorrect = false;
         if (field.getText().equals("")){
-            isCorrect = true;
             field.setStyle("-fx-background-color: pink");
-            return isCorrect;
+            return false;
         }
         field.setStyle("-fx-background-color: limegreen");
-        return isCorrect;
+        return true;
     }
 
     public boolean isNull(TextArea area){

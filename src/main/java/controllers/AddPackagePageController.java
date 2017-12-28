@@ -1,6 +1,5 @@
 package controllers;
 
-import javafx.scene.control.TableColumn;
 import tools.CheckData;
 import database.DBConnector;
 import javafx.collections.FXCollections;
@@ -39,12 +38,12 @@ public class AddPackagePageController extends Observable {
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
         this.checkBtn();
         boolean isPriceFieldCorrect = checkData.isAllNumberSpecLen(priceField,1,7);
-        boolean isInternetFieldCorrect = checkData.isAllNumberSpecLen(internetField,1,5);
-        boolean isVoiceFieldCorrect = checkData.isAllNumberSpecLen(voiceField,1,5);
-        boolean isDataFieldCorrect = checkData.isAllNumberSpecLen(dataField,1,5);
-        boolean isMobileQuantityFieldCorrect = checkData.isAllNumberSpecLen(mobileQuantityField,1,5);
-        boolean isMobileSpeedFieldCorrect = checkData.isAllNumberSpecLen(mobileSpeedField,1,5);
-        boolean isMobileTimesFieldCorrect = checkData.isAllNumberSpecLen(mobileTimesField,1,5);
+        boolean isInternetFieldCorrect = checkData.isAllNumberSpecLen(internetField,1,6);
+        boolean isVoiceFieldCorrect = checkData.isAllNumberIntegerSpecLen(voiceField,1,5);
+        boolean isDataFieldCorrect = checkData.isAllNumberSpecLen(dataField,1,6);
+        boolean isMobileQuantityFieldCorrect = checkData.isAllNumberIntegerSpecLen(mobileQuantityField,1,5);
+        boolean isMobileSpeedFieldCorrect = checkData.isAllNumberSpecLen(mobileSpeedField,1,6);
+        boolean isMobileTimesFieldCorrect = checkData.isAllNumberIntegerSpecLen(mobileTimesField,1,5);
 
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
         checkList.add(isPackageNameFieldCorrect);
@@ -81,7 +80,7 @@ public class AddPackagePageController extends Observable {
     @FXML
     public void checkBtn() throws SQLException, ClassNotFoundException {
         checkData.clearQuote(this.packageNameField);
-        if (checkData.checkDupPackage(packageNameField) || checkData.isNull(packageNameField)){
+        if (checkData.checkDupPackageName(packageNameField) && checkData.isNull(packageNameField)){
             isPackageNameFieldCorrect = false;
         } else {
             isPackageNameFieldCorrect = true;

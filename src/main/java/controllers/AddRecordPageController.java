@@ -27,6 +27,7 @@ public class AddRecordPageController extends Observable {
     private TextArea locationInstallArea;
 
     private boolean isCustomerNameFieldCorrect = false;
+    private boolean isBussinessIDFieldCorrect = false;
 
     @FXML
     private ComboBox cmbAeName,cmbRegion,cmbProvince,cmbKhet;
@@ -98,18 +99,18 @@ public class AddRecordPageController extends Observable {
         checkData.clearQuote(locationInstallArea);
         checkData.clearQuote(khwangField);
 
-        boolean isNameFieldCorrect = checkData.isAllCharacter(nameField);
-        boolean isBussinessIDFieldCorrect = checkData.isAllNumber(businessIDField,13);
-        boolean isCapitalFieldCorrect = checkData.isAllNumberSpec(capitalField, 1000000000);
+        boolean isCapitalFieldCorrect = checkData.isAllNumberIntegerSpecLen(capitalField,1, 9);
         boolean isKhwangFieldCorrect = checkData.isAllCharacter(khwangField);
-        boolean isEmployeeFieldCorrect = checkData.isAllNumberSpec(employeeField, 2000);
-        boolean isContactTelNumFieldCorrect = checkData.isAllNumber(contaceTelNumField,9);
-        boolean isContactFaxFieldCorrect = checkData.isAllNumber(contactFaxField,9);
+        boolean isEmployeeFieldCorrect = checkData.isAllNumberIntegerSpecLen(employeeField, 1,5);
+        boolean isContactTelNumFieldCorrect = checkData.isAllNumberIntegerSpecLen(contaceTelNumField,9,10);
+        boolean isContactFaxFieldCorrect = checkData.isAllNumberIntegerSpecLen(contactFaxField,9,9);
         boolean isContactFieldCorrect = checkData.isAllNumberSpecLen(contactField,9,10);
         boolean isContactNameFieldCorrect = checkData.isAllCharacter(contactNameField);
+        checkDupBussinessID();
+        checkBtn();
 
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
-        checkList.add(isNameFieldCorrect);
+        checkList.add(isCustomerNameFieldCorrect);
         checkList.add(isBussinessIDFieldCorrect);
         checkList.add(isCapitalFieldCorrect);
         checkList.add(isKhwangFieldCorrect);
@@ -120,6 +121,7 @@ public class AddRecordPageController extends Observable {
         checkList.add(isContactNameFieldCorrect);
 
         if (checkData.isAllCorrect(checkList)){
+            System.out.println("Save");
             String name = this.nameField.getText();
             String aeName = String.valueOf(this.cmbAeName.getValue());
             String region = String.valueOf(this.cmbRegion.getValue());
@@ -136,32 +138,35 @@ public class AddRecordPageController extends Observable {
             String contactName = this.contactNameField.getText();
             double packetCost = 0;
 
-            boolean checkDup = checkData.checkDupCustomer(nameField);
 
-            if (checkDup == false){
-                Customer customer = new Customer(0, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
+            Customer customer = new Customer(0, name, aeName, region, locationInstall, businessID, capital, province, khet, khwang, employee, contaceTelNum, contactFax, contact, contactName,
                         packetCost);
-                this.customerDB.writeCustomerDB(customer);
+            this.customerDB.writeCustomerDB(customer);
 
-                this.closeThisWindow(event);
+            this.closeThisWindow(event);
 
-                setChanged();
-                notifyObservers();
-            } else {
-                nameField.setStyle("-fx-border-color: red");
-            }
+            setChanged();
+            notifyObservers();
 
         }
 
     }
 
+    public void checkDupBussinessID() throws SQLException, ClassNotFoundException {
+        if (checkData.isAllNumber(businessIDField,13) && checkData.checkDupCustomerBussinessID(businessIDField)){
+            isBussinessIDFieldCorrect = true;
+        } else {
+            isCustomerNameFieldCorrect = false;
+        }
+    }
+
     @FXML
     public void checkBtn() throws SQLException, ClassNotFoundException {
         checkData.clearQuote(this.nameField);
-        if (checkData.checkDupCustomer(nameField) || checkData.isNull(nameField)){
-            isCustomerNameFieldCorrect = false;
-        } else {
+        if (checkData.checkDupCustomerName(nameField) && checkData.isNull(nameField)){
             isCustomerNameFieldCorrect = true;
+        } else {
+            isCustomerNameFieldCorrect = false;
         }
     }
 
