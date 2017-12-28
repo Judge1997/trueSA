@@ -5,98 +5,222 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayCustomerPageController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="572.0" minWidth="10.0" prefWidth="350.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<AnchorPane prefHeight="600.0" prefWidth="1150.0" style="-fx-background-color: FFE4A0;" xmlns="http://javafx.com/javafx/8.0.151" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayCustomerPageController">
    <children>
-      <AnchorPane prefHeight="511.0" prefWidth="571.0" style="-fx-background-color: FFE4A0;">
-         <children>
-            <Label layoutX="11.0" layoutY="14.0" text="Customer Information">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="40.0" layoutY="56.0" text="Name :" />
-            <Label layoutX="23.0" layoutY="81.0" text="AE Name :" />
-            <Label layoutX="34.0" layoutY="106.0" text="Region :" />
-            <Label layoutX="26.0" layoutY="131.0" text="Location :" />
-            <Label layoutX="10.0" layoutY="185.0" text="Business ID :" />
-            <Label layoutX="33.0" layoutY="210.0" text="Capital :" />
-            <Label layoutX="25.0" layoutY="235.0" text="Province :" />
-            <Label layoutX="42.0" layoutY="260.0" text="KHET :" />
-            <Label layoutX="16.0" layoutY="284.0" text="KHWANG :" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd7a0" height="174.0" layoutX="279.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="282.0" />
-            <Label layoutX="300.0" layoutY="51.0" text="Contact">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <ScrollPane layoutX="7.0" layoutY="403.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd7a0" height="260.0" layoutX="6.0" layoutY="332.0" stroke="BLACK" strokeType="INSIDE" width="560.0" />
-            <Label layoutX="295.0" layoutY="94.0" text="Company Tel :" />
-            <Label layoutX="292.0" layoutY="118.0" text="Company Fax :" />
-            <Label layoutX="322.0" layoutY="166.0" text="Contact :" />
-            <Label layoutX="287.0" layoutY="142.0" text="Contact_Name :" />
-            <Label layoutX="14.0" layoutY="332.0" text="Package">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-             <Label fx:id="nameLabel" layoutX="85.0" layoutY="56.0" prefHeight="17.0" prefWidth="111.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="aeNameLabel" layoutX="85.0" layoutY="81.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="regionLabel" layoutX="85.0" layoutY="106.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="locationLabel" alignment="TOP_LEFT" layoutX="85.0" layoutY="131.0" prefHeight="53.0" prefWidth="111.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="businessIDLabel" layoutX="85.0" layoutY="185.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="capitalLabel" layoutX="85.0" layoutY="210.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="provinceLabel" layoutX="85.0" layoutY="235.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="khetLabel" layoutX="85.0" layoutY="260.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="khwangLabel" layoutX="85.0" layoutY="284.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="contactTelLabel" layoutX="381.0" layoutY="93.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="contactFaxLabel" layoutX="381.0" layoutY="119.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="contactLabel" layoutX="381.0" layoutY="166.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <Label fx:id="contactNameLabel" layoutX="381.0" layoutY="142.0" text="xxxxxxxxxxxxxxxxxxxx" />
-            <TableView fx:id="tableView" layoutX="12.0" layoutY="359.0" prefHeight="190.0" prefWidth="551.0">
+      <Label layoutX="11.0" layoutY="14.0" text="Customer Information">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="96.0" text="Name :">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="64.0" layoutY="124.0" text="AE Name :">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="82.0" layoutY="149.0" text="Region :">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="70.0" layoutY="172.0" text="Location :">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="426.0" layoutY="94.0" text="Business ID :">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="460.0" layoutY="122.0" text="Capital :">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="447.0" layoutY="147.0" text="Province :">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="473.0" layoutY="170.0" text="KHET :">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="437.0" layoutY="193.0" text="KHWANG :">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd7a0" height="174.0" layoutX="814.0" layoutY="39.0" stroke="BLACK" strokeType="INSIDE" width="282.0" />
+      <Label layoutX="835.0" layoutY="47.0" text="Contact">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd7a0" height="274.0" layoutX="6.0" layoutY="318.0" stroke="BLACK" strokeType="INSIDE" width="1135.0" />
+      <Label layoutX="832.0" layoutY="90.0" text="Company Tel :">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="829.0" layoutY="114.0" text="Company Fax :">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="863.0" layoutY="164.0" text="Contact :">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="821.0" layoutY="138.0" text="Contact_Name :">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="14.0" layoutY="320.0" text="Package">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+       <Label fx:id="nameLabel" layoutX="156.0" layoutY="96.0" prefHeight="27.0" prefWidth="166.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="aeNameLabel" layoutX="156.0" layoutY="124.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="regionLabel" layoutX="156.0" layoutY="149.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="businessIDLabel" layoutX="535.0" layoutY="94.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="capitalLabel" layoutX="535.0" layoutY="122.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="provinceLabel" layoutX="535.0" layoutY="147.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="khetLabel" layoutX="535.0" layoutY="170.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="khwangLabel" layoutX="535.0" layoutY="193.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="contactTelLabel" layoutX="928.0" layoutY="89.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="contactFaxLabel" layoutX="928.0" layoutY="114.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="contactLabel" layoutX="928.0" layoutY="164.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="contactNameLabel" layoutX="928.0" layoutY="138.0" text="xxxxxxxxxxxxxxxxxxxx">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <ScrollPane layoutX="12.0" layoutY="345.0" prefHeight="206.0" prefWidth="1122.0">
+         <content>
+            <TableView fx:id="tableView" prefHeight="204.0" prefWidth="1120.0">
                <columns>
-                  <TableColumn prefWidth="75.0" text="PAKAGE ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="106.0" text="PACKAGE NAME"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="105.0" style="-fx-alignment: TOP-RIGHT;" text="PRICE"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
-                  <TableColumn style="-fx-alignment: TOP-RIGHT;" text="NET (Mbps)"><cellValueFactory><PropertyValueFactory property="net" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="84.0" style="-fx-alignment: TOP-RIGHT;" text="VOICE (Min.)"><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="72.0" style="-fx-alignment: TOP-RIGHT;" text="DATA (GB.)"><cellValueFactory><PropertyValueFactory property="data" /></cellValueFactory></TableColumn>
-                  <TableColumn fx:id="mobileQuantityHeader" prefWidth="204.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE QUANTITY (User)"><cellValueFactory><PropertyValueFactory property="mobileQuantity" /></cellValueFactory></TableColumn>
-                  <TableColumn fx:id="mobileSpeedHeader" prefWidth="140.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE SPEED (Mbps)"><cellValueFactory><PropertyValueFactory property="mobileSpeed" /></cellValueFactory></TableColumn>
-                  <TableColumn fx:id="mobileTimesHeader" prefWidth="140.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE TIMES (Min.)"><cellValueFactory><PropertyValueFactory property="mobileTimes" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="75.0" style="-fx-alignment: TOP-RIGHT;" text="TVs"><cellValueFactory><PropertyValueFactory property="tvs" /></cellValueFactory></TableColumn>
-                   <TableColumn prefWidth="75.0" text="START TIME"><cellValueFactory><PropertyValueFactory property="startTime" /></cellValueFactory></TableColumn>
-                   <TableColumn prefWidth="75.0" text="END TIME"><cellValueFactory><PropertyValueFactory property="endTime" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="75.0" text="Status"><cellValueFactory><PropertyValueFactory property="status" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="75.0" text="PAKAGE ID">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="209.0" text="PACKAGE NAME">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="116.0" style="-fx-alignment: TOP-RIGHT;" text="PRICE">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="price" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="75.0" text="START TIME">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="startTime" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="75.0" text="END TIME">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="endTime" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="55.0" text="Status">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="status" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="84.0" style="-fx-alignment: TOP-RIGHT;" text="NET (Mbps)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="net" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="91.0" style="-fx-alignment: TOP-RIGHT;" text="VOICE (Min.)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="voice" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="78.0" style="-fx-alignment: TOP-RIGHT;" text="DATA (GB.)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="data" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="mobileQuantityHeader" prefWidth="68.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE QUANTITY (User)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="mobileQuantity" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="mobileSpeedHeader" prefWidth="68.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE SPEED (Mbps)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="mobileSpeed" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="mobileTimesHeader" prefWidth="68.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE TIMES (Min.)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="mobileTimes" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="55.0" style="-fx-alignment: TOP-RIGHT;" text="TVs">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="tvs" />
+                     </cellValueFactory>
+                  </TableColumn>
                </columns>
             </TableView>
-            <Button fx:id="deleteBtn" layoutX="463.0" layoutY="558.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFA74F;" text="INACTIVE" />
-            <Button layoutX="14.0" layoutY="558.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFA74F;" text="ADD" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd7a0" height="78.0" layoutX="279.0" layoutY="226.0" stroke="BLACK" strokeType="INSIDE" width="282.0" />
-            <Label layoutX="295.0" layoutY="230.0" text="Requirement">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Button layoutX="289.0" layoutY="265.0" mnemonicParsing="false" onAction="#addRequirementBtn" style="-fx-background-color: FFA74F;" text="ADD REQUIREMENT" />
-            <Button layoutX="420.0" layoutY="265.0" mnemonicParsing="false" onAction="#showRequirementBtn" style="-fx-background-color: FFA74F;" text="SHOW REQUIREMENT" />
-            <Label layoutX="16.0" layoutY="308.0" text="Employee :" />
-            <Label fx:id="employeeeLabel" layoutX="85.0" layoutY="308.0" text="xxxxxxxxxxxxxxxxxxxs" />
-         </children>
-      </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Button fx:id="deleteBtn" layoutX="463.0" layoutY="558.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFA74F;" text="INACTIVE" />
+      <Button layoutX="14.0" layoutY="558.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFA74F;" text="ADD" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd7a0" height="78.0" layoutX="814.0" layoutY="222.0" stroke="BLACK" strokeType="INSIDE" width="282.0" />
+      <Label layoutX="830.0" layoutY="226.0" text="Requirement">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="824.0" layoutY="261.0" mnemonicParsing="false" onAction="#addRequirementBtn" style="-fx-background-color: FFA74F;" text="ADD REQUIREMENT" />
+      <Button layoutX="955.0" layoutY="261.0" mnemonicParsing="false" onAction="#showRequirementBtn" style="-fx-background-color: FFA74F;" text="SHOW REQUIREMENT" />
+      <Label layoutX="437.0" layoutY="217.0" text="Employee :">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="employeeeLabel" layoutX="535.0" layoutY="217.0" text="xxxxxxxxxxxxxxxxxxxs">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TextArea fx:id="locationArea" editable="false" layoutX="156.0" layoutY="177.0" prefHeight="134.0" prefWidth="200.0" wrapText="true" />
    </children>
-</GridPane>
+</AnchorPane>

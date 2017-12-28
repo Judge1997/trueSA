@@ -125,7 +125,7 @@ public class CustomerManageController extends MainController implements Observer
         DisplayCustomerPageController displayCustomerPageController = loader.getController();
         displayCustomerPageController.setValue(customer);
 
-        this.goToPage(stage,window,600,571);
+        this.goToPage(stage,window,600,1150);
     }
 
     @FXML

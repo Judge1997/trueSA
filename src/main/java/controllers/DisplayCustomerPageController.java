@@ -30,13 +30,15 @@ public class DisplayCustomerPageController implements Observer{
     private DBConnector customerDB = DBConnector.getSelf();
 
     @FXML
-    private Label nameLabel, aeNameLabel, regionLabel, locationLabel, businessIDLabel, capitalLabel, provinceLabel, khetLabel, khwangLabel;
+    private Label nameLabel, aeNameLabel, regionLabel, businessIDLabel, capitalLabel, provinceLabel, khetLabel, khwangLabel;
     @FXML
     private Label employeeeLabel, contactTelLabel, contactFaxLabel, contactLabel, contactNameLabel;
     @FXML
     private Button deleteBtn;
     @FXML
     private TableView<PackageForCustomer> tableView;
+    @FXML
+    private TextArea locationArea;
 
     private Customer customer;
     private int idCustomer;
@@ -161,7 +163,7 @@ public class DisplayCustomerPageController implements Observer{
         nameLabel.setText(this.customer.getName());
         aeNameLabel.setText(this.customer.getAeName());
         regionLabel.setText(this.customer.getRegion());
-        locationLabel.setText(this.customer.getLocationInstall());
+        locationArea.setText(this.customer.getLocationInstall());
         businessIDLabel.setText(this.customer.getBusinessId());
         capitalLabel.setText(this.customer.getCapital());
         provinceLabel.setText(this.customer.getProvince());
