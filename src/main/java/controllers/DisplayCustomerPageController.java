@@ -44,17 +44,18 @@ public class DisplayCustomerPageController implements Observer{
     public void refresh() throws SQLException, ClassNotFoundException {
         ObservableList<PackageForCustomer> packages = FXCollections.observableArrayList();
 
-        customerPackages = FXCollections.observableArrayList();
+//        customerPackages = FXCollections.observableArrayList();
 
-        customerPackages.addAll(customerDB.loadCustomerPackage(idCustomer));
+//        customerPackages.addAll(customerDB.loadCustomerPackage(idCustomer));
 
-        packages.addAll(customerDB.loadPackageFromCustomerPackage(customerPackages));
+//        packages.addAll(customerDB.loadPackageFromCustomerPackage(customerPackages));
+        packages.addAll(customerDB.loadPackageFromCustomerPackage(idCustomer));
 
         tableView.setItems(packages);
     }
 
     public void initialize() throws SQLException, ClassNotFoundException {
-        this.refresh();
+//        this.refresh();
         deleteBtn.setDisable(true);
 
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

@@ -471,6 +471,42 @@ public class DBConnector {
         return count;
     }
 
+    public List<PackageForCustomer> loadPackageFromCustomerPackage(int idC) throws SQLException, ClassNotFoundException {
+        List<PackageForCustomer> packages = new Vector<>();
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "Select * from customerPackage JOIN package ON package.id=customerPackage.idPackage WHERE customerPackage.idCustomer="+idC;
+            System.out.println(query);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int id = resultSet.getInt(7);
+                String name = resultSet.getString(8);
+                double price = resultSet.getDouble(9);
+                int net = resultSet.getInt(10);
+                int voice = resultSet.getInt(11);
+                int data = resultSet.getInt(12);
+                int mobileQuantity = resultSet.getInt(13);
+                int mobileSpeed = resultSet.getInt(14);
+                int mobileTimes = resultSet.getInt(15);
+                int tvs = resultSet.getInt(16);
+                String status = resultSet.getString(4);
+                String startTime = resultSet.getString(5);
+                String endTime = resultSet.getString(6);
+                packages.add(new PackageForCustomer(id, name, price, net, voice, data, mobileQuantity, mobileSpeed, mobileTimes, tvs, status, startTime, endTime));
+            }
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+
+        return packages;
+    }
+
     public List<PackageForCustomer> loadPackageFromCustomerPackage(List<CustomerPackage> customerPackages) throws ClassNotFoundException, SQLException {
         List<PackageForCustomer> packages = new Vector<>();
 
