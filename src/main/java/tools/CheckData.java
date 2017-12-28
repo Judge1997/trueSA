@@ -162,7 +162,6 @@ public class CheckData {
 
     public boolean isAllCorrect(ArrayList<Boolean> checkList) {
         for (boolean i : checkList){
-            System.out.println(i);
             if (i == false){
                 return false;
             }

@@ -81,9 +81,9 @@ public class AddPackagePageController extends Observable {
     public void checkBtn() throws SQLException, ClassNotFoundException {
         checkData.clearQuote(this.packageNameField);
         if (checkData.checkDupPackageName(packageNameField) && checkData.isNull(packageNameField)){
-            isPackageNameFieldCorrect = false;
-        } else {
             isPackageNameFieldCorrect = true;
+        } else {
+            isPackageNameFieldCorrect = false;
         }
     }
 
