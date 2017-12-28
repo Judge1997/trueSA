@@ -5,16 +5,16 @@ public class Package {
     protected int id;
     protected double price;
     protected String name;
-    protected int net;
+    protected double net;
     protected int voice;
-    protected int data;
+    protected double data;
     protected int mobileQuantity;
-    protected int mobileSpeed;
+    protected double mobileSpeed;
     protected int mobileTimes;
     protected int tvs;
     protected String status;
 
-    public Package(int id, String name, double price, int net, int voice, int data, int mobileQuantity, int mobileSpeed, int mobileTimes, int tvs, String status){
+    public Package(int id, String name, double price, double net, int voice, double data, int mobileQuantity, double mobileSpeed, int mobileTimes, int tvs, String status){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -26,6 +26,41 @@ public class Package {
         this.mobileTimes = mobileTimes;
         this.tvs = tvs;
         this.status = status;
+    }
+
+    private String getFormatInteger(String str){
+//        String string = String.format("%.2f", Integer.parseInt(str));
+//        String priceStr = str.substring(str.length()-2,str.length());
+        String priceStr = "";
+        int count = 1;
+        for (int i = str.length()-1 ; i >= 0 ; i--){
+            String subStr = str.substring(i,i+1);
+            if(count == 3 && i != 0){
+                subStr = ","+subStr;
+                count = 0;
+            }
+            priceStr = subStr+priceStr;
+            count++;
+        }
+
+        return priceStr;
+    }
+
+    public String getFormatDouble(double price) {
+        String str = String.format("%.2f", price);
+        String priceStr = str.substring(str.length()-2,str.length());
+        int count = 0;
+        for (int i = str.length()-3 ; i >= 0 ; i--){
+            String subStr = str.substring(i,i+1);
+            if(count == 3 && i != 0){
+                subStr = ","+subStr;
+                count = 0;
+            }
+            priceStr = subStr+priceStr;
+            count++;
+        }
+
+        return priceStr;
     }
 
     public String getName() {
@@ -44,15 +79,20 @@ public class Package {
         this.id = id;
     }
 
-    public String getPrice() {
-        return String.format("%.2f",this.price);
+    public double getPrice(){
+        return price;
+    }
+
+    public String getPriceString() {
+
+        return this.getFormatDouble(price);
     }
 
     public void setPrice(int price) {
         this.price = price;
     }
 
-    public int getNet() {
+    public double getNet() {
         return net;
     }
 
@@ -68,7 +108,7 @@ public class Package {
         this.voice = voice;
     }
 
-    public int getData() {
+    public double getData() {
         return data;
     }
 
@@ -100,7 +140,7 @@ public class Package {
         this.mobileQuantity = mobileQuantity;
     }
 
-    public int getMobileSpeed() {
+    public double getMobileSpeed() {
         return mobileSpeed;
     }
 
@@ -122,5 +162,33 @@ public class Package {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getNetString(){
+        return this.getFormatDouble(net);
+    }
+
+    public String getVoiceString(){
+        return this.getFormatInteger(String.valueOf(voice));
+    }
+
+    public String getDataString(){
+        return this.getFormatDouble(data);
+    }
+
+    public String getMobileQuantityString(){
+        return this.getFormatInteger(String.valueOf(mobileQuantity));
+    }
+
+    public String getMobileSpeedString(){
+        return this.getFormatDouble(mobileSpeed);
+    }
+
+    public String getMobileTimesString(){
+        return this.getFormatInteger(String.valueOf(mobileTimes));
+    }
+
+    public String getTvsString(){
+        return this.getFormatInteger(String.valueOf(tvs));
     }
 }

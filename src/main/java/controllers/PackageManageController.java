@@ -29,11 +29,13 @@ public class PackageManageController extends MainController implements Observer{
     private TableView<Package> tableView;
     @FXML
     private Button deleteBtn;
+    @FXML
+    private TableColumn mobileQuantityHeader,mobileSpeedHeader,mobileTimesHeader;
 
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
         ObservableList<Package> packages = FXCollections.observableArrayList();
-        packages.addAll(packageDB.loadPacketDB());
+        packages.addAll(packageDB.loadPackageDB());
         tableView.setItems(packages);
     }
 
@@ -41,6 +43,10 @@ public class PackageManageController extends MainController implements Observer{
     public void initialize() throws SQLException, ClassNotFoundException {
         this.refresh();
         deleteBtn.setDisable(true);
+
+        this.makeHeaderWrappable(mobileQuantityHeader);
+        this.makeHeaderWrappable(mobileSpeedHeader);
+        this.makeHeaderWrappable(mobileTimesHeader);
 
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 

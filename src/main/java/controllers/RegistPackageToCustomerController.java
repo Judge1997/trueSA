@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import models.Customer;
 import models.Package;
-import tools.GenTime;
 
 import java.sql.SQLException;
 import java.util.Observable;
@@ -33,7 +32,7 @@ public class RegistPackageToCustomerController extends Observable {
 
     public void initialize() throws SQLException, ClassNotFoundException {
         ObservableList<Package> packages = FXCollections.observableArrayList();
-        packages.addAll(packageDB.loadPacketDB());
+        packages.addAll(packageDB.loadPackageDB());
         comboBox.setItems(packages);
         addBtn.setDisable(true);
     }
@@ -43,7 +42,7 @@ public class RegistPackageToCustomerController extends Observable {
         Package packages = (Package) comboBox.getSelectionModel().getSelectedItem();
 
         nameLabel.setText(packages.getName());
-        priceLabel.setText(packages.getPrice());
+        priceLabel.setText(String.valueOf(packages.getPrice()));
         internetLabel.setText(String.valueOf(packages.getNet()));
         voiceLabel.setText(String.valueOf(packages.getVoice()));
         dataLabel.setText(String.valueOf(packages.getData()));

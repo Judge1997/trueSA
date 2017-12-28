@@ -44,12 +44,12 @@ public class DisplayCustomerPageController implements Observer{
     public void refresh() throws SQLException, ClassNotFoundException {
         ObservableList<PackageForCustomer> packages = FXCollections.observableArrayList();
 
-//        customerPackages = FXCollections.observableArrayList();
+        customerPackages = FXCollections.observableArrayList();
 
-//        customerPackages.addAll(customerDB.loadCustomerPackage(idCustomer));
+        customerPackages.addAll(customerDB.loadCustomerPackage(idCustomer));
 
-//        packages.addAll(customerDB.loadPackageFromCustomerPackage(customerPackages));
-        packages.addAll(customerDB.loadPackageFromCustomerPackage(idCustomer));
+        packages.addAll(customerDB.loadPackageFromCustomerPackage(customerPackages));
+//        packages.addAll(customerDB.loadPackageFromCustomerPackage(idCustomer));
 
         tableView.setItems(packages);
     }
@@ -64,13 +64,17 @@ public class DisplayCustomerPageController implements Observer{
             public void handle(MouseEvent event) {
                 if(event.getButton() == MouseButton.SECONDARY) {
                     Package packages = tableView.getSelectionModel().getSelectedItem();
-                    if ( packages != null ){
+                    if ( packages != null && packages.getStatus().equals("Active")){
                         deleteBtn.setDisable(false);
+                    } else {
+                        deleteBtn.setDisable(true);
                     }
                 }else{
                     Package packages = tableView.getSelectionModel().getSelectedItem();
-                    if ( packages != null ){
+                    if ( packages != null && packages.getStatus().equals("Active")){
                         deleteBtn.setDisable(false);
+                    } else {
+                        deleteBtn.setDisable(true);
                     }
                 }
             }
@@ -108,6 +112,8 @@ public class DisplayCustomerPageController implements Observer{
             if (optional.get() == ButtonType.OK) {
                 deleteBtn.setDisable(true);
                 int index = tableView.getSelectionModel().getSelectedIndex();
+                System.out.println(index);
+
                 CustomerPackage customerPackage = customerPackages.get(index);
                 System.out.println(customerPackage.getId());
                 customerDB.inActiveCustomerPackage(customerPackage.getId());

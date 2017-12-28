@@ -6,53 +6,79 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="400.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PackageManageController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="427.0" minWidth="10.0" prefWidth="405.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" prefWidth="195.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" style="-fx-background-color: FFDA6F;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PackageManageController">
    <children>
-      <Pane prefHeight="400.0" prefWidth="348.0">
-         <children>
-            <ScrollPane layoutX="14.0" layoutY="63.0">
-               <content>
-                  <TableView fx:id="tableView" prefHeight="341.0" prefWidth="374.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="PAKAGE ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
-                      <TableColumn prefWidth="106.0" text="PACKAGE NAME"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="105.0" style="-fx-alignment: TOP-RIGHT;" text="PRICE"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="100.0" style="-fx-alignment: TOP-RIGHT;" text="NET (Mbps)"><cellValueFactory><PropertyValueFactory property="net" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="105.0" style="-fx-alignment: TOP-RIGHT;" text="VOICE (Min.)"><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="75.0" style="-fx-alignment: TOP-RIGHT;" text="DATA (GB.)"><cellValueFactory><PropertyValueFactory property="data" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="160.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE QUANTITY (User)"><cellValueFactory><PropertyValueFactory property="mobileQuantity" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="140.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE SPEED (Mbps)"><cellValueFactory><PropertyValueFactory property="mobileSpeed" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="140.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE TIMES (Min.)"><cellValueFactory><PropertyValueFactory property="mobileTimes" /></cellValueFactory></TableColumn>
-                        <TableColumn prefWidth="75.0" style="-fx-alignment: TOP-RIGHT;" text="TVs"><cellValueFactory><PropertyValueFactory property="tvs" /></cellValueFactory></TableColumn>
-                    </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
-            <Label layoutX="14.0" layoutY="35.0" text="Package Manage" textFill="#ff4017">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Button fx:id="deleteBtn" layoutX="323.0" layoutY="411.0" mnemonicParsing="false" onAction="#deleteBtn" style="-fx-background-color: FFA74F;" text="INACTIVE" />
-            <Button fx:id="addBtn" layoutX="264.0" layoutY="411.0" mnemonicParsing="false" onAction="#addBtn" style="-fx-background-color: FFA74F;" text="  ADD  " />
-            <Button layoutX="322.0" layoutY="14.0" mnemonicParsing="false" onAction="#logoutBth" style="-fx-background-color: FFA74F;" text="LOGOUT" />
-            <Label layoutX="175.0" layoutY="18.0" prefHeight="17.0" prefWidth="63.0" text="UserName :" />
-            <Label fx:id="userLabel" layoutX="237.0" layoutY="18.0" prefHeight="17.0" prefWidth="86.0" text="admin" />
-            <Button layoutX="14.0" layoutY="411.0" mnemonicParsing="false" onAction="#reportBtn" style="-fx-background-color: FFA74F;" text="REPORT" />
-         </children>
-      </Pane>
+      <Label layoutX="14.0" layoutY="35.0" text="Package Manage" textFill="#ff4017">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="14.0" layoutY="70.0" prefHeight="540.0" prefWidth="924.0">
+         <content>
+            <TableView fx:id="tableView" prefHeight="538.0" prefWidth="922.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="PAKAGE ID">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="209.0" text="PACKAGE NAME">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="116.0" style="-fx-alignment: TOP-RIGHT;" text="PRICE">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="priceString" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="84.0" style="-fx-alignment: TOP-RIGHT;" text="NET (Mbps)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="netString" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="91.0" style="-fx-alignment: TOP-RIGHT;" text="VOICE (Min.)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="voiceString" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="78.0" style="-fx-alignment: TOP-RIGHT;" text="DATA (GB.)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="dataString" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="mobileQuantityHeader" prefWidth="68.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE QUANTITY (User)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="mobileQuantityString" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="mobileSpeedHeader" prefWidth="68.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE SPEED (Mbps)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="mobileSpeedString" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="mobileTimesHeader" prefWidth="68.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE TIMES (Min.)">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="mobileTimesString" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="63.0" style="-fx-alignment: TOP-RIGHT;" text="TVs">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="tvsString" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Label layoutX="641.0" layoutY="26.0" text="UserName :" />
+      <Label fx:id="userLabel" layoutX="709.0" layoutY="26.0" prefHeight="17.0" prefWidth="144.0" text="admin" />
+      <Button layoutX="871.0" layoutY="22.0" mnemonicParsing="false" onAction="#logoutBtn" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: FFA74F;" text="LOGOUT" />
+      <Button fx:id="deleteBtn" layoutX="871.0" layoutY="617.0" mnemonicParsing="false" onAction="#deleteBtn" style="-fx-background-color: FFA74F;" text="INACTIVE" />
+      <Button fx:id="addBtn" layoutX="799.0" layoutY="617.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: FFA74F;" text="  ADD  " />
+      <Button layoutX="13.0" layoutY="617.0" mnemonicParsing="false" onAction="#reportBtn" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: FFA74F;" text="REPORT" />
    </children>
-</GridPane>
+</AnchorPane>

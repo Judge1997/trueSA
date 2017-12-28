@@ -46,7 +46,7 @@ public class LoginPageController {
                                 Button loginBtn = (Button) keyEvent.getSource();
                                 Stage mainStage = (Stage) loginBtn.getScene().getWindow();
                                 try {
-                                    loginPageToMainPage(mainStage,"/CustomerManage.fxml",resultSplit[0],850,720);
+                                    loginPageToMainPage(mainStage,"/CustomerManage.fxml",resultSplit[0],1200,700);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -54,7 +54,7 @@ public class LoginPageController {
                                 Button loginBtn = (Button) keyEvent.getSource();
                                 Stage mainStage = (Stage) loginBtn.getScene().getWindow();
                                 try {
-                                    loginPageToMainPage(mainStage,"/PackageManage.fxml",resultSplit[0],400,450);
+                                    loginPageToMainPage(mainStage,"/PackageManage.fxml",resultSplit[0],950,650);
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -80,11 +80,11 @@ public class LoginPageController {
             if (resultSplit[1].equals("CustomerManager")){
                 Button loginBtn = (Button) event.getSource();
                 Stage mainStage = (Stage) loginBtn.getScene().getWindow();
-                loginPageToMainPage(mainStage,"/CustomerManage.fxml",resultSplit[0],850,720);
+                loginPageToMainPage(mainStage,"/CustomerManage.fxml",resultSplit[0],1200,700);
             } else if (resultSplit[1].equals("PackageManager")){
                 Button loginBtn = (Button) event.getSource();
                 Stage mainStage = (Stage) loginBtn.getScene().getWindow();
-                loginPageToMainPage(mainStage,"/PackageManage.fxml",resultSplit[0],400,450);
+                loginPageToMainPage(mainStage,"/PackageManage.fxml",resultSplit[0],950,650);
             }
         } else {
             responseLabel.setText(result);

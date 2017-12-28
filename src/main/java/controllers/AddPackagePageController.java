@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.scene.control.TableColumn;
 import tools.CheckData;
 import database.DBConnector;
 import javafx.collections.FXCollections;
@@ -27,11 +28,9 @@ public class AddPackagePageController extends Observable {
     @FXML
     private ComboBox tvsComboBox;
 
-    public void initialize(){
+    public void initialize() throws SQLException, ClassNotFoundException {
         ObservableList observableList = FXCollections.observableArrayList();
-        observableList.add("100");
-        observableList.add("200");
-        observableList.add("300");
+        observableList.addAll(packageDB.loadTvDB());
         tvsComboBox.setItems(observableList);
         tvsComboBox.setValue(tvsComboBox.getItems().get(0));
     }
@@ -39,13 +38,13 @@ public class AddPackagePageController extends Observable {
     @FXML
     public void submitBtn(ActionEvent event) throws SQLException, ClassNotFoundException {
         this.checkBtn();
-        boolean isPriceFieldCorrect = checkData.isAllNumber(priceField);
-        boolean isInternetFieldCorrect = checkData.isAllNumber(internetField);
-        boolean isVoiceFieldCorrect = checkData.isAllNumber(voiceField);
-        boolean isDataFieldCorrect = checkData.isAllNumber(dataField);
-        boolean isMobileQuantityFieldCorrect = checkData.isAllNumber(mobileQuantityField);
-        boolean isMobileSpeedFieldCorrect = checkData.isAllNumber(mobileSpeedField);
-        boolean isMobileTimesFieldCorrect = checkData.isAllNumber(mobileTimesField);
+        boolean isPriceFieldCorrect = checkData.isAllNumberSpecLen(priceField,1,7);
+        boolean isInternetFieldCorrect = checkData.isAllNumberSpecLen(internetField,1,5);
+        boolean isVoiceFieldCorrect = checkData.isAllNumberSpecLen(voiceField,1,5);
+        boolean isDataFieldCorrect = checkData.isAllNumberSpecLen(dataField,1,5);
+        boolean isMobileQuantityFieldCorrect = checkData.isAllNumberSpecLen(mobileQuantityField,1,5);
+        boolean isMobileSpeedFieldCorrect = checkData.isAllNumberSpecLen(mobileSpeedField,1,5);
+        boolean isMobileTimesFieldCorrect = checkData.isAllNumberSpecLen(mobileTimesField,1,5);
 
         ArrayList<Boolean> checkList = new ArrayList<Boolean>();
         checkList.add(isPackageNameFieldCorrect);
@@ -60,11 +59,11 @@ public class AddPackagePageController extends Observable {
         if (checkData.isAllCorrect(checkList)){
             String name = this.packageNameField.getText();
             double price = Double.parseDouble(priceField.getText());
-            int internet = Integer.parseInt(internetField.getText());
+            double internet = Double.parseDouble(internetField.getText());
             int voice = Integer.parseInt(voiceField.getText());
-            int data = Integer.parseInt(dataField.getText());
+            double data = Double.parseDouble(dataField.getText());
             int mobileQuantity = Integer.parseInt(mobileQuantityField.getText());
-            int mobileSpeed = Integer.parseInt(mobileSpeedField.getText());
+            double mobileSpeed = Double.parseDouble(mobileSpeedField.getText());
             int mobileTimes = Integer.parseInt(mobileTimesField.getText());
             int tvs = Integer.parseInt(String.valueOf(tvsComboBox.getValue()));
 

@@ -116,7 +116,25 @@ public class Customer {
     }
 
     public String getCapital() {
-        return capital;
+        return this.getFormat(capital);
+    }
+
+    private String getFormat(String str){
+//        String string = String.format("%.2f", Integer.parseInt(str));
+//        String priceStr = str.substring(str.length()-2,str.length());
+        String priceStr = "";
+        int count = 1;
+        for (int i = str.length()-1 ; i >= 0 ; i--){
+            String subStr = str.substring(i,i+1);
+            if(count == 3 && i != 0){
+                subStr = ","+subStr;
+                count = 0;
+            }
+            priceStr = subStr+priceStr;
+            count++;
+        }
+
+        return priceStr;
     }
 
     public String getProvince() {

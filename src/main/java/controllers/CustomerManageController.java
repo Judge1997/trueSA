@@ -8,10 +8,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import models.Customer;
 
@@ -31,6 +34,8 @@ public class CustomerManageController extends MainController implements Observer
     private TextField searchField;
     @FXML
     private Button editBtn, displayBtn;
+    @FXML
+    private TableColumn companyTelHeader,contactNameHeader;
 
     @FXML
     public void refresh() throws SQLException, ClassNotFoundException {
@@ -44,6 +49,9 @@ public class CustomerManageController extends MainController implements Observer
         this.refresh();
         editBtn.setDisable(true);
         displayBtn.setDisable(true);
+
+        this.makeHeaderWrappable(companyTelHeader);
+        this.makeHeaderWrappable(contactNameHeader);
 
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 

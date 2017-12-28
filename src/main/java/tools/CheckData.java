@@ -22,7 +22,7 @@ public class CheckData {
         } else {
             for (int i = 0; i < field.getText().length(); i++) {
                 if (isCorrect) {
-                    if ((field.getText().charAt(i) + "").matches("[0-9]")) {
+                    if ((field.getText().charAt(i) + "").matches("[0-9.]")) {
                     } else {
                         isCorrect = false;
                         field.setStyle("-fx-background-color: pink");
@@ -44,7 +44,7 @@ public class CheckData {
         } else {
             for (int i = 0; i < field.getText().length(); i++) {
                 if (isCorrect) {
-                    if ((field.getText().charAt(i) + "").matches("[0-9]")) {
+                    if ((field.getText().charAt(i) + "").matches("[0-9.]")) {
                     } else {
                         isCorrect = false;
                         field.setStyle("-fx-background-color: pink");
@@ -66,7 +66,7 @@ public class CheckData {
         } else {
             for (int i = 0; i < field.getText().length(); i++) {
                 if (isCorrect) {
-                    if ((field.getText().charAt(i) + "").matches("[0-9]")) {
+                    if ((field.getText().charAt(i) + "").matches("[0-9.]")) {
                     } else {
                         isCorrect = false;
                         field.setStyle("-fx-background-color: pink");
@@ -81,14 +81,14 @@ public class CheckData {
 
     public boolean isAllNumberSpecLen(TextField field, int start , int end){
         boolean isCorrect = true;
-        if (field.getText().equals("") || !(field.getText().length() >= start && field.getText().length() <= end)){
+        if (field.getText().equals("") || !(field.getText().length() >= start && field.getText().length() <= end) || Double.parseDouble(field.getText()) <= 0){
             isCorrect = false;
             field.setStyle("-fx-background-color: pink");
             return isCorrect;
         } else {
             for (int i = 0; i < field.getText().length(); i++) {
                 if (isCorrect) {
-                    if ((field.getText().charAt(i) + "").matches("[0-9]")) {
+                    if ((field.getText().charAt(i) + "").matches("[0-9.]")) {
                     } else {
                         isCorrect = false;
                         field.setStyle("-fx-background-color: pink");
@@ -160,7 +160,7 @@ public class CheckData {
     }
 
     public boolean checkDupPackage(TextField field) throws SQLException, ClassNotFoundException {
-        for (Package i : this.customerDB.loadPacketDB()){
+        for (Package i : this.customerDB.loadPackageDB()){
             if (i.getName().equals(field.getText())){
                 field.setStyle("-fx-background-color: pink");
                 return true;

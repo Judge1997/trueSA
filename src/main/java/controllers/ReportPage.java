@@ -18,10 +18,8 @@ import javafx.stage.Stage;
 import models.*;
 import models.Package;
 
-import javax.xml.soap.Text;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 public class ReportPage {
 
@@ -129,7 +127,7 @@ public class ReportPage {
 
         customerPackages.addAll(customerDB.loadAllCustomerPackage());
 
-        packages.addAll(customerDB.loadPacketDB());
+        packages.addAll(customerDB.loadPackageDB());
 
         ObservableList<ReportTotalPrice> reportTotalPrices = FXCollections.observableArrayList();
 
@@ -145,7 +143,7 @@ public class ReportPage {
                     if (cp.getIdPackage() == p.getId()){
                         for (Customer c : customers){
                             if (cp.getIdCustomer() == c.getId() && cp.getStatus().equals("Active")){
-                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(c.getId(), c.getName(), Double.parseDouble(p.getPrice()));
+                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(c.getId(), c.getName(), p.getPrice());
                                 if (this.contain(reportTotalPrices, reportTotalPrice) == false){
                                     reportTotalPrices.add(reportTotalPrice);
                                     totalEach = String.format("%-30s %20s Baht",reportTotalPrice.getName(), reportTotalPrice.getPriceString());
@@ -166,7 +164,7 @@ public class ReportPage {
                     if (cp.getIdPackage() == p.getId()){
                         for (Customer c : customers){
                             if (cp.getIdCustomer() == c.getId() && cp.getStatus().equals("Active")){
-                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(p.getId(), p.getName(), Double.parseDouble(p.getPrice()));
+                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(p.getId(), p.getName(), p.getPrice());
                                 if (this.contain(reportTotalPrices, reportTotalPrice) == false){
                                     reportTotalPrices.add(reportTotalPrice);
                                     totalEach = String.format("%-30s %20s Baht",reportTotalPrice.getName(), reportTotalPrice.getPriceString());
@@ -197,7 +195,7 @@ public class ReportPage {
 
         customerPackages.addAll(customerDB.loadAllCustomerPackage());
 
-        packages.addAll(customerDB.loadPacketDB());
+        packages.addAll(customerDB.loadPackageDB());
 
         ObservableList<ReportTotalPrice> reportTotalPrices = FXCollections.observableArrayList();
 
@@ -209,7 +207,7 @@ public class ReportPage {
                     if (cp.getIdPackage() == p.getId()){
                         for (Customer c : customers){
                             if (cp.getIdCustomer() == c.getId() && cp.getStatus().equals("Active")){
-                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(c.getId(), c.getName(), Double.parseDouble(p.getPrice()));
+                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(c.getId(), c.getName(), p.getPrice());
                                 if (this.contain(reportTotalPrices, reportTotalPrice) == false){
                                     reportTotalPrices.add(reportTotalPrice);
                                 }
@@ -224,7 +222,7 @@ public class ReportPage {
                     if (cp.getIdPackage() == p.getId()){
                         for (Customer c : customers){
                             if (cp.getIdCustomer() == c.getId() && cp.getStatus().equals("Active")){
-                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(p.getId(), p.getName(), Double.parseDouble(p.getPrice()));
+                                ReportTotalPrice reportTotalPrice = new ReportTotalPrice(p.getId(), p.getName(), p.getPrice());
                                 if (this.contain(reportTotalPrices, reportTotalPrice) == false){
                                     reportTotalPrices.add(reportTotalPrice);
                                 }

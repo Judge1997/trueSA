@@ -214,7 +214,7 @@ public class DBConnector {
         }
     }
 
-    public List<Package> loadPacketDB() throws ClassNotFoundException, SQLException {
+    public List<Package> loadPackageDB() throws ClassNotFoundException, SQLException {
         List<Package> packages = new Vector<Package>();
 
         Class.forName("org.sqlite.JDBC");
@@ -229,11 +229,11 @@ public class DBConnector {
                 int id = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 double price = resultSet.getDouble(3);
-                int net = resultSet.getInt(4);
+                double net = resultSet.getDouble(4);
                 int voice = resultSet.getInt(5);
-                int data = resultSet.getInt(6);
+                double data = resultSet.getDouble(6);
                 int mobileQuantity = resultSet.getInt(7);
-                int mobileSpeed = resultSet.getInt(8);
+                double mobileSpeed = resultSet.getDouble(8);
                 int mobileTimes = resultSet.getInt(9);
                 int tvs = resultSet.getInt(10);
                 String status = resultSet.getString(11);
@@ -525,11 +525,11 @@ public class DBConnector {
                     if (i.getIdPackage() == id){
                         String name = resultSet.getString(2);
                         double price = resultSet.getDouble(3);
-                        int net = resultSet.getInt(4);
+                        double net = resultSet.getDouble(4);
                         int voice = resultSet.getInt(5);
-                        int data = resultSet.getInt(6);
+                        double data = resultSet.getDouble(6);
                         int mobileQuantity = resultSet.getInt(7);
-                        int mobileSpeed = resultSet.getInt(8);
+                        double mobileSpeed = resultSet.getDouble(8);
                         int mobileTimes = resultSet.getInt(9);
                         int tvs = resultSet.getInt(10);
                         String status = i.getStatus();
@@ -599,5 +599,30 @@ public class DBConnector {
         } else {
             System.out.println("Error to open customerDB.db");
         }
+    }
+
+    public List<Integer> loadTvDB() throws SQLException, ClassNotFoundException {
+        List<Integer> list = new Vector<>();
+
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "SELECT * FROM tv";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while(resultSet.next()){
+                list.add(resultSet.getInt(2));
+            }
+
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+
+        return list;
     }
 }

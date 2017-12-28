@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayCustomerPageController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayCustomerPageController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="572.0" minWidth="10.0" prefWidth="350.0" />
   </columnConstraints>
@@ -72,10 +72,10 @@
                   <TableColumn prefWidth="75.0" text="PAKAGE ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
                   <TableColumn prefWidth="106.0" text="PACKAGE NAME"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
                   <TableColumn prefWidth="105.0" style="-fx-alignment: TOP-RIGHT;" text="PRICE"><cellValueFactory><PropertyValueFactory property="price" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="100.0" style="-fx-alignment: TOP-RIGHT;" text="NET (Mbps)"><cellValueFactory><PropertyValueFactory property="net" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="105.0" style="-fx-alignment: TOP-RIGHT;" text="VOICE (Min.)"><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="75.0" style="-fx-alignment: TOP-RIGHT;" text="DATA (GB.)"><cellValueFactory><PropertyValueFactory property="data" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="160.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE QUANTITY (User)"><cellValueFactory><PropertyValueFactory property="mobileQuantity" /></cellValueFactory></TableColumn>
+                  <TableColumn style="-fx-alignment: TOP-RIGHT;" text="NET (Mbps)"><cellValueFactory><PropertyValueFactory property="net" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="84.0" style="-fx-alignment: TOP-RIGHT;" text="VOICE (Min.)"><cellValueFactory><PropertyValueFactory property="voice" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="72.0" style="-fx-alignment: TOP-RIGHT;" text="DATA (GB.)"><cellValueFactory><PropertyValueFactory property="data" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="204.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE QUANTITY (User)"><cellValueFactory><PropertyValueFactory property="mobileQuantity" /></cellValueFactory></TableColumn>
                   <TableColumn prefWidth="140.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE SPEED (Mbps)"><cellValueFactory><PropertyValueFactory property="mobileSpeed" /></cellValueFactory></TableColumn>
                   <TableColumn prefWidth="140.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE TIMES (Min.)"><cellValueFactory><PropertyValueFactory property="mobileTimes" /></cellValueFactory></TableColumn>
                   <TableColumn prefWidth="75.0" style="-fx-alignment: TOP-RIGHT;" text="TVs"><cellValueFactory><PropertyValueFactory property="tvs" /></cellValueFactory></TableColumn>
