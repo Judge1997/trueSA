@@ -42,15 +42,15 @@ public class RegistPackageToCustomerController extends Observable {
         Package packages = (Package) comboBox.getSelectionModel().getSelectedItem();
 
         nameLabel.setText(packages.getName());
-        priceLabel.setText(String.valueOf(packages.getPrice()));
-        internetLabel.setText(String.valueOf(packages.getNet()));
-        voiceLabel.setText(String.valueOf(packages.getVoice()));
-        dataLabel.setText(String.valueOf(packages.getData()));
+        priceLabel.setText(String.valueOf(packages.getPriceString())+" Baht");
+        internetLabel.setText(String.valueOf(packages.getNetString())+" Mbps.");
+        voiceLabel.setText(String.valueOf(packages.getVoiceString())+" Minute");
+        dataLabel.setText(String.valueOf(packages.getDataString())+" GB.");
 //        mobileLabel.setText(packages.getMobile());
-        mobileUserLabel.setText(String.valueOf(packages.getMobileQuantity()));
-        mobileSpeedLabel.setText(String.valueOf(packages.getMobileSpeed()));
-        mobileTimesLabel.setText(String.valueOf(packages.getMobileTimes()));
-        tvsLabel.setText(String.valueOf(packages.getTvs()));
+        mobileUserLabel.setText(String.valueOf(packages.getMobileQuantityString())+" Users");
+        mobileSpeedLabel.setText(String.valueOf(packages.getMobileSpeedString())+" Mbps.");
+        mobileTimesLabel.setText(String.valueOf(packages.getMobileTimesString())+" Minute");
+        tvsLabel.setText(String.valueOf(packages.getTvsString())+" Channels");
 
         addBtn.setDisable(false);
     }

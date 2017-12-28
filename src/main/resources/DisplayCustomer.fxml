@@ -203,7 +203,7 @@
             </TableView>
          </content>
       </ScrollPane>
-      <Button fx:id="deleteBtn" layoutX="463.0" layoutY="558.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFA74F;" text="INACTIVE" />
+      <Button fx:id="deleteBtn" layoutX="1034.0" layoutY="558.0" mnemonicParsing="false" onAction="#deleteBtn" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFA74F;" text="INACTIVE" />
       <Button layoutX="14.0" layoutY="558.0" mnemonicParsing="false" onAction="#addBtn" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: FFA74F;" text="ADD" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd7a0" height="78.0" layoutX="814.0" layoutY="222.0" stroke="BLACK" strokeType="INSIDE" width="282.0" />
       <Label layoutX="830.0" layoutY="226.0" text="Requirement">

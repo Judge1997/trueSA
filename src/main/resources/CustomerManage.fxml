@@ -18,10 +18,10 @@
                 <TableColumn prefWidth="60" text="ID"><cellValueFactory><PropertyValueFactory property="id" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="200" text="Name"><cellValueFactory><PropertyValueFactory property="name" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="120.0" text="AE Name"><cellValueFactory><PropertyValueFactory property="aeName" /></cellValueFactory></TableColumn>
-                  <TableColumn fx:id="companyTelHeader" prefWidth="70.0" text="Company Tel."><cellValueFactory><PropertyValueFactory property="contactTelNum" /></cellValueFactory></TableColumn>
+                  <TableColumn fx:id="companyTelHeader" prefWidth="75.0" text="Company Tel."><cellValueFactory><PropertyValueFactory property="contactTelNum" /></cellValueFactory></TableColumn>
                   <TableColumn prefWidth="70.0" text="FAX"><cellValueFactory><PropertyValueFactory property="contactFax" /></cellValueFactory></TableColumn>
                   <TableColumn fx:id="contactNameHeader" prefWidth="70.0" text="Contact Name"><cellValueFactory><PropertyValueFactory property="contactName" /></cellValueFactory></TableColumn>
-                  <TableColumn prefWidth="70.0" text="Tel"><cellValueFactory><PropertyValueFactory property="contact" /></cellValueFactory></TableColumn>
+                  <TableColumn prefWidth="75.0" text="Tel"><cellValueFactory><PropertyValueFactory property="contact" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="55.0" text="Region"><cellValueFactory><PropertyValueFactory property="region" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="125.0" text="Location Install"><cellValueFactory><PropertyValueFactory property="locationInstall" /></cellValueFactory></TableColumn>
                 <TableColumn prefWidth="80.0" text="Business ID"><cellValueFactory><PropertyValueFactory property="businessId" /></cellValueFactory></TableColumn>
