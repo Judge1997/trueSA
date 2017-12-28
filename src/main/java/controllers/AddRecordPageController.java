@@ -43,47 +43,33 @@ public class AddRecordPageController extends Observable {
         cmbAeName.setValue(cmbAeName.getItems().get(0));
 
         ObservableList region = FXCollections.observableArrayList();
-        region.addAll(regionList);
+        region.addAll(customerDB.loadRegionsDB());
         cmbRegion.setItems(region);
         cmbRegion.setValue(cmbRegion.getItems().get(0));
 
         ObservableList province = FXCollections.observableArrayList();
-        provinceList = new String[]{"กรุงเทพมหานคร"};
-        province.addAll(provinceList);
+        province.addAll(customerDB.loadProvincesDB(String.valueOf(cmbRegion.getValue())));
         cmbProvince.setItems(province);
         cmbProvince.setValue(cmbProvince.getItems().get(0));
 
         ObservableList khet = FXCollections.observableArrayList();
-        khetList = new String[]{"จตุจักร", "ลาดพร้าว", "ดอนเมือง"};
-        khet.addAll(khetList);
+        khet.addAll(customerDB.loadKhetsDB(String.valueOf(cmbProvince.getValue())));
         cmbKhet.setItems(khet);
         cmbKhet.setValue(cmbKhet.getItems().get(0));
     }
 
     @FXML
-    public void regionComboBox(){
+    public void regionComboBox() throws SQLException, ClassNotFoundException {
         ObservableList province = FXCollections.observableArrayList();
-        if (cmbRegion.getValue().equals("01")){
-            provinceList = new String[]{"กรุงเทพมหานคร"};
-        } else {
-            provinceList = new String[]{"นนทบุรี","ปทุมธานี"};
-        }
-        province.addAll(provinceList);
+        province.addAll(customerDB.loadProvincesDB(String.valueOf(cmbRegion.getValue())));
         cmbProvince.setValue(province.get(0));
         cmbProvince.setItems(province);
     }
 
     @FXML
-    public void provinceComboBox(){
+    public void provinceComboBox() throws SQLException, ClassNotFoundException {
         ObservableList khet = FXCollections.observableArrayList();
-        if (cmbProvince.getValue().equals("กรุงเทพมหานคร")){
-            khetList = new String[]{"จตุจักร", "ลาดพร้าว", "ดอนเมือง"};
-        } else if (cmbProvince.getValue().equals("นนทบุรี")){
-            khetList = new String[]{"เมืองนนทบุรี", "บางใหญ่", "บางบัวทอง", "ปากเกร็ด"};
-        } else {
-            khetList = new String[]{"เมืองปทุมธานี", "ธัญบุรี", "ลำลูกกา", "สามโคก"};
-        }
-        khet.addAll(khetList);
+        khet.addAll(customerDB.loadKhetsDB(String.valueOf(cmbProvince.getValue())));
         cmbKhet.setValue(khet.get(0));
         cmbKhet.setItems(khet);
     }

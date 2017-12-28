@@ -625,4 +625,75 @@ public class DBConnector {
 
         return list;
     }
+
+    public List<String> loadRegionsDB() throws ClassNotFoundException, SQLException {
+        List<String> regions = new Vector<>();
+
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "SELECT * FROM regions";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while(resultSet.next()){
+                regions.add(resultSet.getString(1));
+            }
+
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+
+        return regions;
+    }
+
+    public List<String> loadProvincesDB(String region) throws ClassNotFoundException, SQLException {
+        List<String> provinces = new Vector<>();
+
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "Select provinces.name from regions JOIN provinces ON regions.name=provinces.nameRegion WHERE regions.name='"+region+"'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                provinces.add(resultSet.getString(1));
+            }
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+
+        return provinces;
+    }
+
+    public List<String> loadKhetsDB(String province) throws SQLException, ClassNotFoundException {
+        List<String> khets = new Vector<>();
+
+        Class.forName("org.sqlite.JDBC");
+        String dbURL = "jdbc:sqlite:customerDB.db";
+        Connection connection = DriverManager.getConnection(dbURL);
+        if (connection != null) {
+            System.out.println("Connected to customerDB.db");
+            String query = "Select khets.name from provinces JOIN khets ON provinces.name=khets.nameProvince WHERE provinces.name='"+province+"'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                khets.add(resultSet.getString(1));
+            }
+            connection.close();
+            System.out.println("Closed to customerDB.db");
+        } else {
+            System.out.println("Error to open customerDB.db");
+        }
+
+        return khets;
+    }
 }
