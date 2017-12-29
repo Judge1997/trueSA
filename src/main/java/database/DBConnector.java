@@ -659,7 +659,7 @@ public class DBConnector {
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "Select provinces.name from regions JOIN provinces ON regions.name=provinces.nameRegion WHERE regions.name='"+region+"'";
+            String query = "Select provinces.name from provinces WHERE provinces.nameRegion='"+region+"'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
@@ -682,7 +682,7 @@ public class DBConnector {
         Connection connection = DriverManager.getConnection(dbURL);
         if (connection != null) {
             System.out.println("Connected to customerDB.db");
-            String query = "Select khets.name from provinces JOIN khets ON provinces.name=khets.nameProvince WHERE provinces.name='"+province+"'";
+            String query = "Select khets.name from khets WHERE khets.nameProvince='"+province+"'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
