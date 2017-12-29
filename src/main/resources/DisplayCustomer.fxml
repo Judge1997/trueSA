@@ -146,7 +146,7 @@
                   </TableColumn>
                   <TableColumn prefWidth="116.0" style="-fx-alignment: TOP-RIGHT;" text="PRICE">
                      <cellValueFactory>
-                        <PropertyValueFactory property="price" />
+                        <PropertyValueFactory property="priceString" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn prefWidth="75.0" text="START TIME">
@@ -166,37 +166,37 @@
                   </TableColumn>
                   <TableColumn prefWidth="84.0" style="-fx-alignment: TOP-RIGHT;" text="NET (Mbps)">
                      <cellValueFactory>
-                        <PropertyValueFactory property="net" />
+                        <PropertyValueFactory property="netString" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn prefWidth="91.0" style="-fx-alignment: TOP-RIGHT;" text="VOICE (Min.)">
                      <cellValueFactory>
-                        <PropertyValueFactory property="voice" />
+                        <PropertyValueFactory property="voiceString" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn prefWidth="78.0" style="-fx-alignment: TOP-RIGHT;" text="DATA (GB.)">
                      <cellValueFactory>
-                        <PropertyValueFactory property="data" />
+                        <PropertyValueFactory property="dataString" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn fx:id="mobileQuantityHeader" prefWidth="68.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE QUANTITY (User)">
                      <cellValueFactory>
-                        <PropertyValueFactory property="mobileQuantity" />
+                        <PropertyValueFactory property="mobileQuantityString" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn fx:id="mobileSpeedHeader" prefWidth="68.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE SPEED (Mbps)">
                      <cellValueFactory>
-                        <PropertyValueFactory property="mobileSpeed" />
+                        <PropertyValueFactory property="mobileSpeedString" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn fx:id="mobileTimesHeader" prefWidth="68.0" style="-fx-alignment: TOP-RIGHT;" text="MOBILE TIMES (Min.)">
                      <cellValueFactory>
-                        <PropertyValueFactory property="mobileTimes" />
+                        <PropertyValueFactory property="mobileTimesString" />
                      </cellValueFactory>
                   </TableColumn>
                   <TableColumn prefWidth="55.0" style="-fx-alignment: TOP-RIGHT;" text="TVs">
                      <cellValueFactory>
-                        <PropertyValueFactory property="tvs" />
+                        <PropertyValueFactory property="tvsString" />
                      </cellValueFactory>
                   </TableColumn>
                </columns>
